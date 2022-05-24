@@ -1,3 +1,5 @@
+//New Javascript trial for getting weather and wind for the website. Fetched and displayed wind which will come in handy to use
+
 const OPEN_URL = "api.openweathermap.org";
 const OPEN_KEY = "a0734a6c8412a878935845b45f197bd6";
 
