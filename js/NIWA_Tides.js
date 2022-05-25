@@ -30,7 +30,7 @@ function buildLocationObject(locationName, lat, long)
 //interpolate the url, coordinates, number of days, and key into a string
 function buildURL(latLong, startdate = STARTDATE, days = DAYS)
 {
-    let urlQuery = `${NIWA_URL}${latLong}&numberOfDays=${days}&startDate=${startdate}${NIWA_KEY}`;
+    let urlQuery = `${NIWA_URL}${latLong}&numberOfDays=${days}&startDate=${startdate}`;
     console.log(urlQuery);
     return urlQuery;
 }
@@ -51,3 +51,5 @@ function buildChartDiv(locationName, URL)
 }
 
 locations.forEach(location => buildChartDiv(location.name, buildURL(location.latLong)));
+
+//fetch(buildURL(locations[0].latLong)).then(response => response.text()).then(data => console.log(data));
