@@ -52,4 +52,4 @@ function buildChartDiv(locationName, URL)
 
 locations.forEach(location => buildChartDiv(location.name, buildURL(location.latLong)));
 
-//fetch(buildURL(locations[0].latLong)).then(response => response.text()).then(data => console.log(data));
+fetch(buildURL(locations[0].latLong)).then(response => response.blob()).then(data => console.log(data));
