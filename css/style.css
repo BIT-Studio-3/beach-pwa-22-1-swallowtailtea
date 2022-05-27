@@ -1,8 +1,17 @@
-.grid4 {
+body{
+    font-family: GT Pressura Mono, Roboto Mono,monospace;
+}
+
+#grid4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    width: 50%;
     }
-    
+
+#grid4 div{
+    padding: 5px;
+    border:1px solid black;
+}
