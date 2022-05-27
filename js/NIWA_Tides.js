@@ -1,4 +1,4 @@
-// Query parameters: lat + long + numberOfDays (default 7) + startdate (default: today) + datum (default: LAT) + NIWA key
+// Query parameters: path + lat + long + numberOfDays (default: 7) + startdate (default: today, format: yyy-mm-dd) + datum (default: LAT) + NIWA key
 // Note: NIWA key will not work for serving locally with 11ty. Omit NIWA key from queries if serving locally.
 // Please see locations.js for the available locations 
 
