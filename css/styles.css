@@ -53,5 +53,20 @@ h1{
     font-size: 35px;
 }
 
+/* weather outlook */
+#outlook{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 50%;
+    margin-left: 350px;
+    margin-top: 80px;
+    background-color:#666;
+}
 
-
+#outlook div{
+    padding: 5px;
+    border:1px solid black;
+}
