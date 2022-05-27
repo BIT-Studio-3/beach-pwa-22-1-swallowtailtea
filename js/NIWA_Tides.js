@@ -11,8 +11,8 @@ const NIWA_PATHS = {
     data_csv: "data.csv?"
 };
 
-// format a date for the NIWA Tides API
-function formatDate(myDate)
+// format a date for the NIWA Tides API. returns the current date by default
+function formatDate(myDate = new Date(Date.now()))
 {
     let month = (myDate.getMonth() + 1).toString();
     if (month.length <= 1)
@@ -23,8 +23,8 @@ function formatDate(myDate)
     return formattedDate;
 }
 
-// interpolate the desired path and necessary parameters into a string
-function buildURL(path = NIWA_PATHS.data, locationObject = locations[0], days = 1, startdate = formatDate(new Date(Date.now())), datum = "LAT", interval = null)
+// interpolate the desired path and necessary parameters into a string to be used as an URL query
+function buildURL(path = NIWA_PATHS.data, locationObject = locations[0], days = 1, startdate = formatDate(), datum = "LAT", interval = null)
 {
     let lat = locationObject.NZGD1949.latitude;
     let long = locationObject.NZGD1949.longitude;
@@ -37,10 +37,12 @@ function buildURL(path = NIWA_PATHS.data, locationObject = locations[0], days = 
     return urlQuery;
 }
 
-// example query 
-fetch(buildURL(NIWA_PATHS.data, portChalmers, 6)).then(response => response.json()).then(data =>
+// example request for 7 days of Port Chalmers tide data starting June 4th, 2022. 
+// this info could be used to determine low tide / high tide for this time period
+fetch(buildURL(NIWA_PATHS.data, portChalmers, 7, "2022-06-04")).then(response => response.json()).then(data =>
     {
-        console.log(data.metadata.height);
+        let tideInfo = data.values;
+        console.log(tideInfo);
     });
 
 // build simple HTML elements to display a tidechart
