@@ -33,7 +33,7 @@ function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], da
     {
         urlQuery += `&interval=${interval}`;
     }
-    console.log(urlQuery);
+    //console.log(urlQuery);
     return urlQuery;
 }
 
