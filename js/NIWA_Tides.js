@@ -1,48 +1,81 @@
 // Query parameters: lat + long + numberOfDays (default 7) + startdate (default: today) + datum (default lowest astronomical tide) + NIWA key
-const NIWA_URL = "https://api.niwa.co.nz/tides/chart.png?"
+const NIWA_URL = "https://api.niwa.co.nz/tides/"
 const NIWA_KEY = "&apikey=F8g5zg4vEey0dOJriP6XxU5o1RVbgeW3";
-const DAYS = 1;
-const STARTDATE = "2022-05-27";
+const NIWA_PATHS = {
+    chart_png: "chart.png?",
+    chart_svg: "chart.svg?",
+    data: "data?",
+    data_csv: "data.csv?"
+};
 
-let body = document.querySelector("body");
-// all coordinates have been converted from WSD84 to NZGD1949
-let locations = Array(
-    // buildLocationObject("Carey's Bay", -45.809, 170.628),
-    // buildLocationObject("Waikouaiti", -45.624, 170.668),
-    // buildLocationObject("White Island", -45.935, 170.499),
-    // buildLocationObject("Wickliffe Bay", -45.834, 170.740),
-    // buildLocationObject("The Cove", -45.882, 170.550), // testing another location on the Peninsula, this returns roughly the same spot but further out in the harbour
-    // buildLocationObject("Macandrew Bay", -45.871, 170.598), // testing another location on the Peninsula
-    // buildLocationObject("Mt. Cargill", -45.803, 170.577), // testing dry land, this returns tides for Sawyer's bay
-    // buildLocationObject("Purakaunui Inlet", -45.759, 170.620), // testing an inlet, this returns Purakaunui Bay
-    // buildLocationObject("Port of Lyttelton", -43.606, 172.720), // testing another harbour, all good
-    buildLocationObject("City Wharf", -45.882, 170.508), // testing how far into the harbour is accepted, this is valid
-    buildLocationObject("Port Chalmers", -45.818, 170.621) 
-);
+// these are the locations requested by the client
+let marina = buildLocationObject("Marina", buildLatLong(-45.87161, 170.52805), buildLatLong(-45.87323533,170.52796092));
+let vauxhall = buildLocationObject("Vauxhall Yacht Club", buildLatLong(-45.88478, 170.52489), buildLatLong(-45.88640507,170.52480075));
+let portChalmers = buildLocationObject("Port Chalmers", buildLatLong(-45.81590, 170.62135), buildLatLong(-45.81752693,170.62126097));
+let broadBay = buildLocationObject("Broad Bay Boating", buildLatLong(-45.848117,170.620410), buildLatLong(-45.84974329,170.62032050));
+let tairoaHead = buildLocationObject("Tairoa Head", buildLatLong(-45.77281,170.72846), buildLatLong(-45.77443858,170.72837034));
 
-function buildLocationObject(locationName, lat, long)
+let locations = [marina, vauxhall, portChalmers, broadBay, tairoaHead];
+
+// format a date for the NIWA Tides API
+function formatDate(myDate)
 {
-    let locationObject = {name: locationName, latLong: `lat=${lat}&long=${long}`};
-    console.log(`name:${locationObject.name} lat-long:${locationObject.latLong}`);
+    let month = (myDate.getMonth() + 1).toString();
+    if (month.length <= 1)
+    {
+        month = "0" + month;
+    }
+    let formattedDate = `${myDate.getFullYear()}-${month}-${myDate.getDate()}`
+    return formattedDate;
+}
+
+// return an object containing latitude and longitude
+function buildLatLong(lat, long)
+{
+    return {latitude: lat, longitude: long};
+}
+
+// return an object representing a place with both WGS84 and NZGD1949 coordinates
+function buildLocationObject(locationName, latLong_WGS84, latLong_NZGD1949)
+{
+    let locationObject = {
+        name: locationName,
+        NZGD1949: latLong_NZGD1949,
+        WGS84: latLong_WGS84
+    };
     return locationObject;
 }
 
-//interpolate the url, coordinates, number of days, and key into a string
-function buildURL(latLong, startdate = STARTDATE, days = DAYS)
+// interpolate the desired path and necessary parameters into a string
+function buildURL(path = NIWA_PATHS.data, locationObject = locations[0], days = 1, startdate = formatDate(new Date(Date.now())), datum = "LAT", interval = null)
 {
-    let urlQuery = `${NIWA_URL}${latLong}&numberOfDays=${days}&startDate=${startdate}`;
+    let lat = locationObject.NZGD1949.latitude;
+    let long = locationObject.NZGD1949.longitude;
+    let urlQuery = `${NIWA_URL}${path}lat=${lat}&long=${long}&numberOfDays=${days}&startDate=${startdate}&datum=${datum}`;
+    if (interval != null && (path === NIWA_PATHS.data || path === NIWA_PATHS.data_csv))
+    {
+        urlQuery += `&interval=${interval}`;
+    }
     console.log(urlQuery);
     return urlQuery;
 }
 
-// build simple HTML elements to display the API results
-function buildChartDiv(locationName, URL)
+// example query 
+fetch(buildURL(NIWA_PATHS.data, portChalmers, 6)).then(response => response.json()).then(data =>
+    {
+        console.log(data.metadata.height);
+    });
+
+// build simple HTML elements to display a tidechart
+function buildChartDiv(locationObject, URL)
 {
+    let body = document.querySelector("body");
     let chartDiv = document.createElement("div");
+    chartDiv.classList.add("chartDiv");
 
     let locationHeading = document.createElement("h2")
     locationHeading.classList.add("locationHeading");
-    locationHeading.innerText = locationName;
+    locationHeading.innerText = locationObject.name;
 
     let chartImage = document.createElement("img");
     chartImage.src = URL;
@@ -51,6 +84,6 @@ function buildChartDiv(locationName, URL)
     body.append(chartDiv);
 }
 
-locations.forEach(location => buildChartDiv(location.name, buildURL(location.latLong)));
+// display the tide chart for every location
+locations.forEach(location => buildChartDiv(location, buildURL(NIWA_PATHS.chart_png, location, 7)));
 
-fetch(buildURL(locations[0].latLong)).then(response => response.blob()).then(data => console.log(data));
