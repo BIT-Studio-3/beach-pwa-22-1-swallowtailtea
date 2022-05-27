@@ -1,7 +1,7 @@
 // Query parameters: lat + long + numberOfDays (default 7) + startdate (default: today) + datum (default lowest astronomical tide) + NIWA key
 const NIWA_URL = "https://api.niwa.co.nz/tides/chart.png?"
 const NIWA_KEY = "&apikey=F8g5zg4vEey0dOJriP6XxU5o1RVbgeW3";
-const DAYS = 3;
+const DAYS = 1;
 const STARTDATE = "2022-05-27";
 
 let body = document.querySelector("body");
@@ -41,6 +41,7 @@ function buildChartDiv(locationName, URL)
     let chartDiv = document.createElement("div");
 
     let locationHeading = document.createElement("h2")
+    locationHeading.classList.add("locationHeading");
     locationHeading.innerText = locationName;
 
     let chartImage = document.createElement("img");
