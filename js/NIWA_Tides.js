@@ -24,7 +24,7 @@ function formatDate(myDate = new Date(Date.now()))
 }
 
 // interpolate the desired path and necessary parameters into a string to be used as an URL query
-function buildURL(path = NIWA_PATHS.data, locationObject = locations[0], days = 1, startdate = formatDate(), datum = "LAT", interval = null)
+function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], days = 1, startdate = formatDate(), datum = "LAT", interval = null)
 {
     let lat = locationObject.NZGD1949.latitude;
     let long = locationObject.NZGD1949.longitude;
@@ -39,7 +39,7 @@ function buildURL(path = NIWA_PATHS.data, locationObject = locations[0], days = 
 
 // example request for 7 days of Port Chalmers tide data starting June 4th, 2022. 
 // this info could be used to determine low tide / high tide for this time period
-fetch(buildURL(NIWA_PATHS.data, portChalmers, 7, "2022-06-04")).then(response => response.json()).then(data =>
+fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 7, "2022-06-04")).then(response => response.json()).then(data =>
     {
         let tideInfo = data.values;
         console.log(tideInfo);
@@ -64,5 +64,5 @@ function buildChartDiv(locationObject, URL)
 }
 
 // display the tide chart for every location
-locations.forEach(location => buildChartDiv(location, buildURL(NIWA_PATHS.chart_png, location, 7)));
+locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));
 
