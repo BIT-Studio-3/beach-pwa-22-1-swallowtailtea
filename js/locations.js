@@ -24,8 +24,8 @@ function buildLocationObject(locationName, latLong_WGS84, latLong_NZGD1949)
 {
     let locationObject = {
         name: locationName,
-        NZGD1949: latLong_NZGD1949,
-        WGS84: latLong_WGS84
+        WGS84: latLong_WGS84,
+        NZGD1949: latLong_NZGD1949
     };
     return locationObject;
 }
