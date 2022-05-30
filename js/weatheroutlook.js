@@ -4,7 +4,7 @@ const OPEN_KEY = "a0734a6c8412a878935845b45f197bd6";
 let body = document.querySelector("body");
 let saturdayGrid = document.querySelector("#saturday");
 
-//let sundayGrid = document.querySelector("#sunday");
+let sundayGrid = document.querySelector("#sunday");
 
 
 let titles = ["Temperature", "Wind Speed", "Wind Gust", "Visibility"];
@@ -15,18 +15,13 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a
 
     console.log(d);
 
-   
-
- 
-    
+    //saturday grid
 
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
         div.innerHTML = titles[index];
         saturdayGrid.appendChild(div);
     }
-
-
 
     // fetching  and appending the high temperature
     let maxtempdiv = document.createElement("div");
@@ -44,8 +39,47 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a
     saturdayGrid.appendChild(gustdiv);
 
     let visibility = document.createElement("div");
-    visibility.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
+    //if visibility is less than 10km the text goes red as a warning sign
+    if(visibility < 10000){
+        visibility.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
+        visibility.style.color = "red";
+    }
+    else{
+        visibility.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
+        
+    }
     saturdayGrid.appendChild(visibility);
+
+    //sunday grid
+
+    for (let index = 0; index < titles.length; index++) {
+        let div = document.createElement("div");
+        div.innerHTML = titles[index];
+        sundayGrid.appendChild(div);
+    }
+
+    let sundayTemp = document.createElement("div");
+    sundayTemp.innerHTML = temperatureConverter(`${d.main.temp_max}`).toFixed(1)  + " °C";
+    sundayGrid.appendChild(sundayTemp);
+
+    let sundayWind = document.createElement("div");
+    sundayWind.innerHTML = windConverter(`${d.wind.speed}`).toFixed(1) + " kts";
+    sundayGrid.appendChild(sundayWind);
+
+    let sundayGust = document.createElement("div");
+    sundayGust.innerHTML = windConverter(`${d.wind.gust}`). toFixed(1) + " kts";
+    sundayGrid.appendChild(sundayGust);
+
+    let sundayVis = document.createElement("div");
+    if(visibility < 10000){
+        sundayVis.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
+        //sundayVis.style.color = "red";
+    }
+    else{
+        sundayVis.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
+        sundayVis.style.color = "red"; //commented the if statement one to test that this works
+    }
+    sundayGrid.appendChild(sundayVis);
 
 
 });
