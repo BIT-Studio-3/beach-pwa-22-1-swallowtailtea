@@ -2,8 +2,10 @@ const OPEN_URL = "api.openweathermap.org";
 const OPEN_KEY = "a0734a6c8412a878935845b45f197bd6";
 
 let body = document.querySelector("body");
-let outlookgrid = document.querySelector("#outlook");
-let days = ["Saturday", "Sunday"]; 
+let saturdayGrid = document.querySelector("#saturday");
+
+//let sundayGrid = document.querySelector("#sunday");
+
 
 let titles = ["Temperature", "Wind Speed", "Wind Gust", "Visibility"];
 
@@ -15,17 +17,13 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a
 
    
 
-    for (let index = 0; index < days.length; index++) {
-        let div = document.createElement("div");
-        div.innerHTML = days[index];
-        outlookgrid.appendChild(div);
-    } 
+ 
     
 
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
         div.innerHTML = titles[index];
-        outlookgrid.appendChild(div);
+        saturdayGrid.appendChild(div);
     }
 
 
@@ -33,21 +31,21 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a
     // fetching  and appending the high temperature
     let maxtempdiv = document.createElement("div");
     maxtempdiv.innerHTML = temperatureConverter(`${d.main.temp_max}`).toFixed(1)  + " °C";
-    outlookgrid.appendChild(maxtempdiv);
+    saturdayGrid.appendChild(maxtempdiv);
 
     //for some reason the max temp and min temp are the same in this api so i just have the max temp
 
     let speeddiv = document.createElement("div");
     speeddiv.innerHTML = windConverter(`${d.wind.speed}`).toFixed(1) + " kts";
-    outlookgrid.appendChild(speeddiv);
+    saturdayGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
     gustdiv.innerHTML = windConverter(`${d.wind.gust}`). toFixed(1) + " kts";
-    outlookgrid.appendChild(gustdiv);
+    saturdayGrid.appendChild(gustdiv);
 
     let visibility = document.createElement("div");
     visibility.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
-    outlookgrid.appendChild(visibility);
+    saturdayGrid.appendChild(visibility);
 
 
 });
