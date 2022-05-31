@@ -105,3 +105,15 @@ function temperatureConverter(valNum) {
     return metresToKilometers;
   }
 
+  //testing out a function that shows the Saturday in console
+function testSaturday(date){
+    let saturday = date.getDate() - (date.getDay() - 1) + 5;
+    //let sunday = date.getDate() - (date.getDay() -1) + 6;
+    return new Date(date.setDate(saturday));
+    
+}
+    dt = new Date(); 
+    console.log(testSaturday(dt).toString());
+
+ 
+
