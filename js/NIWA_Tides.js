@@ -66,3 +66,28 @@ function buildChartDiv(locationObject, URL)
 // display the tide chart for every location
 locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));
 
+//tide calander method
+function TideData()
+{
+    
+}
+
+let ul = document.createElement("ul");
+document.querySelector("body").append(ul);
+
+fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 30)).then(response => response.json()).then(data =>
+    {
+
+        //data.sort((a,b) => {
+        //    if(a.time > b.time)
+        //      return -1; 
+        //    else if(b.time > a.time)
+        //      return 1;
+        //  });
+        data.values.forEach(e => {
+            let li = document.createElement("li");
+            li.innerHTML = data.values["time"];
+            ul.append(li);
+        })
+    });
+
