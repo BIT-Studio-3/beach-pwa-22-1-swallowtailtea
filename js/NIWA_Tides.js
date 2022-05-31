@@ -15,11 +15,16 @@ const NIWA_PATHS = {
 function formatDate(myDate = new Date(Date.now()))
 {
     let month = (myDate.getMonth() + 1).toString();
+    let date = (myDate.getDate() + 1).toString();
     if (month.length <= 1)
     {
         month = "0" + month;
     }
-    let formattedDate = `${myDate.getFullYear()}-${month}-${myDate.getDate()}`
+    if (date.length <= 1)
+    {
+        date = "0" + date;
+    }
+    let formattedDate = `${myDate.getFullYear()}-${month}-${date}`
     return formattedDate;
 }
 
@@ -85,8 +90,9 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 30)).then(response => respons
         //      return 1;
         //  });
         data.values.forEach(e => {
+            console.log(e);
             let li = document.createElement("li");
-            li.innerHTML = data.values["time"];
+            li.innerHTML = e["time"];
             ul.append(li);
         })
     });
