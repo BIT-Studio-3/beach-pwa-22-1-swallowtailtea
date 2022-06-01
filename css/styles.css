@@ -69,6 +69,7 @@ h1{
 
 .tide_module > h1{
     color: white;
+    text-decoration: underline;   
     padding: 10px 0px 5px 0px;
 }
 
