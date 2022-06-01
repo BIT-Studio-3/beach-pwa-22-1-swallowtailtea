@@ -1,5 +1,5 @@
-const WEATHER_URL = "api.weatherapi.com";
-const WEATHER_KEY = "09b796692a9a4c1ca1a31122220106";
+const WEATHER_URL = "http://api.weatherapi.com/v1/forecast.json?key=";
+const WEATHER_KEY = "09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no";
 
 let body = document.querySelector("body");
 let saturdayGrid = document.querySelector("#saturday");
@@ -25,30 +25,30 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a3112222
 
     // weather conditions, like partly cloudy or patchy rain
     let satConditions = document.createElement("div");
-    satConditions.innerHTML = `${d.conditions}`;
+    satConditions.innerHTML = `${d.forecast.condition}`;
     saturdayGrid.appendChild(satConditions);
 
     // fetching  and appending the high temperature
     let hightempdiv = document.createElement("div");
-    hightempdiv.innerHTML = `${d.maxtemp_c}`  + " °C";
+    hightempdiv.innerHTML = `${d.forecast.maxtemp_c}`  + " °C";
     saturdayGrid.appendChild(hightempdiv);
 
     // fetching and appending low temperature
     let lowtempdiv = document.createElement("div");
-    lowtempdiv.innerHTML = `${d.mintemp_c}` + " °C";
+    lowtempdiv.innerHTML = `${d.forecast.mintemp_c}` + " °C";
     saturdayGrid.appendChild(lowtempdiv);
 
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML = windConverter(`${d.wind_kph}`).toFixed(1) + " kts";
+    speeddiv.innerHTML = windConverter(`${d.forecast.wind_kph}`).toFixed(1) + " kts";
     saturdayGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${d.gust_kph}`). toFixed(1) + " kts";
+    gustdiv.innerHTML = windConverter(`${d.forecast.gust_kph}`). toFixed(1) + " kts";
     saturdayGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
-    windDirection.innerHTML = `${d.wind_dir}`;
+    windDirection.innerHTML = `${d.current.wind_dir}`; // this one works but I' trying to get the forecast part working
     saturdayGrid.appendChild(windDirection);
 
 
