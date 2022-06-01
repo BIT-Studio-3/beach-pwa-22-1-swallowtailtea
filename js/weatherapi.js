@@ -1,21 +1,20 @@
 //New Javascript trial for getting weather and wind for the website. Fetched and displayed wind which will come in handy to use
 
-const OPEN_URL = "http://api.weatherapi.com/v1/forecast.json?key=";
-const OPEN_KEY = "09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no";
+const OPEN_URL = "api.openweathermap.org";
+const OPEN_KEY = "a0734a6c8412a878935845b45f197bd6";
 
 let body = document.querySelector("body");
 let grid4 = document.querySelector("#grid4");
-let titles = ["Weather", "Feels like", "Wind Speed", "Wind Gust", "Wind Direction"];
+let titles = ["Weather", "Feels like", "Wind Speed", "Wind Gust"];
 
 
 
 
-fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no")
+fetch(http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no")
 .then(res => res.json())
 .then(d => { 
     
     console.log(d);
-    console.log(d.current.temp_c);
     
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
@@ -24,32 +23,23 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a3112222
     }
 
     let tempdiv = document.createElement("div");
-    tempdiv.innerHTML = `${d.current.temp_c}` + " °C";
+    tempdiv.innerHTML = temperatureConverter(`${d.main.temp}`)  + " °C";
     grid4.appendChild(tempdiv);
-    
+
     let feeldiv = document.createElement("div");
-    feeldiv.innerHTML = `${d.current.feelslike_c}` + " °C"; 
+    feeldiv.innerHTML = temperatureConverter(`${d.main.feels_like}`) + " °C"; 
     grid4.appendChild(feeldiv);
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML =`${d.current.wind_kph}` + " kph";
+    speeddiv.innerHTML =`${d.wind.speed}` + " m/s";
     grid4.appendChild(speeddiv);
    
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML =`${d.current.gust_kph}` + " kph";
+    gustdiv.innerHTML =`${d.wind.gust}` + " m/s";
     grid4.appendChild(gustdiv);
-
-    let winddir = document.createElement("div");
-    winddir.innerHTML =`${d.current.wind_dir}`;
-    grid4.appendChild(winddir);
    
    console.log(tempdiv);
-   
 });
-
-
-
-
 
 
 function temperatureConverter(valNum) {
