@@ -83,7 +83,7 @@ h1{
 .chart_div{
     display: flex;
     flex-direction: column;
-    padding: 0px 10px;
+    padding: 20px 10px;
 }
 
 .chart_div > h2{
@@ -92,6 +92,12 @@ h1{
 
 .chart_div > img{
     width: 100%;
+}
+
+@media (max-width:1250px){
+    .chart_container{
+        flex-direction: column;
+    }
 }
 
 
