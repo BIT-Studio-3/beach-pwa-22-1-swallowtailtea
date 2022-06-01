@@ -84,10 +84,14 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 30)).then(response => respons
         //    else if(b.time > a.time)
         //      return 1;
         //  });
+        
         data.values.forEach(e => {
             let li = document.createElement("li");
             li.innerHTML = data.values["time"];
             ul.append(li);
-        })
+        });
+
+        //console.log(data.values);
+        //console.log(data.time);
     });
 
