@@ -53,6 +53,15 @@ h1{
     font-size: 35px;
 }
 
+.dropbtn{
+    color: rgb(138, 43, 226);
+    background-color: #dafff3;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
 
 
 
