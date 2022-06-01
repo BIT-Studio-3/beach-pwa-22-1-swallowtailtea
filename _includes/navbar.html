@@ -6,14 +6,16 @@
     <a href="/cancellations">Cancellations</a>
 
     <div class="dropdown">
-        <button onclick="dropFunction()" class="dropbtn">Locations</button>
+        <button onclick="dropFunction()" id="select" class="dropbtn">Locations</button>
         <div id="Dropdown" class="dropdown-content">
-          <a href="#Marina">Marina</a>
-          <a href="#VauxhallYachtClub">Vauxhall Yacht Club</a>
-          <a href="#PortChalmers">Port Chalmers</a>
-          <a href="#BroadBayBoating">Broad Bay Boating</a>
-          <a href="#TairoaHead">Tairoa Head</a>
+          <a class="marina" onclick="selectLocation1()" href="#Marina">Marina</a>
+          <a class="vauxhall" onclick="selectLocation2()" href="#VauxhallYachtClub">Vauxhall Yacht Club</a>
+          <a class="chalmers" onclick="selectLocation3()" href="#PortChalmers">Port Chalmers</a>
+          <a class="broadbeach" onclick="selectLocation4()" href="#BroadBayBoating">Broad Bay Boating</a>
+          <a class="tairo" onclick="selectLocation5()" href="#TairoaHead">Tairoa Head</a>
         </div>
       </div>
+
+      <i class="fa fa-caret-down"></i>
       
 </nav>

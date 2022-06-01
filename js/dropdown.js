@@ -14,3 +14,24 @@ window.onclick = function(event){
         }
     }
 }
+
+
+function selectLocation1() {
+  document.getElementById("select").innerHTML = "Marina";
+}
+
+function selectLocation2() {
+  document.getElementById("select").innerHTML = "Vauxhall Yacht Club";
+}
+
+function selectLocation3() {
+  document.getElementById("select").innerHTML = "Port Chalmers";
+}
+
+function selectLocation4() {
+  document.getElementById("select").innerHTML = "Broad Bay Boating";
+}
+
+function selectLocation5() {
+  document.getElementById("select").innerHTML = "Tairoa Head";
+}
