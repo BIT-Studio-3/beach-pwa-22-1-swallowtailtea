@@ -1,21 +1,59 @@
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const body = document.querySelector("body");
 
 // build simple HTML elements to display a tidechart
-function buildChartDiv(locationObject, URL)
+function buildTideModule(location, requestedDays)
 {
-    let body = document.querySelector("body");
-    let chartDiv = document.createElement("div");
-    chartDiv.classList.add("chartDiv");
+    
+    let tideModule = document.createElement("div");
+    tideModule.classList.add("tide_module");
 
-    let locationHeading = document.createElement("h2")
-    locationHeading.classList.add("locationHeading");
-    locationHeading.innerText = locationObject.name;
+    let locationHeading = document.createElement("h1");
+    locationHeading.innerText = location.name;
+
+    tideModule.append(locationHeading);
+
+    let chartContainer = document.createElement("div");
+    chartContainer.classList.add("chart_container");
+
+    requestedDays.forEach(day => 
+    {
+        console.log(buildNIWA_URL(NIWA_PATHS.chart_png, location, 1, formatDate(nextDay(day))));
+        let dayHeading = document.createElement("h2");
+        dayHeading.innerText = dayNames[day];
+        let chartDiv = buildChartDiv(buildNIWA_URL(NIWA_PATHS.chart_png, location, 1, formatDate(nextDay(day))));
+        chartDiv.prepend(dayHeading);
+        chartContainer.append(chartDiv);
+    });
+
+    tideModule.append(chartContainer);
+    body.append(tideModule);
+}
+
+function nextDay(x){
+    var now = new Date();    
+    now.setDate(now.getDate() + (x+(7-now.getDay())) % 7);
+    return now;
+}
+
+function buildChartDiv(URL)
+{
+    let chartDiv = document.createElement("div");
+    chartDiv.classList.add("chart_div");
 
     let chartImage = document.createElement("img");
     chartImage.src = URL;
 
-    chartDiv.append(locationHeading, chartImage);
-    body.append(chartDiv);
+    chartDiv.append(chartImage);
+
+    return chartDiv;
 }
 
+weekendDays = [6, 0];
+buildTideModule(portChalmers, weekendDays);
+
+console.log(nextDay(6));
+console.log(formatDate(nextDay(6)))
+
 // display the tide chart for every location
-locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));
+//locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));

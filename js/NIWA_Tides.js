@@ -15,7 +15,7 @@ const NIWA_PATHS = {
 function formatDate(myDate = new Date(Date.now()))
 {
     let month = (myDate.getMonth() + 1).toString();
-    let date = (myDate.getDate() + 1).toString();
+    let date = (myDate.getDate()).toString();
     if (month.length <= 1)
     {
         month = "0" + month;
@@ -38,7 +38,7 @@ function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], da
     {
         urlQuery += `&interval=${interval}`;
     }
-    //console.log(urlQuery);
+    //urlQuery += NIWA_KEY;
     return urlQuery;
 }
 
