@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/locations.js"></script>
 </head>
 <body>
+    {% include 'navbar.html' %}    
     {{ content | safe }}   
 </body>
 </html>
