@@ -1,5 +1,5 @@
-const OPEN_URL = "api.openweathermap.org";
-const OPEN_KEY = "a0734a6c8412a878935845b45f197bd6";
+const WEATHER_URL = "api.weatherapi.com";
+const WEATHER_KEY = "09b796692a9a4c1ca1a31122220106";
 
 let body = document.querySelector("body");
 let saturdayGrid = document.querySelector("#saturday");
@@ -7,9 +7,9 @@ let saturdayGrid = document.querySelector("#saturday");
 let sundayGrid = document.querySelector("#sunday");
 
 
-let titles = ["Temperature", "Wind Speed", "Wind Gust", "Visibility"];
+let titles = ["Conditions", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a6c8412a878935845b45f197bd6")
+fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no")
 .then(res => res.json())
 .then(d => { 
 
@@ -23,32 +23,38 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a
         saturdayGrid.appendChild(div);
     }
 
-    // fetching  and appending the high temperature
-    let maxtempdiv = document.createElement("div");
-    maxtempdiv.innerHTML = temperatureConverter(`${d.main.temp_max}`).toFixed(1)  + " °C";
-    saturdayGrid.appendChild(maxtempdiv);
+    // weather conditions, like partly cloudy or patchy rain
+    let satConditions = document.createElement("div");
+    satConditions.innerHTML = `${d.conditions}`;
+    saturdayGrid.appendChild(satConditions);
 
-    //for some reason the max temp and min temp are the same in this api so i just have the max temp
+    // fetching  and appending the high temperature
+    let hightempdiv = document.createElement("div");
+    hightempdiv.innerHTML = `${d.maxtemp_c}`  + " °C";
+    saturdayGrid.appendChild(hightempdiv);
+
+    // fetching and appending low temperature
+    let lowtempdiv = document.createElement("div");
+    lowtempdiv.innerHTML = `${d.mintemp_c}` + " °C";
+    saturdayGrid.appendChild(lowtempdiv);
+
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML = windConverter(`${d.wind.speed}`).toFixed(1) + " kts";
+    speeddiv.innerHTML = windConverter(`${d.wind_kph}`).toFixed(1) + " kts";
     saturdayGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${d.wind.gust}`). toFixed(1) + " kts";
+    gustdiv.innerHTML = windConverter(`${d.gust_kph}`). toFixed(1) + " kts";
     saturdayGrid.appendChild(gustdiv);
 
-    let visibility = document.createElement("div");
-    //if visibility is less than 10km the text goes red as a warning sign
-    if(visibility < 10000){
-        visibility.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
-        visibility.style.color = "red";
-    }
-    else{
-        visibility.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
-        
-    }
-    saturdayGrid.appendChild(visibility);
+    let windDirection = document.createElement("div");
+    windDirection.innerHTML = `${d.wind_dir}`;
+    saturdayGrid.appendChild(windDirection);
+
+
+
+
+
 
     //sunday grid
 
@@ -58,52 +64,42 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Dunedin,nz&APPID=a0734a
         sundayGrid.appendChild(div);
     }
 
-    let sundayTemp = document.createElement("div");
-    sundayTemp.innerHTML = temperatureConverter(`${d.main.temp_max}`).toFixed(1)  + " °C";
-    sundayGrid.appendChild(sundayTemp);
+    // weather conditions, like partly cloudy or patchy rain
+    let sunConditions = document.createElement("div");
+    sunConditions.innerHTML = `${d.conditions}`;
+    sundayGrid.appendChild(sunConditions);
+
+    let sundayHigh = document.createElement("div");
+    sundayHigh.innerHTML = `${d.maxtemp_c}`  + " °C";
+    sundayGrid.appendChild(sundayHigh);
+
+    let sundayLow = document.createElement("div");
+    sundayLow.innerHTML = `${d.mintemp_c}`  + " °C";
+    sundayGrid.appendChild(sundayLow);
 
     let sundayWind = document.createElement("div");
-    sundayWind.innerHTML = windConverter(`${d.wind.speed}`).toFixed(1) + " kts";
+    sundayWind.innerHTML = windConverter(`${d.wind_kph}`).toFixed(1) + " kts";
     sundayGrid.appendChild(sundayWind);
 
     let sundayGust = document.createElement("div");
-    sundayGust.innerHTML = windConverter(`${d.wind.gust}`). toFixed(1) + " kts";
+    sundayGust.innerHTML = windConverter(`${d.gust_kph}`). toFixed(1) + " kts";
     sundayGrid.appendChild(sundayGust);
 
-    let sundayVis = document.createElement("div");
-    if(visibility < 10000){
-        sundayVis.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
-        //sundayVis.style.color = "red";
-    }
-    else{
-        sundayVis.innerHTML = convertVis(`${d.visibility}`). toFixed(1) + " km";
-        sundayVis.style.color = "red"; //commented the if statement one to test that this works
-    }
-    sundayGrid.appendChild(sundayVis);
-
+    let sundayDir = document.createElement("div");
+    sundayDir.innerHTML = `${d.wind_dir}`;
+    sundayGrid.appendChild(sundayDir);
 
 });
 
-//converting temperature from Kelvin to Celsius
-function temperatureConverter(valNum) {
-    valNum = parseFloat(valNum);
-    valNum = valNum- 273.15 ;
-    return valNum;
-  } 
+
 
   //converting wind from metres per second to knots
-  function windConverter(mpstoKnots) {
-      mpstoKnots = parseFloat(mpstoKnots);
-      mpstoKnots = mpstoKnots * 1.94384;
-      return mpstoKnots;
+  function windConverter(kphtoKnots) {
+      kphtoKnots = parseFloat(kphtoKnots);
+      kphtoKnots = kphtoKnots * 0.539957;
+      return kphtoKnots;
   }
 
-  //converting visibility from metres to kilometres
-  function convertVis(metresToKilometers) {
-    metresToKilometers = parseFloat(metresToKilometers);
-    metresToKilometers = metresToKilometers * 0.001;
-    return metresToKilometers;
-  }
 
   //testing out a function that shows the Saturday in console
 function testSaturday(date){
