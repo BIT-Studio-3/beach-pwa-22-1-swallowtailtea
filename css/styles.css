@@ -1,3 +1,4 @@
+
 /* these are styles for all the pages  */
 
 body{
@@ -55,5 +56,45 @@ h1{
 
 
 
+#grid4 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 55%;
+    }
+
+#grid4 div{
+    padding: 5px;
+    border:1px solid black;
+}
+
+<<<<<<< HEAD
+.myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+=======
 
 
+>>>>>>> 28929f3017ce335331c7c0405a5a1e196a8750d3
