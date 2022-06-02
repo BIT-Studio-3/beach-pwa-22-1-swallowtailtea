@@ -1,5 +1,6 @@
-const WEATHER_URL = "http://api.weatherapi.com/v1/forecast.json?key=";
-const WEATHER_KEY = "09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no";
+const options = { 
+    method: 'GET', 
+    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '8eb8056ff8msh4ae675fa5ef2a15p16e335jsnf8784edb56a7' } };
 
 let body = document.querySelector("body");
 let saturdayGrid = document.querySelector("#saturday");
@@ -9,13 +10,17 @@ let sundayGrid = document.querySelector("#sunday");
 
 let titles = ["Conditions", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
-fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a31122220106&q=Dunedin&days=7&aqi=no&alerts=no")
-.then(res => res.json())
-.then(d => { 
+fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&lon=170.50286', options)
+.then(response => response.json())
+.then(response => console.log(response)) 
+.catch(err => console.error(err))
+.then(data => { 
 
-    console.log(d);
+    data["data"].forEach(forecast => {
 
-    //saturday grid
+        console.log(forecast);
+
+        //saturday grid
 
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
@@ -25,30 +30,30 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a3112222
 
     // weather conditions, like partly cloudy or patchy rain
     let satConditions = document.createElement("div");
-    satConditions.innerHTML = `${d.forecast.condition}`;
+    satConditions.innerHTML = `${data.description}`;
     saturdayGrid.appendChild(satConditions);
 
     // fetching  and appending the high temperature
     let hightempdiv = document.createElement("div");
-    hightempdiv.innerHTML = `${d.forecast.maxtemp_c}`  + " °C";
+    hightempdiv.innerHTML = `${data.app_max_temp}`  + " °C";
     saturdayGrid.appendChild(hightempdiv);
 
     // fetching and appending low temperature
     let lowtempdiv = document.createElement("div");
-    lowtempdiv.innerHTML = `${d.forecast.mintemp_c}` + " °C";
+    lowtempdiv.innerHTML = `${data.forecast.forecastday[0].day.mintemp_c}` + " °C";
     saturdayGrid.appendChild(lowtempdiv);
 
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML = windConverter(`${d.forecast.wind_kph}`).toFixed(1) + " kts";
+    speeddiv.innerHTML = windConverter(`${data.forecast.forecastday[0].day.wind_kph}`).toFixed(1) + " kts";
     saturdayGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${d.forecast.gust_kph}`). toFixed(1) + " kts";
+    gustdiv.innerHTML = windConverter(`${data.forecast.forecastday[0].day.gust_kph}`). toFixed(1) + " kts";
     saturdayGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
-    windDirection.innerHTML = `${d.current.wind_dir}`; // this one works but I' trying to get the forecast part working
+    windDirection.innerHTML = `${data.forecast.forecastday[1].day.wind_dir}`; 
     saturdayGrid.appendChild(windDirection);
 
 
@@ -66,28 +71,32 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=09b796692a9a4c1ca1a3112222
 
     // weather conditions, like partly cloudy or patchy rain
     let sunConditions = document.createElement("div");
-    sunConditions.innerHTML = `${d.conditions}`;
+    sunConditions.innerHTML = `${data.conditions}`;
     sundayGrid.appendChild(sunConditions);
 
     let sundayHigh = document.createElement("div");
-    sundayHigh.innerHTML = `${d.maxtemp_c}`  + " °C";
+    sundayHigh.innerHTML = `${data.maxtemp_c}`  + " °C";
     sundayGrid.appendChild(sundayHigh);
 
     let sundayLow = document.createElement("div");
-    sundayLow.innerHTML = `${d.mintemp_c}`  + " °C";
+    sundayLow.innerHTML = `${data.mintemp_c}`  + " °C";
     sundayGrid.appendChild(sundayLow);
 
     let sundayWind = document.createElement("div");
-    sundayWind.innerHTML = windConverter(`${d.wind_kph}`).toFixed(1) + " kts";
+    sundayWind.innerHTML = windConverter(`${data.wind_kph}`).toFixed(1) + " kts";
     sundayGrid.appendChild(sundayWind);
 
     let sundayGust = document.createElement("div");
-    sundayGust.innerHTML = windConverter(`${d.gust_kph}`). toFixed(1) + " kts";
+    sundayGust.innerHTML = windConverter(`${data.gust_kph}`). toFixed(1) + " kts";
     sundayGrid.appendChild(sundayGust);
 
     let sundayDir = document.createElement("div");
-    sundayDir.innerHTML = `${d.wind_dir}`;
+    sundayDir.innerHTML = `${data.wind_dir}`;
     sundayGrid.appendChild(sundayDir);
+    })
+    
+
+    
 
 });
 
@@ -109,7 +118,7 @@ function testSaturday(date){
     
 }
     dt = new Date(); 
-    console.log(testSaturday(dt).toString());
+    console.log(testSaturday(dt).toString()); 
 
  
 
