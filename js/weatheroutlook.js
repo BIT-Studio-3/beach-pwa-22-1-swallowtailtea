@@ -40,20 +40,20 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
     // fetching and appending low temperature
     let lowtempdiv = document.createElement("div");
-    lowtempdiv.innerHTML = `${data.forecast.forecastday[0].day.mintemp_c}` + " °C";
+    lowtempdiv.innerHTML = `${data.app_min_temp}` + " °C";
     saturdayGrid.appendChild(lowtempdiv);
 
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML = windConverter(`${data.forecast.forecastday[0].day.wind_kph}`).toFixed(1) + " kts";
+    speeddiv.innerHTML = windConverter(`${data.wind_spd}`).toFixed(1) + " kts"; //don't know what units they are
     saturdayGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${data.forecast.forecastday[0].day.gust_kph}`). toFixed(1) + " kts";
+    gustdiv.innerHTML = windConverter(`${data.wind_gust_spd}`). toFixed(1) + " kts";
     saturdayGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
-    windDirection.innerHTML = `${data.forecast.forecastday[1].day.wind_dir}`; 
+    windDirection.innerHTML = `${data.wind_cdir}`; 
     saturdayGrid.appendChild(windDirection);
 
 
@@ -71,27 +71,27 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
     // weather conditions, like partly cloudy or patchy rain
     let sunConditions = document.createElement("div");
-    sunConditions.innerHTML = `${data.conditions}`;
+    sunConditions.innerHTML = `${data.description}`;
     sundayGrid.appendChild(sunConditions);
 
     let sundayHigh = document.createElement("div");
-    sundayHigh.innerHTML = `${data.maxtemp_c}`  + " °C";
+    sundayHigh.innerHTML = `${data.app_max_temp}`  + " °C";
     sundayGrid.appendChild(sundayHigh);
 
     let sundayLow = document.createElement("div");
-    sundayLow.innerHTML = `${data.mintemp_c}`  + " °C";
+    sundayLow.innerHTML = `${data.app_min_temp}` + " °C";
     sundayGrid.appendChild(sundayLow);
 
     let sundayWind = document.createElement("div");
-    sundayWind.innerHTML = windConverter(`${data.wind_kph}`).toFixed(1) + " kts";
+    sundayWind.innerHTML = windConverter(`${data.wind_spd}`).toFixed(1) + " kts";
     sundayGrid.appendChild(sundayWind);
 
     let sundayGust = document.createElement("div");
-    sundayGust.innerHTML = windConverter(`${data.gust_kph}`). toFixed(1) + " kts";
+    sundayGust.innerHTML = windConverter(`${data.wind_gust_spd}`). toFixed(1) + " kts";
     sundayGrid.appendChild(sundayGust);
 
     let sundayDir = document.createElement("div");
-    sundayDir.innerHTML = `${data.wind_dir}`;
+    sundayDir.innerHTML = `${data.wind_cdir}`;
     sundayGrid.appendChild(sundayDir);
     })
     
@@ -102,7 +102,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
 
 
-  //converting wind from metres per second to knots
+  //converting wind from kilometers per hour to knots
   function windConverter(kphtoKnots) {
       kphtoKnots = parseFloat(kphtoKnots);
       kphtoKnots = kphtoKnots * 0.539957;
