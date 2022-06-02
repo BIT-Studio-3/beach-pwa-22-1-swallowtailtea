@@ -15,7 +15,7 @@ const NIWA_PATHS = {
 function formatDate(myDate = new Date(Date.now()))
 {
     let month = (myDate.getMonth() + 1).toString();
-    let date = (myDate.getDate() + 1).toString();
+    let date = (myDate.getDate()).toString();
     if (month.length <= 1)
     {
         month = "0" + month;
