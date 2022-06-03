@@ -101,8 +101,13 @@ h1{
 .chart_div > img{
     width: 100%;
     box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    transition: 0.2s;
 }
 
+.chart_div > img:hover 
+{
+    transform: scale(1.01);
+}
 @media (max-width:1250px){
     .chart_container{
         flex-direction: column;
