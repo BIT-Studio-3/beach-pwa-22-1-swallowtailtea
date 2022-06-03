@@ -9,7 +9,10 @@ function buildTideModule(location, requestedDays)
     tideModule.classList.add("tide_module");
 
     let locationHeading = document.createElement("h1");
-    locationHeading.innerText = location.name;
+    let locationSpan = document.createElement("span");
+    locationHeading.innerText = "Tide Charts -";
+    locationSpan.innerText = location.name;
+    locationHeading.append(locationSpan);
 
     tideModule.append(locationHeading);
 
@@ -51,9 +54,6 @@ function buildChartDiv(URL)
 
 weekendDays = [6, 0];
 buildTideModule(portChalmers, weekendDays);
-
-console.log(nextDay(6));
-console.log(formatDate(nextDay(6)))
 
 // display the tide chart for every location
 //locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));

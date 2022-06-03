@@ -65,12 +65,19 @@ h1{
     border-radius: 25px;
     background-color: rgb(84, 84, 219);
     margin: 0px 20px;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
 }
 
 .tide_module > h1{
     color: white;
-    text-decoration: underline;   
     padding: 10px 0px 5px 0px;
+    text-shadow: 2px 2px 2px rgb(44, 33, 85);
+
+}
+
+.tide_module > h1 > span{
+    padding-left: 10px;
+    color:#dafff3;
 }
 
 .chart_container{
@@ -93,6 +100,7 @@ h1{
 
 .chart_div > img{
     width: 100%;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
 }
 
 @media (max-width:1250px){
