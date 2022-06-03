@@ -12,13 +12,10 @@ let titles = ["Conditions", "High", "Low", "Wind Speed", "Wind Gust", "Wind Dire
 
 fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&lon=170.50286', options)
 .then(response => response.json())
-.then(response => console.log(response)) 
-.catch(err => console.error(err))
-.then(data => { 
+.then(response => 
+    
+    response["data"].forEach(data => {
 
-    data["data"].forEach(forecast => {
-
-        console.log(forecast);
 
         //saturday grid
 
@@ -93,12 +90,8 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     let sundayDir = document.createElement("div");
     sundayDir.innerHTML = `${data.wind_cdir}`;
     sundayGrid.appendChild(sundayDir);
-    })
-    
+    }).console.log(response)).catch(err => console.error(err))
 
-    
-
-});
 
 
 
