@@ -14,6 +14,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 .then(response => response.json())
 .then(response => 
     
+    
     response["data"].forEach(data => {
 
 
@@ -25,6 +26,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
         saturdayGrid.appendChild(div);
     }
 
+    
     // weather conditions, like partly cloudy or patchy rain
     let satConditions = document.createElement("div");
     satConditions.innerHTML = `${data.description}`;
@@ -90,6 +92,14 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     let sundayDir = document.createElement("div");
     sundayDir.innerHTML = `${data.wind_cdir}`;
     sundayGrid.appendChild(sundayDir);
+
+response["data"].sort((a,b) =>{
+//sorting by day/date (for every saturday and sunday)
+
+})
+
+    //response["data"].splice(3); // just testing the splice method in case I need it
+    
     }).console.log(response)).catch(err => console.error(err))
 
 
