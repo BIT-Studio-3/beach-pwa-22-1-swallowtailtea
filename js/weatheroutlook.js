@@ -95,10 +95,8 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
 response["data"].sort((a,b) =>{
 //sorting by day/date (for every saturday and sunday)
-
 })
-
-    //response["data"].splice(3); // just testing the splice method in case I need it
+    response["data"].splice(4); // just testing the splice method in case I need it
     
     }).console.log(response)).catch(err => console.error(err))
 
