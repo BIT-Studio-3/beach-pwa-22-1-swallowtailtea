@@ -1,6 +1,6 @@
 const options = { 
     method: 'GET', 
-    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
+    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '87210298a2mshea45f948e1897a3p1bae45jsn8772730bc595' } };
 
 let body = document.querySelector("body");
 let saturdayGrid = document.querySelector("#saturday");
@@ -17,8 +17,10 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     
     response["data"].forEach(data => {
 
-
+        console.log(data.valid_date);
         //saturday grid
+
+        
 
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
@@ -29,7 +31,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     
     // weather conditions, like partly cloudy or patchy rain
     let satConditions = document.createElement("div");
-    satConditions.innerHTML = `${data.description}`;
+    satConditions.innerHTML = `${data.weather.description}`;
     saturdayGrid.appendChild(satConditions);
 
     // fetching  and appending the high temperature
@@ -70,7 +72,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
     // weather conditions, like partly cloudy or patchy rain
     let sunConditions = document.createElement("div");
-    sunConditions.innerHTML = `${data.description}`;
+    sunConditions.innerHTML = `${data.weather.description}`;
     sundayGrid.appendChild(sunConditions);
 
     let sundayHigh = document.createElement("div");
@@ -99,7 +101,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 response["data"].sort((a,b) =>{
 //sorting by day/date saturday then sunday
 })
-    response["data"].splice(4); // just testing the splice method in case I need it but data isn't filtered or sorted yet
+    //response["data"].splice(4); // just testing the splice method in case I need it but data isn't filtered or sorted yet
     
     }).console.log(response)).catch(err => console.error(err))
 
@@ -117,12 +119,16 @@ response["data"].sort((a,b) =>{
   //testing out a function that shows the Saturday in console
 function testSaturday(date){
     let saturday = date.getDate() - (date.getDay() - 1) + 5;
-    //let sunday = date.getDate() - (date.getDay() -1) + 6;
     return new Date(date.setDate(saturday));
     
 }
+function testSunday(date){
+    let sunday = date.getDate() - (date.getDay() -1) + 6;
+    return new Date(date.setDate(sunday));
+}
     dt = new Date(); 
-    console.log(testSaturday(dt).toString()); 
+    console.log(testSaturday(dt).toString());
+    console.log(testSunday(dt).toString());  
 
  
 
