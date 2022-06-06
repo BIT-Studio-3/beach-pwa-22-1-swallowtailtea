@@ -59,19 +59,11 @@ p{
     margin-right: 45px;
 }
 
-/* weather outlook for saturday */
+/* weather outlook for saturday and sunday */
 
-.sat-title, .sun-title{
-    padding: 6px;
-    margin: 5px 600px 45px 600px;
-    border:1px solid black;
-    color:#8a2be2;
-    font-weight: 600;
-    background-color: #dafff3;  
-}
-#saturday,#sunday{
+#weekendgrid{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 2fr);
     grid-template-rows: repeat(2, 1fr);
     width: 70%;
     margin-left: 200px;
@@ -80,7 +72,7 @@ p{
     
 }
 
-#saturday div, #sunday div{
+#weekendgrid div{
     padding: 5px;
     border:1px solid black;
     color:#8a2be2;
@@ -88,12 +80,4 @@ p{
     
 }
 
-/* weather outlook for sunday */
-.sun-title{
-    margin-top: 60px;
-}
-#sunday{
-    margin-top: 40px;
-    background-color:#dafff3;
-}
 
