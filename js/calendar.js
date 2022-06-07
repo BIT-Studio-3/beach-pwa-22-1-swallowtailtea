@@ -8,35 +8,34 @@ let ul = document.createElement("ul");
 document.querySelector("body").append(ul);
 
 fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 30)).then(response => response.json()).then(data =>
+{
+    let tideInfo = data.values;
+    let filtered = tideInfo.filter(tideInfo => (tideInfo.time.substring(11,13) >= 6) && (tideInfo.time.substring(11,13) <= 18));
+
+    let days = [];
+    let index = 1;
+    while(tideInfo.length > 1)
     {
-
-        let morning = "06";
-        let night = "18";
-
-        data.values.forEach(e => {
-            let time = e["time"];
-            e["time"].sort((a,b) => {
-                if((a.time.substring(11,7) > b.morning) && (b.time.substring(11,7) < b.night))
-                  return 1; 
-                else if((a.time.substring(11,7) < b.morning) && (b.time.substring(11,7) > b.night))
-                 return - 1;
-            });
-
-            console.log(e);
-            let li = document.createElement("li");
-            //li.innerHTML = e["time"];
-            li.innerHTML = time;
-            ul.append(li);
-        });
-
-        //console.log(data.values);
-        //console.log(data.time);
+    if (tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+    {
+    index++;
+    }
+    else
+    {
+    days.push(tideInfo.splice(0, index));
+    index = 0;
+    }
+    }
+    days = days.concat(tideInfo);
+    console.log(days);
+    console.log(tideInfo)
+    console.log(index)
+    
+    filtered.forEach(e => {
+        let li = document.createElement("li");
+        li.innerHTML = e.time;
+        ul.append(li);
     });
+});
 
-//const str = 'Mozilla';
 
-//console.log(str.substring(1, 3));
-// expected output: "oz"
-
-//console.log(str.substring(2));
-// expected output: "zilla"
