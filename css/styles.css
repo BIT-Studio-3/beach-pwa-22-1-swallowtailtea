@@ -117,6 +117,7 @@ color: rgb(138, 43, 226);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     width: 55%;
+    margin-bottom: 100px;
     }
 
 #grid4 div{
@@ -134,6 +135,7 @@ color: rgb(138, 43, 226);
     display: grid;
     grid-template-columns: 1em auto;
     gap: 0.5em;
+    margin-bottom: 50px;
   }
 
   /* Styling the radio buttons inserted on the page */

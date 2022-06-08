@@ -1,5 +1,5 @@
 //New Javascript trial for getting weather and wind for the website. Fetched and displayed wind which will come in handy to use
-
+const radios = document.querySelectorAll('input');
 const OPEN_URL = "http://api.weatherapi.com/v1/forecast.json?key=";
 const OPEN_KEY = "0b5fdfe1f70b42f6946232056220106";
 let current = "";
@@ -61,12 +61,27 @@ const weathdiv = document.getElementsByClassName('test');
 
 let submit = document.getElementById("submit");
 
+let celsius = document.getElementById("celsius");
+let fahrenheit = document.getElementById("fahr");
+
+console.log(celsius);
+
+
+
 
 submit.addEventListener('click', event => {
-    weathdiv.innerHTML = "Hi!";
-    //display();
+    if (celsius.checked) {
+        console.log("Celsius");
+        }
+    if (fahrenheit.checked) {
+        console.log("Fahrenheit")
+    }
+
+    
     console.log("hellow!");
+    
   });
+
 
 
 
