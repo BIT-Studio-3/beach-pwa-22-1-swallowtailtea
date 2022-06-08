@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +9,24 @@
 </head>
 <body>
     <div id="grid4"></div>
-    <a href="#" class="myButton">Celsius</a>
-    <a href="#" class="myButton">Fahrenheit</a>
 
-    <a href="#" class="myButton">Kilometres</a>
-    <a href="#" class="myButton">Miles</a>
-    <a href="#" class="myButton">Knots</a>
+    <form action="">
+        <label class="form-control">
+          <input type="radio" name="radio" id="celsius" checked />
+          Celsius
+    </label>
+
+    <label class="form-control">
+        <input type="radio" name="radio" id="fahr"  />
+        Fahrenheit
+      </label>
+    </form>
+
+
+    <button class="myButton" id="submit">Submit</button>
 
 
 
-    <script src="/js/weather.js"></script>
+    <script src="/js/tempwind.js"></script>
 </body>
 </html> 
