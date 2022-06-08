@@ -6,9 +6,16 @@ let current = "";
 let feelslike= "";
 
 
-let body = document.querySelector("body");
-let grid4 = document.querySelector("#grid4");
-let titles = ["Weather", "Feels like", "Wind Speed", "Wind Gust", "Wind Direction"];
+const submit = document.getElementById("submit");
+const celsius = document.getElementById("celsius");
+const fahrenheit = document.getElementById("fahr");
+
+
+
+
+const body = document.querySelector("body");
+const grid4 = document.querySelector("#grid4");
+const titles = ["Weather", "Feels like", "Wind Speed", "Wind Gust", "Wind Direction"];
 
 
 
@@ -17,10 +24,11 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
 .then(res => res.json())
 .then(d => { 
 
-    //console.log(d);
+    console.log(d);
     //console.log(d.current.temp_c);
 
     current = `${d.current.temp_c}`;
+    console.log(current);
     feelslike= `${d.current.feelslike_c}`;
 
     for (let index = 0; index < titles.length; index++) {
@@ -53,34 +61,30 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
    console.log(tempdiv);
    tempdiv.innerHTML = celsiusToFah(current);
 
+
+
+   submit.addEventListener('click', event => {
+    if (celsius.checked) {
+        console.log("Hi")
+        tempdiv.innerHTML = d.current.temp_c + " °C";
+        feeldiv.innerHTML = d.current.feelslike_c + " °C"; 
+        }
+    if (fahrenheit.checked) {
+        tempdiv.innerHTML = celsiusToFah(d.current.temp_c) + " °F";
+        feeldiv.innerHTML = celsiusToFah(d.current.feelslike_c) + " °F"
+    }   
 });
 
-const weathdiv = document.getElementsByClassName('test');
+});
 
 // Function used to change the values of the temperatures in the grid
 
-let submit = document.getElementById("submit");
 
-let celsius = document.getElementById("celsius");
-let fahrenheit = document.getElementById("fahr");
 
-console.log(celsius);
+console.log(current);
 
 
 
-
-submit.addEventListener('click', event => {
-    if (celsius.checked) {
-        console.log("Celsius");
-        }
-    if (fahrenheit.checked) {
-        console.log("Fahrenheit")
-    }
-
-    
-    console.log("hellow!");
-    
-  });
 
 
 
