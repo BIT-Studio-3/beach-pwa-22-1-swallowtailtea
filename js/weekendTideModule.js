@@ -1,5 +1,5 @@
 const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const body = document.querySelector("body");
+//const body = document.querySelector("body");
 
 // build simple HTML elements to display a tidechart
 function buildTideModule(location, requestedDays)
