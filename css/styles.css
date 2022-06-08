@@ -27,6 +27,7 @@ nav, h1, p, button, div{
     align-items: center;
     justify-content: center;
     color: white; /*overall text colour*/
+    
 
 }
 
@@ -66,8 +67,33 @@ h1{
     color:rgb(138, 43, 226);
     font-family:'Times New Roman', Times, serif;
     font-size: 35px;
+    margin-right: 45px;
 }
 
+p{
+    margin-right: 45px;
+}
+
+/* weather outlook for saturday and sunday */
+
+#weekendgrid{
+    display: grid;
+    grid-template-columns: repeat(8, 2fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 70%;
+    margin-left: 200px;
+    margin-top: 20px;
+    background-color:#dafff3;
+    
+}
+
+#weekendgrid div{
+    padding: 5px;
+    border:1px solid black;
+    color:#8a2be2;
+    font-weight: 600;
+    
+}
 
 /* Tide Module */
 .tide_module *{
