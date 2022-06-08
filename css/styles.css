@@ -87,8 +87,8 @@ h1{
 }
 
 .fa-caret-down{
-position: relative;
-right: 4%;
+position: absolute;
+right: 0%;
 color: rgb(138, 43, 226);
 }
 
