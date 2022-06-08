@@ -7,7 +7,7 @@ let weekendGrid = document.querySelector("#weekendgrid");
 
 
 
-let titles = ["Date", "Conditions", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
+let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
 fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&lon=170.50286', options)
 .then(response => response.json())
@@ -16,7 +16,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     
     response["data"].forEach(data => {
 
-        console.log(data.valid_date);
+        console.log(data.datetime);
         //saturday grid
 
         
@@ -29,14 +29,19 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
     //date that needs to be formatted to say the day
 
-    let validDate = document.createElement("div");
-    validDate.innerHTML = `${data.valid_date}`;
-    weekendGrid.appendChild(validDate);
+    let datetime = document.createElement("div");
+    datetime.innerHTML = `${data.datetime}`;
+    weekendGrid.appendChild(datetime);
     
     // weather conditions, like partly cloudy or patchy rain
-    let satConditions = document.createElement("div");
-    satConditions.innerHTML = `${data.weather.description}`;
-    weekendGrid.appendChild(satConditions);
+    let conditions = document.createElement("div");
+    conditions.innerHTML = `${data.weather.description}`;
+    weekendGrid.appendChild(conditions);
+
+    //chance of precipitation
+    let chanceofRain = document.createElement("div");
+    chanceofRain.innerHTML = `${data.pop}` + " %";
+    weekendGrid.appendChild(chanceofRain);
 
     // fetching  and appending the high temperature
     let hightempdiv = document.createElement("div");
@@ -100,12 +105,15 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     // sundayGrid.appendChild(sundayDir);
 
 
+
+
+
 //response["data"].filter() filter out the saturday and sunday dates
 
 response["data"].sort((a,b) =>{
 //sorting by day/date saturday then sunday
 })
-    //response["data"].splice(4); // just testing the splice method in case I need it but data isn't filtered or sorted yet
+    
     
     }).console.log(response)).catch(err => console.error(err))
 
