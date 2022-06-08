@@ -1,54 +1,297 @@
 //tide calander method
-function TideData()
+portChalmersCalendar()
+marinaCalendar()
+vauxhallCalendar()
+broadBayCalendar()
+tairoaHeadCalendar()
+
+function portChalmersCalendar()
 {
-    
+
+    let ul = document.createElement("ul");
+    ul.classList.add("calendar_parent");
+    document.querySelector("body").append(ul);
+
+    fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 31)).then(response => response.json()).then(data =>
+    {
+
+
+        let tideInfo = data.values;
+
+        // filter out times not in sunlight hours
+        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
+
+        // create new array of objects containing tide info for one day
+        let days = [];
+        let index = 1;
+
+        while(tideInfo.length > 1)
+        {
+            if (tideInfo[index] != null && tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+            {
+            index++;
+            }
+            else
+            {
+            days.push(tideInfo.splice(0, index));
+            index = 0;
+            }
+        }
+
+        if(tideInfo.length > 0)
+        {
+            days = days.concat([[tideInfo[0]]]);
+        }
+
+        days.forEach(day =>
+        {
+            let dayLi = document.createElement("li");
+            ul.classList.add("calendar_child");
+
+            let dayHeading = document.createElement("h3");
+            dayHeading.innerText = day[0].time.substring(0,10);
+            dayLi.append(dayHeading);
+            day.forEach(time =>
+                {
+                    let timeHeading = document.createElement("div");
+                    let tide = time.value;
+                    timeHeading.classList.add("tide_listing");
+                    timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
+
+                    dayLi.append(timeHeading);
+                });
+            ul.append(dayLi);
+        });
+    });
 }
 
-let ul = document.createElement("ul");
-document.querySelector("body").append(ul);
 
-fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 30)).then(response => response.json()).then(data =>
+function marinaCalendar()
 {
+    let ul = document.createElement("ul");
+    ul.classList.add("calendar_parent");
+    document.querySelector("body").append(ul);
 
-    let tideInfo = data.values;
-    let allTides = []
-    
-    let newDate = 0;
+    fetch(buildNIWA_URL(NIWA_PATHS.data, marina, 31)).then(response => response.json()).then(data =>
+    {
 
-    //let filtered = tideInfo.filter(tideInfo => (tideInfo.time.substring(11,13) >= 6) && (tideInfo.time.substring(11,13) <= 18));
 
-    tideInfo.forEach((tide,i) => {
+        let tideInfo = data.values;
 
-        let time = tide.time.replace("Z","")
-        let ms = Date.parse(time);
-        let date = new Date(ms);
-        let key = `${newDate}${date.toDateString().replaceAll(" ", "")}`;
+        // filter out times not in sunlight hours
+        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
 
-        if(allTides[key]){
-            allTides[key].push(date);
-        }
-        else{
-            newDate++;
-            let key = `${newDate}${date.toDateString().replaceAll(" ", "")}`;
-            allTides[key] = [date];        
-        }
-    })
+        // create new array of objects containing tide info for one day
+        let days = [];
+        let index = 1;
 
-    Object.entries(allTides).forEach(([k,v]) => {
-        console.log(allTides);
-        let li = document.createElement("li");
-        li.innerHTML = `<b>${v[0].toDateString()}<br/>`;
-        v.forEach(time => {
-            
-            if((time.getHours() >= 6) && (time.getHours() <=18)){
-                console.log(time)
-                li.innerHTML += (`Time ${time.getHours()} : ${time.getMinutes()} || Tide Height ${time.values}  "<br/>"`);
+        while(tideInfo.length > 1)
+        {
+            if (tideInfo[index] != null && tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+            {
+            index++;
             }
-        })
-        
-        ul.append(li);
-    })
+            else
+            {
+            days.push(tideInfo.splice(0, index));
+            index = 0;
+            }
+        }
+        if(tideInfo.length > 0)
+        {
+            days = days.concat([[tideInfo[0]]]);
+        }
 
-});
+        days.forEach(day =>
+        {
+            let dayLi = document.createElement("li");
+            ul.classList.add("calendar_child");
+
+            let dayHeading = document.createElement("h3");
+            dayHeading.innerText = day[0].time.substring(0,10);
+            dayLi.append(dayHeading);
+            day.forEach(time =>
+                {
+                    let timeHeading = document.createElement("div");
+                    let tide = time.value;
+                    timeHeading.classList.add("tide_listing");
+                    timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
+
+                    dayLi.append(timeHeading);
+                });
+            ul.append(dayLi);
+        });
+    });
+}
+
+function vauxhallCalendar()
+{
+    let ul = document.createElement("ul");
+    ul.classList.add("calendar_parent");
+    document.querySelector("body").append(ul);
+
+    fetch(buildNIWA_URL(NIWA_PATHS.data, vauxhall, 31)).then(response => response.json()).then(data =>
+    {
+        let tideInfo = data.values;
+
+        // filter out times not in sunlight hours
+        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
+
+        // create new array of objects containing tide info for one day
+        let days = [];
+        let index = 1;
+
+        while(tideInfo.length > 1)
+        {
+            if (tideInfo[index] != null && tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+            {
+            index++;
+            }
+            else
+            {
+            days.push(tideInfo.splice(0, index));
+            index = 0;
+            }
+        }
+        if(tideInfo.length > 0)
+        {
+            days = days.concat([[tideInfo[0]]]);
+        }
+
+        days.forEach(day =>
+        {
+            let dayLi = document.createElement("li");
+            ul.classList.add("calendar_child");
+
+            let dayHeading = document.createElement("h3");
+            dayHeading.innerText = day[0].time.substring(0,10);
+            dayLi.append(dayHeading);
+            day.forEach(time =>
+                {
+                    let timeHeading = document.createElement("div");
+                    let tide = time.value;
+                    timeHeading.classList.add("tide_listing");
+                    timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
+
+                    dayLi.append(timeHeading);
+                });
+            ul.append(dayLi);
+        });
+    });
+}
+
+function broadBayCalendar()
+{
+    let ul = document.createElement("ul");
+    ul.classList.add("calendar_parent");
+    document.querySelector("body").append(ul);
+
+    fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 31)).then(response => response.json()).then(data =>
+    {
+        let tideInfo = data.values;
+
+        // filter out times not in sunlight hours
+        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
+
+        // create new array of objects containing tide info for one day
+        let days = [];
+        let index = 1;
+
+        while(tideInfo.length > 1)
+        {
+            if (tideInfo[index] != null && tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+            {
+            index++;
+            }
+            else
+            {
+            days.push(tideInfo.splice(0, index));
+            index = 0;
+            }
+        }
+        if(tideInfo.length > 0)
+        {
+            days = days.concat([[tideInfo[0]]]);
+        }
+
+        days.forEach(day =>
+        {
+            let dayLi = document.createElement("li");
+            ul.classList.add("calendar_child");
+
+            let dayHeading = document.createElement("h3");
+            dayHeading.innerText = day[0].time.substring(0,10);
+            dayLi.append(dayHeading);
+            day.forEach(time =>
+                {
+                    let timeHeading = document.createElement("div");
+                    let tide = time.value;
+                    timeHeading.classList.add("tide_listing");
+                    timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
+
+                    dayLi.append(timeHeading);
+                });
+            ul.append(dayLi);
+        });
+    });
+}
+
+function tairoaHeadCalendar()
+{
+    let ul = document.createElement("ul");
+    ul.classList.add("calendar_parent");
+    document.querySelector("body").append(ul);
+
+    fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 31)).then(response => response.json()).then(data =>
+    {
+        let tideInfo = data.values;
+
+        // filter out times not in sunlight hours
+        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
+
+        // create new array of objects containing tide info for one day
+        let days = [];
+        let index = 1;
+
+        while(tideInfo.length > 1)
+        {
+            if (tideInfo[index] != null && tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+            {
+            index++;
+            }
+            else
+            {
+            days.push(tideInfo.splice(0, index));
+            index = 0;
+            }
+        }
+        if(tideInfo.length > 0)
+        {
+            days = days.concat([[tideInfo[0]]]);
+        }
+
+        days.forEach(day =>
+        {
+            let dayLi = document.createElement("li");
+            ul.classList.add("calendar_child");
+
+            let dayHeading = document.createElement("h3");
+            dayHeading.innerText = day[0].time.substring(0,10);
+            dayLi.append(dayHeading);
+            day.forEach(time =>
+                {
+                    let timeHeading = document.createElement("div");
+                    let tide = time.value;
+                    timeHeading.classList.add("tide_listing");
+                    timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
+
+                    dayLi.append(timeHeading);
+                });
+            ul.append(dayLi);
+        });
+    });
+}
+
+
 
 

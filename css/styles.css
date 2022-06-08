@@ -53,6 +53,23 @@ h1{
     font-size: 35px;
 }
 
+.calendar_parent{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border:1px solid black;
+    padding-right: 5%;
+   
+}
+
+.calendar_child , div{
+    text-align: center;
+    background:white;
+    border:1px solid black;
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
 
 
