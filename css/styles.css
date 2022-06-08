@@ -68,6 +68,71 @@ h1{
     font-size: 35px;
 }
 
+
+/* Tide Module */
+.tide_module *{
+    padding: 0px;
+    margin: 0px;
+}
+
+.tide_module{
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: rgb(84, 84, 219);
+    margin: 0px 20px;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+}
+
+.tide_module > h1{
+    color: white;
+    padding: 10px 0px 5px 0px;
+    text-shadow: 2px 2px 2px rgb(44, 33, 85);
+
+}
+
+.tide_module > h1 > span{
+    padding-left: 10px;
+    color:#dafff3;
+}
+
+.chart_container{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding-bottom: 30px;
+}
+
+.chart_div{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+.chart_div > h2{
+    padding-bottom: 10px;
+}
+
+.chart_div > img{
+    width: 100%;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    transition: 0.2s;
+}
+
+.chart_div > img:hover 
+{
+    transform: scale(1.01);
+}
+@media (max-width:1250px){
+    .chart_container{
+        flex-direction: column;
+    }
+}
+
+
+
+
 .dropbtn{
     color: rgb(138, 43, 226);
     background-color: #dafff3;
