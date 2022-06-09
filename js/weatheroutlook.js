@@ -32,6 +32,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     let datetime = document.createElement("div");
     datetime.innerHTML = `${data.datetime}`;
     weekendGrid.appendChild(datetime);
+
     
     // weather conditions, like partly cloudy or patchy rain
     let conditions = document.createElement("div");
@@ -59,13 +60,12 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     weekendGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${data.wind_gust_spd}`). toFixed(1) + " kts";
+    gustdiv.innerHTML = windConverter(`${data.wind_gust_spd}`).toFixed(1) + " kts";
     weekendGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
     windDirection.innerHTML = `${data.wind_cdir}`; 
     weekendGrid.appendChild(windDirection);
-
 
 
 
@@ -110,16 +110,37 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
 //response["data"].filter() filter out the saturday and sunday dates
 
-response["data"].sort((a,b) =>{
-//sorting by day/date saturday then sunday
-})
     
     
     }).console.log(response)).catch(err => console.error(err))
 
 
+    function formatDate(myDate = new Date(Date.now()))
+    {
+        let month = (myDate.getMonth()).toString();
+        let date = (myDate.getDate()).toString();
+        let day = (myDate.getDate() - (myDate.getDay() - 1) + 5).toString();
+        if (month.length <= 1)
+        {
+            month = "0" + month;
+        }
+        if (date.length <= 1)
+        {
+            date = "0" + date;
+        }
+        if (day.length <= 1){
+            
+            day = " " + day;
+        }
+        let formattedDate = `${day}-${date}-${month}-${myDate.getFullYear()}`
+        return formattedDate;
+    }
 
+    // {myDate.getFullYear()}
+    dates = new Date(); 
+    console.log(formatDate(dates).toString());
 
+    
   //converting wind from metres per second to knots
   function windConverter(mpstoKnots) {
     mpstoKnots = parseFloat(mpstoKnots);
@@ -141,6 +162,7 @@ function testSunday(date){
     dt = new Date(); 
     console.log(testSaturday(dt).toString());
     console.log(testSunday(dt).toString());  
+
 
  
 
