@@ -1,6 +1,6 @@
 const options = { 
     method: 'GET', 
-    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '87210298a2mshea45f948e1897a3p1bae45jsn8772730bc595' } };
+    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
 
 let body = document.querySelector("body");
 let weekendGrid = document.querySelector("#weekendgrid");
@@ -16,7 +16,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     
     response["data"].forEach(data => {
 
-        console.log(data.datetime);
+        console.log(data);
         //saturday grid
 
         
@@ -108,13 +108,9 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
 
 
-//response["data"].filter() filter out the saturday and sunday dates
+response["data"].filter() //filter out the saturday and sunday dates, currently 11 Jun and 12 Jun, 18 Jun and 19 Jun
 
-response["data"].sort((a,b) =>{
-//sorting by day/date saturday then sunday
-})
-    
-    
+
     }).console.log(response)).catch(err => console.error(err))
 
 
