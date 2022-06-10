@@ -1,4 +1,19 @@
+
 /* these are styles for all the pages  */
+
+/* Variable created for styling used in the Radio buttons */
+:root {
+    --form-control-color: rebeccapurple;
+}
+
+/* Used to make the sizing uniform for any device which is on using the radio buttons */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
 
 body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -12,6 +27,7 @@ nav, h1, p, button, div{
     align-items: center;
     justify-content: center;
     color: white; /*overall text colour*/
+    
 
 }
 
@@ -51,7 +67,49 @@ h1{
     color:rgb(138, 43, 226);
     font-family:'Times New Roman', Times, serif;
     font-size: 35px;
+    margin-right: 45px;
 }
+
+p{
+    margin-right: 45px;
+}
+
+/* weather outlook for saturday and sunday */
+
+#weekendgrid{
+    display: grid;
+    grid-template-columns: repeat(8, 2fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 70%;
+    margin-left: 200px;
+    margin-top: 20px;
+    background-color:#dafff3;
+    
+}
+
+#weekendgrid div{
+    padding: 5px;
+    border:1px solid black;
+    color:#8a2be2;
+    font-weight: 600;
+    
+}
+
+/* Tide Module */
+.tide_module *{
+    padding: 0px;
+    margin: 0px;
+}
+
+.tide_module{
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: rgb(84, 84, 219);
+    margin: 0px 20px;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+}
+
 
 .calendar_parent{
     list-style: none;
@@ -69,8 +127,193 @@ h1{
     color: black;
     padding-bottom: 10px;
     padding-top: 10px;
+=======
+.tide_module > h1{
+    color: white;
+    padding: 10px 0px 5px 0px;
+    text-shadow: 2px 2px 2px rgb(44, 33, 85);
+
+}
+
+.tide_module > h1 > span{
+    padding-left: 10px;
+    color:#dafff3;
+}
+
+.chart_container{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding-bottom: 30px;
+}
+
+.chart_div{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+.chart_div > h2{
+    padding-bottom: 10px;
+}
+
+.chart_div > img{
+    width: 100%;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    transition: 0.2s;
+}
+
+.chart_div > img:hover 
+{
+    transform: scale(1.01);
+}
+@media (max-width:1250px){
+    .chart_container{
+        flex-direction: column;
+    }
+
 }
 
 
 
 
+.dropbtn{
+    color: rgb(138, 43, 226);
+    background-color: #dafff3;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: -6.5%;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgb(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.fa-caret-down{
+position: relative;
+right: 4%;
+color: rgb(138, 43, 226);
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+#grid4 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 55%;
+    }
+
+#grid4 div{
+    padding: 5px;
+    border:1px solid black;
+}
+
+/* Used in the radio buttons styling */
+.form-control {
+    font-family: system-ui, sans-serif;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+  }
+
+  /* Styling the radio buttons inserted on the page */
+
+input[type="radio"] {
+    appearance: none;
+    /* background-color: #fff; */
+    margin: 0;
+    font: inherit;
+    color: #8a2be2;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+}
+
+/* Styling an Unchecked radio button */
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+  
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+
+
+input[type="radio"]:checked {
+    background-color: #8a2be2;
+}
+
+
+.form-control + .form-control {
+    margin-top: 1em;
+}
+
+
+
+
+
+
+
+.myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
