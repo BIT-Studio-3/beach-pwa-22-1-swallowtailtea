@@ -1,5 +1,7 @@
 //New Javascript trial for getting weather and wind for the website. Fetched and displayed wind which will come in handy to use
+
 const radios = document.querySelectorAll('input');
+
 const OPEN_URL = "http://api.weatherapi.com/v1/forecast.json?key=";
 const OPEN_KEY = "0b5fdfe1f70b42f6946232056220106";
 let current = "";
@@ -14,11 +16,9 @@ const titles = ["Weather", "Feels like", "Wind Speed", "Wind Gust", "Wind Direct
 
 
 
-
 fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f6946232056220106&q=Dunedin&days=7&aqi=no&alerts=no")
 .then(res => res.json())
 .then(d => { 
-
 
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
@@ -49,7 +49,6 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
 
 
 
-
    submit.addEventListener('click', event => {
     if (celsius.checked) {
         tempdiv.innerHTML = d.current.temp_c + " °C";
@@ -70,4 +69,10 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
 });
 
 });
+
+
+
+
+
+
 
