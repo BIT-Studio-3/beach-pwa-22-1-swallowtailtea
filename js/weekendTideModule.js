@@ -52,32 +52,33 @@ function buildChartDiv(URL)
     return chartDiv;
 }
 
-weekendDays = [6, 0];
-buildTideModule(portChalmers, weekendDays);
+let weekendDays = [6, 0];
+//console.log(JSON.parse(currentLocation));
+buildTideModule(currentLocation, weekendDays);
 
 // display the tide chart for every location
 //locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));
 
-fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 31, "2022-06-11")).then(response => response.json()).then(data =>
-    {
-    let tideInfo = data.values;
-    // filter out times not in sunlight hours
-    tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
-    // create new array of objects containing tide info for one day
-    let days = [];
-    let index = 1;
-    while(tideInfo.length > 1)
-    {
-    if (tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
-    {
-    index++;
-    }
-    else
-    {
-    days.push(tideInfo.splice(0, index));
-    index = 0;
-    }
-    }
-    days = days.concat(tideInfo);
-    console.log(days);
-    });
+// fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 31, "2022-06-11")).then(response => response.json()).then(data =>
+//     {
+//     let tideInfo = data.values;
+//     // filter out times not in sunlight hours
+//     tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
+//     // create new array of objects containing tide info for one day
+//     let days = [];
+//     let index = 1;
+//     while(tideInfo.length > 1)
+//     {
+//     if (tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
+//     {
+//     index++;
+//     }
+//     else
+//     {
+//     days.push(tideInfo.splice(0, index));
+//     index = 0;
+//     }
+//     }
+//     days = days.concat(tideInfo);
+//     console.log(days);
+//     });
