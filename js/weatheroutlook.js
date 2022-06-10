@@ -6,11 +6,13 @@ let body = document.querySelector("body");
 let weekendGrid = document.querySelector("#weekendgrid");
 let highTemperatureObjects = [];
 let lowTemperatureObjects = [];
+let windSpeedObjects = [];
+let windGustObjects = [];
 
 
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
-fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&lon=170.50286', options)
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=491ee8537838453b8c0ce3c794e7c455')
 .then(response => response.json())
 .then(response => 
     
@@ -48,20 +50,21 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     // fetching  and appending the high temperature
     let hightempdiv = document.createElement("div");
     highTemperatureObjects.push(buildTemperatureObject(data.max_temp));
-    hightempdiv.innerHTML = getTemperatureString(i, highTemperatureObjects);
-    hightempdiv.classList.add("temperature");
+    hightempdiv.innerHTML = getTemperatureString(highTemperatureObjects[i]);
+    hightempdiv.classList.add("high_temperature");
     weekendGrid.appendChild(hightempdiv);
 
     // fetching and appending low temperature
     let lowtempdiv = document.createElement("div");
     lowTemperatureObjects.push(buildTemperatureObject(data.min_temp));
-    lowtempdiv.innerHTML = getTemperatureString(i, lowTemperatureObjects);
-    lowtempdiv.classList.add("temperature");
+    lowtempdiv.innerHTML = getTemperatureString(lowTemperatureObjects[i]);
+    lowtempdiv.classList.add("low_temperature");
     weekendGrid.appendChild(lowtempdiv);
 
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML = windConverter(`${data.wind_spd}`).toFixed(1) + " kts"; 
+    windSpeedObjects.push(buildWindObject(data.wind_spd));
+    speeddiv.innerHTML = getWindString(windSpeedObjects[i])
     weekendGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
@@ -107,7 +110,38 @@ function testSunday(date){
     console.log(testSaturday(dt).toString());
     console.log(testSunday(dt).toString());  
 
-    function getTemperatureString(index, temperatureObjects)
+    function getTemperatureString(temperatureObject)
     {
-        return (currentTempUnit == "celsius") ? `${temperatureObjects[index].celsius}  °C` : `${temperatureObjects[index].fahrenheit} °F`;
+        return (currentTempUnit == "celsius") ? `${temperatureObject.celsius}  °C` : `${temperatureObject.fahrenheit} °F`;
     }
+
+    function getWindString(windObject)
+    {
+        let windString;
+        switch(currentWindUnit)
+        {
+            case "mps":
+                windString = `${windObject.mps}  mps`;
+                break;
+            case "kmph":
+                windString = `${windObject.kmph}  kmph`;
+                break;
+            case "knot":
+                windString = `${windObject.knot}  knots`;
+                break;
+        }
+        return windString;
+    }
+
+    function changeToCurrentUnit(className, temperatureArray)
+    {
+        document.querySelectorAll(className).forEach((temp,i) => 
+        {
+            if(temp != null)
+            {
+                temp.innerHTML = getTemperatureString(temperatureArray[i]);
+            }
+        });
+    }
+
+    

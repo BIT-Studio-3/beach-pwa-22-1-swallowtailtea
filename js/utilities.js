@@ -4,8 +4,8 @@ const celsius = document.getElementById("celsius");
 //const fahrenheit = document.getElementById("fahr");
 const kilometers = document.getElementById("kilometers");
 const meters = document.getElementById("meters");
-let currentTempUnit = "celsius";
-
+let currentTempUnit = (localStorage.currentTempUnit == null) ? "celsius" : localStorage.currentTempUnit;
+let currentWindUnit = (localStorage.currentWindUnit == null) ? "mps" : localStorage.currentWindUnit;
 //Function to convert celsius to fahrenheit
 function celsiusToFah(celsius) 
 {
@@ -45,6 +45,12 @@ function kilometerToKnots(kilometers){
     return kilometers*.5399.toFixed(2);
 }
 
+function mpsToKnots(mps) {
+    mps = parseFloat(mps);
+    mps = mps * 1.94384;
+      return mps;
+  }
+
 function buildTemperatureObject(celsiusTemp)
 {
     let temperatureObject = 
@@ -53,4 +59,23 @@ function buildTemperatureObject(celsiusTemp)
         fahrenheit: celsiusToFah(celsiusTemp)
     };
     return temperatureObject;
+}
+
+function buildWindObject(windMps)
+{
+    let windObject = 
+    {
+        mps: windMps,
+        kmph: windMps * 3.6,
+        knots: mpsToKnots(windMps)
+    };
+    return windObject;
+}
+
+function setCurrentTempUnit(desiredUnit)
+{
+    localStorage.setItem("currentTempUnit", desiredUnit);
+    currentTempUnit = localStorage.currentTempUnit;
+    changeToCurrentUnit(".high_temperature", highTemperatureObjects);
+    changeToCurrentUnit(".low_temperature", lowTemperatureObjects);
 }

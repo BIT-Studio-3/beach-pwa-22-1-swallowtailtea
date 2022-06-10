@@ -3,13 +3,13 @@
 
     <h2 style= "text-align: left; color: white;">Temperature</h2>
     <form action="">
-        <label class="form-control" onclick="">
+        <label class="form-control" onclick="setCurrentTempUnit('celsius')">
           <input type="radio" name="radio" id="celsius" checked />
           Celsius
     </label>
 
     <label class="form-control">
-        <input type="radio" name="radio" id="fahr"  />
+        <input type="radio" name="radio" id="fahr" onclick="setCurrentTempUnit('fahrenheit')" />
         Fahrenheit
       </label>
     </form>
@@ -24,6 +24,11 @@
   <label class="form-control">
       <input type="radio" name="radio" id="meters"  />
       Meters Per Second
+    </label>
+
+    <label class="form-control">
+      <input type="radio" name="radio" id="knots"  />
+      Knots
     </label>
   </form>    
 
