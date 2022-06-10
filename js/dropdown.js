@@ -17,6 +17,7 @@ locations.forEach(location =>
   locationLink.onclick = _ =>
   {
   document.querySelector("#select").innerHTML = location.name;
+  localStorage.setItem("currentLocation", JSON.stringify(location));
   }
   document.querySelector("#Dropdown").append(locationLink);
   });
