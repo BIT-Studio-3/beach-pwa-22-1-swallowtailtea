@@ -8,7 +8,7 @@
     Celsius
   </label>
   <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'fahrenheit')" >
-    <input type="radio" name="radio" id="fahr" />
+    <input type="radio" name="radio" id="fahrenheit" />
     Fahrenheit     
   </label>
 </form>
@@ -17,21 +17,36 @@
 
 <form action="">
   <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'kmph')" >
-    <input type="radio" name="radio" id="kilometers" checked />
+    <input type="radio" name="radio" id="kmph" checked />
     Kilometers Per Hour
   </label>
   <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'mps')" >
-    <input type="radio" name="radio" id="meters"  />
+    <input type="radio" name="radio" id="mps"  />
     Meters Per Second
   </label>
   <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
-    <input type="radio" name="radio" id="knots"  />
+    <input type="radio" name="radio" id="knot"  />
     Knots
   </label>
 </form>
 
 <button class="myButton" id="submit">Submit</button>
 
+<!-- <script src="/js/tempwind.js"></script> -->
 
 
-    <!-- <script src="/js/tempwind.js"></script> -->
+
+<!-- Set the currently selected units to be checked -->
+<script>
+document.querySelectorAll("input").forEach(r =>
+{
+  if (r.id === currentTempUnit)
+  {
+    r.checked = true;
+  }
+  else if (r.id === currentWindUnit)
+  {
+    r.checked = true;
+  }
+});
+</script>

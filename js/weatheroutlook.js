@@ -103,14 +103,19 @@ function testSunday(date){
 
 dt = new Date(); 
 console.log(testSaturday(dt).toString());
-console.log(testSunday(dt).toString());  
+console.log(testSunday(dt).toString()); 
+
+// return a formmatted string for temperature based on the currentTempUnit
 function getTemperatureString(temperatureObject)
 {
     return (currentTempUnit == "celsius") ? `${roundToOrLess(temperatureObject.celsius, 2)}  °C` : `${roundToOrLess(temperatureObject.fahrenheit, 2)} °F`;
 }
+
+// return a formmatted string for temperature based on the currentWindUnit
 function getWindString(windObject)
 {
     let windString;
+
     switch(currentWindUnit)
     {
         case "mps":
@@ -122,9 +127,12 @@ function getWindString(windObject)
         case "knot":
             windString = `${roundToOrLess(windObject.knot, 2)} knots`;
             break;
-    }
+    }   
+
     return windString;
 }
+
+// Update the values in a class with the current unit
 function changeToCurrentUnit(className, weatherArray, stringFunction)
 {
     document.querySelectorAll(className).forEach((temp,i) => 

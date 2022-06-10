@@ -1,11 +1,15 @@
 
-const submit = document.getElementById("submit");
-const celsius = document.getElementById("celsius");
-//const fahrenheit = document.getElementById("fahr");
-const kilometers = document.getElementById("kilometers");
-const meters = document.getElementById("meters");
+// const submit = document.getElementById("submit");
+// const celsius = document.getElementById("celsius");
+// const fahrenheit = document.getElementById("fahr");
+// const kilometers = document.getElementById("kilometers");
+// const meters = document.getElementById("meters");
+
+// set the current weather units to the values held in localStorage
+// or if localStorage values are null, use default values
 let currentTempUnit = (localStorage.currentTempUnit == null) ? "celsius" : localStorage.currentTempUnit;
 let currentWindUnit = (localStorage.currentWindUnit == null) ? "mps" : localStorage.currentWindUnit;
+
 //Function to convert celsius to fahrenheit
 function celsiusToFah(celsius) 
 {
@@ -44,13 +48,12 @@ function kmStoMs(kilometers){
 function kilometerToKnots(kilometers){
     return kilometers*.5399.toFixed(2);
 }
-
+// convert meters per second to knots
 function mpsToKnots(mps) {
-    mps = parseFloat(mps);
-    mps = mps * 1.94384;
-    return mps;
+    return mps * 1.94384;
   }
 
+  // build an object with fields for different units of temperature speed
 function buildTemperatureObject(celsiusTemp)
 {
     let temperatureObject = 
@@ -61,6 +64,7 @@ function buildTemperatureObject(celsiusTemp)
     return temperatureObject;
 }
 
+// build an object with fields for different units of wind speed
 function buildWindObject(windMps)
 {
     let windObject = 
@@ -69,10 +73,10 @@ function buildWindObject(windMps)
         kmph: windMps * 3.6,
         knot: mpsToKnots(windMps)
     };
-    console.log(windObject.knot);
     return windObject;
 }
 
+// set the chosen weather unit in local storage and update the values on the grid
 function setCurrentUnit(storageKey, desiredUnit)
 {
     localStorage.setItem(storageKey, desiredUnit);
@@ -84,7 +88,9 @@ function setCurrentUnit(storageKey, desiredUnit)
     changeToCurrentUnit(".wind_gust", windGustObjects, getWindString);
 }
 
-function roundToOrLess(myNumber, roundTo)  
+// round a number to a maximum or 'roundTo' places
+function roundToOrLess(myNumber = 0, roundTo)  
 {
-  return parseFloat(myNumber.toFixed(roundTo));
+    myNumber = parseFloat(myNumber);
+    return parseFloat(myNumber.toFixed(roundTo));
 }
