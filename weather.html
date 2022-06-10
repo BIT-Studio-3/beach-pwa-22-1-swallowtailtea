@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
 <body>
     <div id="grid4"></div>
 
+    <h2 style= "text-align: left; color: white;">Temperature</h2>
     <form action="">
         <label class="form-control">
           <input type="radio" name="radio" id="celsius" checked />
@@ -23,11 +23,25 @@
       </label>
     </form>
 
+    <h2 style= "text-align: left; color: white;">Wind</h2>
+    <form action="">
+      <label class="form-control">
+        <input type="radio" name="radio" id="kilometers" checked />
+        Kilometers
+  </label>
+
+  <label class="form-control">
+      <input type="radio" name="radio" id="meters"  />
+      Meters Per Second
+    </label>
+  </form>    
+
 
     <button class="myButton" id="submit">Submit</button>
 
 
-
+    <script src="/js/utilities.js"></script>
     <script src="/js/tempwind.js"></script>
+  
 </body>
 </html> 
