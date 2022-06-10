@@ -1,6 +1,6 @@
 const options = { 
     method: 'GET', 
-    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '87210298a2mshea45f948e1897a3p1bae45jsn8772730bc595' } };
+    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
 
 let body = document.querySelector("body");
 let weekendGrid = document.querySelector("#weekendgrid");
@@ -14,9 +14,9 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 .then(response => 
     
     
-    response["data"].forEach(data => {
+    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date()))).forEach(data => {
 
-        console.log(data.datetime);
+        console.log(data);
         //saturday grid
 
         
@@ -69,52 +69,10 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
 
 
-
-
-    // //sunday grid
-
-    // for (let index = 0; index < titles.length; index++) {
-    //     let div = document.createElement("div");
-    //     div.innerHTML = titles[index];
-    //     sundayGrid.appendChild(div);
-    // }
-
-    // // weather conditions, like partly cloudy or patchy rain
-    // let sunConditions = document.createElement("div");
-    // sunConditions.innerHTML = `${data.weather.description}`;
-    // sundayGrid.appendChild(sunConditions);
-
-    // let sundayHigh = document.createElement("div");
-    // sundayHigh.innerHTML = `${data.max_temp}`  + " °C";
-    // sundayGrid.appendChild(sundayHigh);
-
-    // let sundayLow = document.createElement("div");
-    // sundayLow.innerHTML = `${data.min_temp}` + " °C";
-    // sundayGrid.appendChild(sundayLow);
-
-    // let sundayWind = document.createElement("div");
-    // sundayWind.innerHTML = windConverter(`${data.wind_spd}`).toFixed(1) + " kts";
-    // sundayGrid.appendChild(sundayWind);
-
-    // let sundayGust = document.createElement("div");
-    // sundayGust.innerHTML = windConverter(`${data.wind_gust_spd}`). toFixed(1) + " kts";
-    // sundayGrid.appendChild(sundayGust);
-
-    // let sundayDir = document.createElement("div");
-    // sundayDir.innerHTML = `${data.wind_cdir}`;
-    // sundayGrid.appendChild(sundayDir);
-
-
-
-
-
-//response["data"].filter() filter out the saturday and sunday dates
-
-response["data"].sort((a,b) =>{
-//sorting by day/date saturday then sunday
-})
     
-    
+    //filtering out only the upcoming weekend dates
+
+
     }).console.log(response)).catch(err => console.error(err))
 
 
@@ -138,9 +96,7 @@ function testSunday(date){
     let sunday = date.getDate() - (date.getDay() -1) + 6;
     return new Date(date.setDate(sunday));
 }
+
     dt = new Date(); 
     console.log(testSaturday(dt).toString());
     console.log(testSunday(dt).toString());  
-
- 
-
