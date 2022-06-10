@@ -108,30 +108,9 @@ p{
     background-color: rgb(84, 84, 219);
     margin: 0px 20px;
     box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    margin-top: 20px;
 }
 
-<<<<<<< HEAD
-/* calendars styling */
-=======
-
->>>>>>> 12b604954af9601af6eae4dca639e55ae003b1f4
-.calendar_parent{
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border:1px solid black;
-    padding-right: 5%;
-   
-}
-
-.calendar_child , div{
-    text-align: center;
-    background:white;
-    border:1px solid black;
-    color: black;
-    padding-bottom: 10px;
-    padding-top: 10px;
-=======
 .tide_module > h1{
     color: white;
     padding: 10px 0px 5px 0px;
@@ -320,4 +299,22 @@ input[type="radio"]:checked {
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+
+
+/* tide calendar */
+.calendar_parent{
+    background:white;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-right: 5%; 
+    text-align: center; 
+}
+
+.calendar_child div{
+    border:1px solid black;
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
