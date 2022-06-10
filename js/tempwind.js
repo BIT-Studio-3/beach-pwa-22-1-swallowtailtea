@@ -10,7 +10,7 @@ let feelslike= "";
 
 
 
-const body = document.querySelector("body");
+//const body = document.querySelector("body");
 const grid4 = document.querySelector("#grid4");
 const titles = ["Weather", "Feels like", "Wind Speed", "Wind Gust", "Wind Direction"];
 

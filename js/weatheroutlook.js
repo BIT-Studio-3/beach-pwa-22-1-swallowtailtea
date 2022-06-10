@@ -4,7 +4,8 @@ const options = {
 
 let body = document.querySelector("body");
 let weekendGrid = document.querySelector("#weekendgrid");
-
+let highTemperatureObjects = [];
+let lowTemperatureObjects = [];
 
 
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
@@ -14,9 +15,10 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 .then(response => 
     
     
-    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date()))).forEach(data => {
+    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())))
+    .forEach((data, i) => {
 
-        console.log(data);
+        //console.log(data);
         //saturday grid
 
         
@@ -45,12 +47,16 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
     // fetching  and appending the high temperature
     let hightempdiv = document.createElement("div");
-    hightempdiv.innerHTML = `${data.max_temp}`  + " °C";
+    highTemperatureObjects.push(buildTemperatureObject(data.max_temp));
+    hightempdiv.innerHTML = getTemperatureString(i, highTemperatureObjects);
+    hightempdiv.classList.add("temperature");
     weekendGrid.appendChild(hightempdiv);
 
     // fetching and appending low temperature
     let lowtempdiv = document.createElement("div");
-    lowtempdiv.innerHTML = `${data.min_temp}` + " °C";
+    lowTemperatureObjects.push(buildTemperatureObject(data.min_temp));
+    lowtempdiv.innerHTML = getTemperatureString(i, lowTemperatureObjects);
+    lowtempdiv.classList.add("temperature");
     weekendGrid.appendChild(lowtempdiv);
 
 
@@ -73,7 +79,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     //filtering out only the upcoming weekend dates
 
 
-    }).console.log(response)).catch(err => console.error(err))
+    }));
 
 
 
@@ -100,3 +106,8 @@ function testSunday(date){
     dt = new Date(); 
     console.log(testSaturday(dt).toString());
     console.log(testSunday(dt).toString());  
+
+    function getTemperatureString(index, temperatureObjects)
+    {
+        return (currentTempUnit == "celsius") ? `${temperatureObjects[index].celsius}  °C` : `${temperatureObjects[index].fahrenheit} °F`;
+    }

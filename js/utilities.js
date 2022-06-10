@@ -1,10 +1,10 @@
 
 const submit = document.getElementById("submit");
 const celsius = document.getElementById("celsius");
-const fahrenheit = document.getElementById("fahr");
+//const fahrenheit = document.getElementById("fahr");
 const kilometers = document.getElementById("kilometers");
 const meters = document.getElementById("meters");
-
+let currentTempUnit = "celsius";
 
 //Function to convert celsius to fahrenheit
 function celsiusToFah(celsius) 
@@ -43,4 +43,14 @@ function kmStoMs(kilometers){
 //Function to convert Kilometers to knots wind speed
 function kilometerToKnots(kilometers){
     return kilometers*.5399.toFixed(2);
+}
+
+function buildTemperatureObject(celsiusTemp)
+{
+    let temperatureObject = 
+    {
+        celsius: celsiusTemp,
+        fahrenheit: celsiusToFah(celsiusTemp)
+    };
+    return temperatureObject;
 }
