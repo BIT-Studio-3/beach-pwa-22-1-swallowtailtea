@@ -3,7 +3,7 @@
 
 /* Variable created for styling used in the Radio buttons */
 :root {
-    --form-control-color: rebeccapurple;
+    --form-control-color: #599bb3;
 }
 
 /* Used to make the sizing uniform for any device which is on using the radio buttons */
@@ -110,11 +110,9 @@ p{
     box-shadow: 5px 5px 5px rgb(44, 33, 85);
 }
 
-<<<<<<< HEAD
-/* calendars styling */
-=======
 
->>>>>>> 12b604954af9601af6eae4dca639e55ae003b1f4
+/* calendars styling */
+
 .calendar_parent{
     list-style: none;
     display: grid;
@@ -231,6 +229,7 @@ color: rgb(138, 43, 226);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     width: 55%;
+    margin-bottom: 100px;
     }
 
 #grid4 div{
@@ -248,6 +247,8 @@ color: rgb(138, 43, 226);
     display: grid;
     grid-template-columns: 1em auto;
     gap: 0.5em;
+    margin-bottom: 50px;
+
   }
 
   /* Styling the radio buttons inserted on the page */
@@ -257,13 +258,14 @@ input[type="radio"] {
     /* background-color: #fff; */
     margin: 0;
     font: inherit;
-    color: #8a2be2;
+    color: #599bb3;
     width: 1.15em;
     height: 1.15em;
     border: 0.15em solid currentColor;
     border-radius: 50%;
     transform: translateY(-0.075em);
 }
+
 
 /* Styling an Unchecked radio button */
 input[type="radio"]::before {
@@ -282,7 +284,6 @@ input[type="radio"]:checked::before {
 }
 
 
-
 input[type="radio"]:checked {
     background-color: #8a2be2;
 }
@@ -291,11 +292,6 @@ input[type="radio"]:checked {
 .form-control + .form-control {
     margin-top: 1em;
 }
-
-
-
-
-
 
 
 .myButton {
@@ -321,3 +317,5 @@ input[type="radio"]:checked {
 	position:relative;
 	top:1px;
 }
+
+
