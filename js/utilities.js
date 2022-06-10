@@ -48,7 +48,7 @@ function kilometerToKnots(kilometers){
 function mpsToKnots(mps) {
     mps = parseFloat(mps);
     mps = mps * 1.94384;
-      return mps;
+    return mps;
   }
 
 function buildTemperatureObject(celsiusTemp)
@@ -67,15 +67,24 @@ function buildWindObject(windMps)
     {
         mps: windMps,
         kmph: windMps * 3.6,
-        knots: mpsToKnots(windMps)
+        knot: mpsToKnots(windMps)
     };
+    console.log(windObject.knot);
     return windObject;
 }
 
-function setCurrentTempUnit(desiredUnit)
+function setCurrentUnit(storageKey, desiredUnit)
 {
-    localStorage.setItem("currentTempUnit", desiredUnit);
+    localStorage.setItem(storageKey, desiredUnit);
     currentTempUnit = localStorage.currentTempUnit;
-    changeToCurrentUnit(".high_temperature", highTemperatureObjects);
-    changeToCurrentUnit(".low_temperature", lowTemperatureObjects);
+    currentWindUnit = localStorage.currentWindUnit;
+    changeToCurrentUnit(".high_temperature", highTemperatureObjects, getTemperatureString);
+    changeToCurrentUnit(".low_temperature", lowTemperatureObjects, getTemperatureString);
+    changeToCurrentUnit(".wind_speed", windSpeedObjects, getWindString);
+    changeToCurrentUnit(".wind_gust", windGustObjects, getWindString);
+}
+
+function roundToOrLess(myNumber, roundTo)  
+{
+  return parseFloat(myNumber.toFixed(roundTo));
 }

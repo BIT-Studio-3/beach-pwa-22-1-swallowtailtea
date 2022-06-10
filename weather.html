@@ -1,39 +1,36 @@
+<div id="grid4"></div>
 
-    <div id="grid4"></div>
+<h2 style= "text-align: left; color: white;">Temperature</h2>
 
-    <h2 style= "text-align: left; color: white;">Temperature</h2>
-    <form action="">
-        <label class="form-control" onclick="setCurrentTempUnit('celsius')">
-          <input type="radio" name="radio" id="celsius" checked />
-          Celsius
-    </label>
-
-    <label class="form-control">
-        <input type="radio" name="radio" id="fahr" onclick="setCurrentTempUnit('fahrenheit')" />
-        Fahrenheit
-      </label>
-    </form>
-
-    <h2 style= "text-align: left; color: white;">Wind</h2>
-    <form action="">
-      <label class="form-control">
-        <input type="radio" name="radio" id="kilometers" checked />
-        Kilometers
+<form action="">
+  <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'celsius')">
+    <input type="radio" name="radio" id="celsius" checked />
+    Celsius
   </label>
+  <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'fahrenheit')" >
+    <input type="radio" name="radio" id="fahr" />
+    Fahrenheit     
+  </label>
+</form>
 
-  <label class="form-control">
-      <input type="radio" name="radio" id="meters"  />
-      Meters Per Second
-    </label>
+<h2 style= "text-align: left; color: white;">Wind</h2>
 
-    <label class="form-control">
-      <input type="radio" name="radio" id="knots"  />
-      Knots
-    </label>
-  </form>    
+<form action="">
+  <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'kmph')" >
+    <input type="radio" name="radio" id="kilometers" checked />
+    Kilometers Per Hour
+  </label>
+  <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'mps')" >
+    <input type="radio" name="radio" id="meters"  />
+    Meters Per Second
+  </label>
+  <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
+    <input type="radio" name="radio" id="knots"  />
+    Knots
+  </label>
+</form>
 
-
-    <button class="myButton" id="submit">Submit</button>
+<button class="myButton" id="submit">Submit</button>
 
 
 

@@ -9,7 +9,6 @@ let lowTemperatureObjects = [];
 let windSpeedObjects = [];
 let windGustObjects = [];
 
-
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
 fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=491ee8537838453b8c0ce3c794e7c455')
@@ -65,22 +64,18 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
     let speeddiv = document.createElement("div");
     windSpeedObjects.push(buildWindObject(data.wind_spd));
     speeddiv.innerHTML = getWindString(windSpeedObjects[i])
+    speeddiv.classList.add("wind_speed");
     weekendGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${data.wind_gust_spd}`). toFixed(1) + " kts";
+    windGustObjects.push(buildWindObject(data.wind_gust_spd));
+    gustdiv.innerHTML = getWindString(windGustObjects[i])
+    gustdiv.classList.add("wind_gust");
     weekendGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
     windDirection.innerHTML = `${data.wind_cdir}`; 
     weekendGrid.appendChild(windDirection);
-
-
-
-
-    
-    //filtering out only the upcoming weekend dates
-
 
     }));
 
@@ -106,42 +101,38 @@ function testSunday(date){
     return new Date(date.setDate(sunday));
 }
 
-    dt = new Date(); 
-    console.log(testSaturday(dt).toString());
-    console.log(testSunday(dt).toString());  
-
-    function getTemperatureString(temperatureObject)
+dt = new Date(); 
+console.log(testSaturday(dt).toString());
+console.log(testSunday(dt).toString());  
+function getTemperatureString(temperatureObject)
+{
+    return (currentTempUnit == "celsius") ? `${roundToOrLess(temperatureObject.celsius, 2)}  °C` : `${roundToOrLess(temperatureObject.fahrenheit, 2)} °F`;
+}
+function getWindString(windObject)
+{
+    let windString;
+    switch(currentWindUnit)
     {
-        return (currentTempUnit == "celsius") ? `${temperatureObject.celsius}  °C` : `${temperatureObject.fahrenheit} °F`;
+        case "mps":
+            windString = `${roundToOrLess(windObject.mps, 2)} mps`;
+            break;
+        case "kmph":
+            windString = `${roundToOrLess(windObject.kmph, 2)} kmph`;
+            break;
+        case "knot":
+            windString = `${roundToOrLess(windObject.knot, 2)} knots`;
+            break;
     }
-
-    function getWindString(windObject)
+    return windString;
+}
+function changeToCurrentUnit(className, weatherArray, stringFunction)
+{
+    document.querySelectorAll(className).forEach((temp,i) => 
     {
-        let windString;
-        switch(currentWindUnit)
+        if(temp != null)
         {
-            case "mps":
-                windString = `${windObject.mps}  mps`;
-                break;
-            case "kmph":
-                windString = `${windObject.kmph}  kmph`;
-                break;
-            case "knot":
-                windString = `${windObject.knot}  knots`;
-                break;
+            temp.innerHTML = stringFunction(weatherArray[i]);
         }
-        return windString;
-    }
-
-    function changeToCurrentUnit(className, temperatureArray)
-    {
-        document.querySelectorAll(className).forEach((temp,i) => 
-        {
-            if(temp != null)
-            {
-                temp.innerHTML = getTemperatureString(temperatureArray[i]);
-            }
-        });
-    }
-
+    });
+}
     
