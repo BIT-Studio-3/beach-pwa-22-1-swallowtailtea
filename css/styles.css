@@ -3,7 +3,7 @@
 
 /* Variable created for styling used in the Radio buttons */
 :root {
-    --form-control-color: rebeccapurple;
+    --form-control-color: #599bb3;
 }
 
 /* Used to make the sizing uniform for any device which is on using the radio buttons */
@@ -145,7 +145,7 @@ input[type="radio"] {
     /* background-color: #fff; */
     margin: 0;
     font: inherit;
-    color: #8a2be2;
+    color: #599bb3;
     width: 1.15em;
     height: 1.15em;
     border: 0.15em solid currentColor;

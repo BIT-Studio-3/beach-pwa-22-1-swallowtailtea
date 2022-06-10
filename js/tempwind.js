@@ -6,11 +6,6 @@ let current = "";
 let feelslike= "";
 
 
-const submit = document.getElementById("submit");
-const celsius = document.getElementById("celsius");
-const fahrenheit = document.getElementById("fahr");
-
-
 
 
 const body = document.querySelector("body");
@@ -24,12 +19,6 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
 .then(res => res.json())
 .then(d => { 
 
-    console.log(d);
-    //console.log(d.current.temp_c);
-
-    current = `${d.current.temp_c}`;
-    console.log(current);
-    feelslike= `${d.current.feelslike_c}`;
 
     for (let index = 0; index < titles.length; index++) {
         let div = document.createElement("div");
@@ -58,73 +47,27 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
     winddir.innerHTML =`${d.current.wind_dir}`;
     grid4.appendChild(winddir);
 
-   console.log(tempdiv);
-   tempdiv.innerHTML = celsiusToFah(current);
 
 
 
    submit.addEventListener('click', event => {
     if (celsius.checked) {
-        console.log("Hi")
         tempdiv.innerHTML = d.current.temp_c + " °C";
         feeldiv.innerHTML = d.current.feelslike_c + " °C"; 
         }
     if (fahrenheit.checked) {
         tempdiv.innerHTML = celsiusToFah(d.current.temp_c) + " °F";
         feeldiv.innerHTML = celsiusToFah(d.current.feelslike_c) + " °F"
+    }
+    if (kilometers.checked) {
+        gustdiv.innerHTML = d.current.gust_kph + " kph";
+        speeddiv.innerHTML = d.current.wind_kph + " kph"; 
+        }
+    if (meters.checked) {
+        gustdiv.innerHTML = kmStoMs(d.current.gust_kph).toFixed(2) + "m/s";
+        speeddiv.innerHTML = kmStoMs(d.current.wind_kph).toFixed(2) + " m/s"; 
     }   
 });
 
 });
 
-// Function used to change the values of the temperatures in the grid
-
-
-
-console.log(current);
-
-
-
-
-
-
-
-
-//Function to convert celsius to fahrenheit
-function celsiusToFah(celsius) 
-{
-    let fahrenheit = celsius * 9 / 5 + 32;
-    return fahrenheit.toFixed(2);
-}
-
-
-//Function to convert fahrenheit to celsius
-
-function FtoC(fahrenheit){
-    let celsius = fahrenheit*5/9 -32;
-    return celsius.toFixed(2);
-}
-
-//Function to convert kelvin to Celsius
-
-function kelvinToCelsius(valNum) {
-    valNum = parseFloat(valNum);
-    valNum = valNum- 273.15.toFixed(2); ;
-    return valNum;
-}
-
-//Function to convert Meters per second wind speed to Kilometers
-function mStoKms(meters){
-    return meters*3.6.toFixed(2);
-}
-
-
-//Function to convert Kilometers wind speed to meters per second
-function mStoKms(kilometers){
-    return kilometers*.36.toFixed(2);
-}
-
-//Function to convert Kilometers to knots wind speed
-function kilometerToKnots(kilometers){
-    return kilometers*.5399.toFixed(2);
-}
