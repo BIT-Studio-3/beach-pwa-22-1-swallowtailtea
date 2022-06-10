@@ -14,7 +14,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 .then(response => 
     
     
-    response["data"].forEach(data => {
+    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date()))).forEach(data => {
 
         console.log(data);
         //saturday grid
@@ -69,7 +69,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
 
 
-    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())))
+    
     //filtering out only the upcoming weekend dates
 
 
