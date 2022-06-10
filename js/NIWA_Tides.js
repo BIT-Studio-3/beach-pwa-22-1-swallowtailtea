@@ -71,5 +71,5 @@ function buildChartDiv(locationObject, URL)
 // display the tide chart for every location
 locations.forEach(location => buildChartDiv(location, buildNIWA_URL(NIWA_PATHS.chart_png, location, 7)));
 
-
+tide_Calendar(currentLocation);
 

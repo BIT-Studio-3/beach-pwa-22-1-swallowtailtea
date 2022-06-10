@@ -53,6 +53,7 @@ h1{
     font-size: 35px;
 }
 
+/* calendars styling */
 .calendar_parent{
     list-style: none;
     display: grid;
