@@ -50,5 +50,4 @@ function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], da
 //         console.log(tideInfo);
 //     });
 
-tide_Calendar(currentLocation);
 
