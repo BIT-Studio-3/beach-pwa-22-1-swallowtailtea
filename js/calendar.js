@@ -65,9 +65,3 @@ function tide_Calendar()
 
 
 tide_Calendar(currentLocation);
-
-
-
-tide_Calendar(currentLocation);
-
-
