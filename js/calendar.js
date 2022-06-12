@@ -64,6 +64,7 @@ function tide_Calendar()
 }
 
 
+tide_Calendar(currentLocation);
 
 
 

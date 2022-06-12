@@ -1,47 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <div id="grid4"></div>
+<div id="grid4"></div>
 
-    <h2 style= "text-align: left; color: white;">Temperature</h2>
-    <form action="">
-        <label class="form-control">
-          <input type="radio" name="radio" id="celsius" checked />
-          Celsius
-    </label>
+<h2 style= "text-align: left; color: white;">Temperature</h2>
 
-    <label class="form-control">
-        <input type="radio" name="radio" id="fahr"  />
-        Fahrenheit
-      </label>
-    </form>
-
-    <h2 style= "text-align: left; color: white;">Wind</h2>
-    <form action="">
-      <label class="form-control">
-        <input type="radio" name="radio" id="kilometers" checked />
-        Kilometers
+<form action="">
+  <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'celsius')">
+    <input type="radio" name="radio" id="celsius" checked />
+    Celsius
   </label>
+  <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'fahrenheit')" >
+    <input type="radio" name="radio" id="fahrenheit" />
+    Fahrenheit     
+  </label>
+</form>
 
-  <label class="form-control">
-      <input type="radio" name="radio" id="meters"  />
-      Meters Per Second
-    </label>
-  </form>    
+<h2 style= "text-align: left; color: white;">Wind</h2>
+
+<form action="">
+  <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'kmph')" >
+    <input type="radio" name="radio" id="kmph" checked />
+    Kilometers Per Hour
+  </label>
+  <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'mps')" >
+    <input type="radio" name="radio" id="mps"  />
+    Meters Per Second
+  </label>
+  <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
+    <input type="radio" name="radio" id="knot"  />
+    Knots
+  </label>
+</form>
 
 
-    <button class="myButton" id="submit">Submit</button>
+<!-- <script src="/js/tempwind.js"></script> -->
 
 
-    <script src="/js/utilities.js"></script>
-    <script src="/js/tempwind.js"></script>
-  
-</body>
-</html> 
+
+<!-- Set the currently selected units to be checked -->
+<script>
+document.querySelectorAll("input").forEach(r =>
+{
+  if (r.id === currentTempUnit)
+  {
+    r.checked = true;
+  }
+  else if (r.id === currentWindUnit)
+  {
+    r.checked = true;
+  }
+});
+</script>

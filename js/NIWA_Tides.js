@@ -41,5 +41,3 @@ function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], da
     //urlQuery += NIWA_KEY;
     return urlQuery;
 }
-
-
