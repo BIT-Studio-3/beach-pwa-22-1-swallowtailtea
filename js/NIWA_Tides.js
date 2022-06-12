@@ -41,13 +41,3 @@ function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], da
     //urlQuery += NIWA_KEY;
     return urlQuery;
 }
-
-// example request for 7 days of Port Chalmers tide data starting June 4th, 2022. 
-// this info could be used to determine low tide / high tide for this time period
-// fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 7, "2022-06-04")).then(response => response.json()).then(data =>
-//     {
-//         let tideInfo = data.values;
-//         console.log(tideInfo);
-//     });
-
-

@@ -1,3 +1,5 @@
+document.querySelector("#calendarHeading").innerText += ` ${currentLocation.name}`;
+
 //tide calander method
 function tide_Calendar()
 {
@@ -6,7 +8,7 @@ function tide_Calendar()
     ul.classList.add("calendar_parent");
     document.querySelector("body").append(ul);
 
-    fetch(buildNIWA_URL(NIWA_PATHS.data, portChalmers, 31)).then(response => response.json()).then(data =>
+    fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => response.json()).then(data =>
     {
 
 
@@ -63,8 +65,3 @@ function tide_Calendar()
 
 
 tide_Calendar(currentLocation);
-
-
-
-
-
