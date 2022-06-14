@@ -24,7 +24,7 @@ nav{
     padding: 0.5% 0.5%;
     border: 1px solid #666;
     background-color:#dafff3;
-    font-size: 1rem;
+    font-size: 1.1rem;
     height: 70px;
 }
 
@@ -154,5 +154,15 @@ cursor: pointer;
 
     .nav{
        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 590px){
+    .nav-header{
+        font-size: 1rem;
+    }
+
+    nav, #select{
+        font-size: 0.8rem;
     }
 }
