@@ -30,7 +30,7 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     //date that needs to be formatted to say the day
 
     let datetime = document.createElement("div");
-    datetime.innerHTML = `${data.datetime}`;
+    datetime.innerHTML = reformatDate(data.datetime);
     weekendGrid.appendChild(datetime);
 
     
@@ -126,27 +126,19 @@ function testSunday(date){
 }
     dt = new Date(); 
     console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
-    console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun 19 Jun 
+    console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun Jun 19
 
 
 
-    function formatDate(myDate)
+    function reformatDate(weatherBitDate) // ie "2022-06-14"
     {
-        
-        let month = (myDate.getMonth()).toString();
-        console.log(month); //outputs 5
-        let date = (myDate.getDate()).toString();
-        console.log(date); //outputs 14
-        let day = (myDate.getDate() - (myDate.getDay() - 1) + 5).toString();
-        console.log(day); //outputs 18
-       
-        let formattedDate = `${day}-${date}-${month}`
-        return formattedDate;
+        let day = weatherBitDate.substring(8,10);
+        let month = weatherBitDate.substring(5,7) - 1; // added the -1 since without its output was July
+        let year = weatherBitDate.substring(0,4);
+        date = new Date(year, month, day);
+        return date.toDateString().substring(0,10);
     }
-
-    //{myDate.getFullYear()}
-    dates = new Date(); 
-    console.log(formatDate(dates).toString());
+   
 
     
   //converting wind from metres per second to knots
