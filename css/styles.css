@@ -147,22 +147,42 @@ cursor: pointer;
     }
 }
 
-@media screen and (max-width: 770px){
+@media screen and (max-width: 900px){
     .nav-header{
         margin-right: 2%;
+        font-size: 1.4rem;
     }
+}
 
-    .nav{
-       font-size: 0.7rem;
+@media screen and (max-width: 770px){
+
+    nav, #select{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 641px){
+    .nav-header{
+        font-size: 1.2rem;
     }
 }
 
 @media screen and (max-width: 590px){
     .nav-header{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     nav, #select{
         font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 445px){
+    .nav-header{
+        font-size: 0.8rem;
+    }
+
+    nav, #select{
+        font-size: 0.6rem;
     }
 }
