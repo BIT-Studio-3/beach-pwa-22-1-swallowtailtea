@@ -1,6 +1,6 @@
 const options = { 
     method: 'GET', 
-    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '87210298a2mshea45f948e1897a3p1bae45jsn8772730bc595' } };
+    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
 
 let body = document.querySelector("body");
 let weekendGrid = document.querySelector("#weekendgrid");
@@ -114,29 +114,37 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
     
     }).console.log(response)).catch(err => console.error(err))
 
+ //testing out a function that shows the Saturday and Saturday in console
+ function testSaturday(date){
+    let saturday = date.getDate() - (date.getDay() - 1) + 5;
+    return new Date(date.setDate(saturday));
+    
+}
+function testSunday(date){
+    let sunday = date.getDate() - (date.getDay() -1) + 6;
+    return new Date(date.setDate(sunday));
+}
+    dt = new Date(); 
+    console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
+    console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun 19 Jun 
 
-    function formatDate(myDate = new Date(Date.now()))
+
+
+    function formatDate(myDate)
     {
+        
         let month = (myDate.getMonth()).toString();
+        console.log(month); //outputs 5
         let date = (myDate.getDate()).toString();
+        console.log(date); //outputs 14
         let day = (myDate.getDate() - (myDate.getDay() - 1) + 5).toString();
-        if (month.length <= 1)
-        {
-            month = "0" + month;
-        }
-        if (date.length <= 1)
-        {
-            date = "0" + date;
-        }
-        if (day.length <= 1){
-            
-            day = " " + day;
-        }
-        let formattedDate = `${day}-${date}-${month}-${myDate.getFullYear()}`
+        console.log(day); //outputs 18
+       
+        let formattedDate = `${day}-${date}-${month}`
         return formattedDate;
     }
 
-    // {myDate.getFullYear()}
+    //{myDate.getFullYear()}
     dates = new Date(); 
     console.log(formatDate(dates).toString());
 
@@ -148,20 +156,6 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
       return mpstoKnots;
   }
 
-
-  //testing out a function that shows the Saturday in console
-function testSaturday(date){
-    let saturday = date.getDate() - (date.getDay() - 1) + 5;
-    return new Date(date.setDate(saturday));
-    
-}
-function testSunday(date){
-    let sunday = date.getDate() - (date.getDay() -1) + 6;
-    return new Date(date.setDate(sunday));
-}
-    dt = new Date(); 
-    console.log(testSaturday(dt).toString());
-    console.log(testSunday(dt).toString());  
 
 
  
