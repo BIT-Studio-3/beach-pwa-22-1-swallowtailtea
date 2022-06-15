@@ -1,22 +1,25 @@
-const options = { 
-    method: 'GET', 
-    headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
+// const options = { 
+//     method: 'GET', 
+//     headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
 
 let body = document.querySelector("body");
 let weekendGrid = document.querySelector("#weekendgrid");
-
-
+let highTemperatureObjects = [];
+let lowTemperatureObjects = [];
+let windSpeedObjects = [];
+let windGustObjects = [];
 
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
-fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&lon=170.50286', options)
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=491ee8537838453b8c0ce3c794e7c455')
 .then(response => response.json())
 .then(response => 
     
     
-    response["data"].forEach(data => {
+    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())))
+    .forEach((data, i) => {
 
-        console.log(data.datetime);
+        //console.log(data);
         //saturday grid
 
         
@@ -46,73 +49,40 @@ fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily?lat=-45.8755&
 
     // fetching  and appending the high temperature
     let hightempdiv = document.createElement("div");
-    hightempdiv.innerHTML = `${data.max_temp}`  + " °C";
+    highTemperatureObjects.push(buildTemperatureObject(data.max_temp));
+    hightempdiv.innerHTML = getTemperatureString(highTemperatureObjects[i]);
+    hightempdiv.classList.add("high_temperature");
     weekendGrid.appendChild(hightempdiv);
 
     // fetching and appending low temperature
     let lowtempdiv = document.createElement("div");
-    lowtempdiv.innerHTML = `${data.min_temp}` + " °C";
+    lowTemperatureObjects.push(buildTemperatureObject(data.min_temp));
+    lowtempdiv.innerHTML = getTemperatureString(lowTemperatureObjects[i]);
+    lowtempdiv.classList.add("low_temperature");
     weekendGrid.appendChild(lowtempdiv);
 
 
     let speeddiv = document.createElement("div");
-    speeddiv.innerHTML = windConverter(`${data.wind_spd}`).toFixed(1) + " kts"; 
+    windSpeedObjects.push(buildWindObject(data.wind_spd));
+    speeddiv.innerHTML = getWindString(windSpeedObjects[i])
+    speeddiv.classList.add("wind_speed");
     weekendGrid.appendChild(speeddiv);
 
     let gustdiv = document.createElement("div");
-    gustdiv.innerHTML = windConverter(`${data.wind_gust_spd}`).toFixed(1) + " kts";
+
+
+    windGustObjects.push(buildWindObject(data.wind_gust_spd));
+    gustdiv.innerHTML = getWindString(windGustObjects[i])
+    gustdiv.classList.add("wind_gust");
+
     weekendGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
     windDirection.innerHTML = `${data.wind_cdir}`; 
     weekendGrid.appendChild(windDirection);
 
+    }));
 
-
-
-
-    // //sunday grid
-
-    // for (let index = 0; index < titles.length; index++) {
-    //     let div = document.createElement("div");
-    //     div.innerHTML = titles[index];
-    //     sundayGrid.appendChild(div);
-    // }
-
-    // // weather conditions, like partly cloudy or patchy rain
-    // let sunConditions = document.createElement("div");
-    // sunConditions.innerHTML = `${data.weather.description}`;
-    // sundayGrid.appendChild(sunConditions);
-
-    // let sundayHigh = document.createElement("div");
-    // sundayHigh.innerHTML = `${data.max_temp}`  + " °C";
-    // sundayGrid.appendChild(sundayHigh);
-
-    // let sundayLow = document.createElement("div");
-    // sundayLow.innerHTML = `${data.min_temp}` + " °C";
-    // sundayGrid.appendChild(sundayLow);
-
-    // let sundayWind = document.createElement("div");
-    // sundayWind.innerHTML = windConverter(`${data.wind_spd}`).toFixed(1) + " kts";
-    // sundayGrid.appendChild(sundayWind);
-
-    // let sundayGust = document.createElement("div");
-    // sundayGust.innerHTML = windConverter(`${data.wind_gust_spd}`). toFixed(1) + " kts";
-    // sundayGrid.appendChild(sundayGust);
-
-    // let sundayDir = document.createElement("div");
-    // sundayDir.innerHTML = `${data.wind_cdir}`;
-    // sundayGrid.appendChild(sundayDir);
-
-
-
-
-
-//response["data"].filter() filter out the saturday and sunday dates
-
-    
-    
-    }).console.log(response)).catch(err => console.error(err))
 
  //testing out a function that shows the Saturday and Saturday in console
  function testSaturday(date){
@@ -149,6 +119,42 @@ function testSunday(date){
   }
 
 
+// return a formmatted string for temperature based on the currentTempUnit
+function getTemperatureString(temperatureObject)
+{
+    return (currentTempUnit == "celsius") ? `${roundToOrLess(temperatureObject.celsius, 2)}  °C` : `${roundToOrLess(temperatureObject.fahrenheit, 2)} °F`;
+}
 
- 
+// return a formmatted string for temperature based on the currentWindUnit
+function getWindString(windObject)
+{
+    let windString;
 
+    switch(currentWindUnit)
+    {
+        case "mps":
+            windString = `${roundToOrLess(windObject.mps, 2)} mps`;
+            break;
+        case "kmph":
+            windString = `${roundToOrLess(windObject.kmph, 2)} kmph`;
+            break;
+        case "knot":
+            windString = `${roundToOrLess(windObject.knot, 2)} knots`;
+            break;
+    }   
+
+    return windString;
+}
+
+// Update the values in a class with the current unit
+function changeToCurrentUnit(className, weatherArray, stringFunction)
+{
+    document.querySelectorAll(className).forEach((temp,i) => 
+    {
+        if(temp != null)
+        {
+            temp.innerHTML = stringFunction(weatherArray[i]);
+        }
+    });
+}
+    
