@@ -143,6 +143,7 @@ p{
 
 .dropbtn:nth-child(1){
     position: relative;
+}
 
 .chart_div > img{
     width: 100%;
@@ -311,7 +312,6 @@ i:hover{
     background-color: #f1f1f1;
     
 }
-=======
 /* tide calendar */
 .calendar_parent{
     background:white;
