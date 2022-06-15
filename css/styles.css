@@ -1,6 +1,20 @@
 
 /* these are styles for all the pages  */
 
+/* Variable created for styling used in the Radio buttons */
+:root {
+    --form-control-color: #599bb3;
+}
+
+/* Used to make the sizing uniform for any device which is on using the radio buttons */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+
 body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
@@ -13,6 +27,7 @@ nav, h1, p, button, div{
     align-items: center;
     justify-content: center;
     color: white; /*overall text colour*/
+    
 
 }
 
@@ -53,10 +68,102 @@ h1{
     color:rgb(138, 43, 226);
     font-family:'Times New Roman', Times, serif;
     font-size: 35px;
+    margin-right: 45px;
+}
+
+p{
+    margin-right: 45px;
+}
+
+/* weather outlook for saturday and sunday */
+
+#weekendgrid{
+    display: grid;
+    grid-template-columns: repeat(8, 2fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 70%;
+    margin-left: 200px;
+    margin-top: 20px;
+    background-color:#dafff3;
+    
+}
+
+#weekendgrid div{
+    padding: 5px;
+    border:1px solid black;
+    color:#8a2be2;
+    font-weight: 600;
+    
+}
+
+/* Tide Module */
+.tide_module *{
+    padding: 0px;
+    margin: 0px;
+}
+
+.tide_module{
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: rgb(84, 84, 219);
+    margin: 0px 20px;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    margin-top: 20px;
+}
+
+.tide_module > h1{
+    color: white;
+    padding: 10px 0px 5px 0px;
+    text-shadow: 2px 2px 2px rgb(44, 33, 85);
+
+}
+
+.tide_module > h1 > span{
+    padding-left: 10px;
+    color:#dafff3;
+}
+
+.chart_container{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding-bottom: 30px;
+}
+
+.chart_div{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+}
+
+.chart_div > h2{
+    padding-bottom: 10px;
 }
 
 .dropbtn:nth-child(1){
     position: relative;
+}
+
+.chart_div > img{
+    width: 100%;
+    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    transition: 0.2s;
+}
+
+.chart_div > img:hover 
+{
+    transform: scale(1.01);
+}
+@media (max-width:1250px){
+    .chart_container{
+        flex-direction: column;
+    }
+
+}
+
+.dropbtn{
     color: rgb(138, 43, 226);
     background-color:#dafff3;
     padding: 15px;
@@ -67,6 +174,7 @@ h1{
 
 .dropdown{
     position: relative;
+    left: 5%;
     display: inline-block;
 }
 
@@ -99,11 +207,68 @@ h1{
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     width: 55%;
+    margin-bottom: 100px;
     }
 
 #grid4 div{
     padding: 5px;
     border:1px solid black;
+}
+
+/* Used in the radio buttons styling */
+.form-control {
+    font-family: system-ui, sans-serif;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+    margin-bottom: 50px;
+
+  }
+
+  /* Styling the radio buttons inserted on the page */
+
+input[type="radio"] {
+    appearance: none;
+    /* background-color: #fff; */
+    margin: 0;
+    font: inherit;
+    color: #599bb3;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+}
+
+
+/* Styling an Unchecked radio button */
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+  
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+
+input[type="radio"]:checked {
+    background-color: #8a2be2;
+}
+
+
+.form-control + .form-control {
+    margin-top: 1em;
 }
 
 .myButton {
@@ -133,10 +298,13 @@ h1{
 i{
 display: flex;
 justify-content: center;
-background-color: orange;
+align-items: center;
+position: relative;
+background-color: #deece8;
 color:rgb(138, 43, 226);
-border-radius: 20px;
-border: 1px solid grey;
+border-radius: 10px;
+border: 2px solid grey;
+padding: 2px;
 width: 20px;
 cursor: pointer;
 }
@@ -185,4 +353,25 @@ cursor: pointer;
     nav, #select{
         font-size: 0.6rem;
     }
+}
+
+i:hover{
+    background-color: #f1f1f1;
+    
+}
+/* tide calendar */
+.calendar_parent{
+    background:white;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-right: 5%; 
+    text-align: center; 
+}
+
+.calendar_child div{
+    border:1px solid black;
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
