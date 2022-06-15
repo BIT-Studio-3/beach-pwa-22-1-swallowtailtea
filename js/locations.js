@@ -13,6 +13,8 @@ let tairoaHead = buildLocationObject("Tairoa Head", buildLatLong(-45.77281,170.7
 
 let locations = [marina, vauxhall, portChalmers, broadBay, tairoaHead];
 
+let currentLocation = (localStorage.currentLocation == null) ? locations[0] : JSON.parse(localStorage.currentLocation);
+console.log(currentLocation);
 // return an object containing latitude and longitude
 function buildLatLong(lat, long)
 {
