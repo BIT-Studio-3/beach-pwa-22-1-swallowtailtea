@@ -36,15 +36,16 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 1px 1px;
+    padding: 0.5% 0.5%;
     border: 1px solid #666;
     background-color:#dafff3;
-    font-size: 18px;
+    font-size: 1.1rem;
+    height: 70px;
 }
 
 /* the website links */
 a{
-    margin: -5px;
+    margin: 2%;
     outline: none;
     text-decoration: none;
 }
@@ -57,9 +58,9 @@ a:link , a:visited{
 .nav-header{
     color:blueviolet;
     font-family:'Times New Roman', Times, serif;
-    font-size: 27px;
+    font-size: 2rem;
     font-weight: bold;
-    margin-right: 430px;
+    margin-right: 25%;
 }
 
 /* The titles for all the pages*/
@@ -308,6 +309,52 @@ width: 20px;
 cursor: pointer;
 }
 
+@media screen and (max-width: 1168px){
+    .nav-header{
+      font-size: 1.5rem;  
+    }
+}
+
+@media screen and (max-width: 900px){
+    .nav-header{
+        margin-right: 2%;
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 770px){
+
+    nav, #select{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 641px){
+    .nav-header{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 590px){
+    .nav-header{
+        font-size: 0.9rem;
+    }
+
+    nav, #select{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 445px){
+    .nav-header{
+        font-size: 0.8rem;
+    }
+
+    nav, #select{
+        font-size: 0.6rem;
+    }
+}
+
 i:hover{
     background-color: #f1f1f1;
     
@@ -328,4 +375,3 @@ i:hover{
     padding-bottom: 10px;
     padding-top: 10px;
 }
-
