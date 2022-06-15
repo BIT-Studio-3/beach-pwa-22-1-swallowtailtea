@@ -92,8 +92,7 @@ p{
     padding: 5px;
     border:1px solid black;
     color:#8a2be2;
-    font-weight: 600;
-    
+    font-weight: 600;    
 }
 
 /* Tide Module */
@@ -219,13 +218,13 @@ p{
 .form-control {
     font-family: system-ui, sans-serif;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bold;
     line-height: 1.1;
     display: grid;
     grid-template-columns: 1em auto;
     gap: 0.5em;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 
   }
 
@@ -248,8 +247,8 @@ input[type="radio"] {
 /* Styling an Unchecked radio button */
 input[type="radio"]::before {
     content: "";
-    width: 0.65em;
-    height: 0.65em;
+    width: 0.2em;
+    height: 0.2em;
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
@@ -267,8 +266,22 @@ input[type="radio"]:checked {
 }
 
 
+
+
+.inputgridholder {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 50%;
+    grid-row-gap: 0px;
+
+}
+ .inputgridholder ul {
+    display: block;
+} 
+
+
 .form-control + .form-control {
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 .myButton {
