@@ -141,6 +141,9 @@ p{
     padding-bottom: 10px;
 }
 
+.dropbtn:nth-child(1){
+    position: relative;
+
 .chart_div > img{
     width: 100%;
     box-shadow: 5px 5px 5px rgb(44, 33, 85);
@@ -158,13 +161,10 @@ p{
 
 }
 
-
-
-
 .dropbtn{
     color: rgb(138, 43, 226);
-    background-color: #dafff3;
-    padding: 16px;
+    background-color:#dafff3;
+    padding: 15px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -172,6 +172,7 @@ p{
 
 .dropdown{
     position: relative;
+    left: 5%;
     display: inline-block;
 }
 
@@ -191,12 +192,6 @@ p{
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
-
-.fa-caret-down{
-position: relative;
-right: 4%;
-color: rgb(138, 43, 226);
 }
 
 .dropdown a:hover {background-color: #ddd;}
@@ -274,7 +269,6 @@ input[type="radio"]:checked {
     margin-top: 1em;
 }
 
-
 .myButton {
 	box-shadow: 0px 10px 14px -7px #276873;
 	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
@@ -299,7 +293,25 @@ input[type="radio"]:checked {
 	top:1px;
 }
 
+i{
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+background-color: #deece8;
+color:rgb(138, 43, 226);
+border-radius: 10px;
+border: 2px solid grey;
+padding: 2px;
+width: 20px;
+cursor: pointer;
+}
 
+i:hover{
+    background-color: #f1f1f1;
+    
+}
+=======
 /* tide calendar */
 .calendar_parent{
     background:white;
