@@ -11,7 +11,7 @@ let windGustObjects = [];
 
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
-fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=491ee8537838453b8c0ce3c794e7c455')
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
 .then(response => response.json())
 .then(response => 
     
