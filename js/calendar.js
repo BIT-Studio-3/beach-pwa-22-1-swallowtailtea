@@ -1,5 +1,6 @@
 document.querySelector("#calendarHeading").innerText += ` ${currentLocation.name}`;
 
+
 //tide calander method
 function tide_Calendar()
 {
