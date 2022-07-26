@@ -8,7 +8,8 @@ let highTemperatureObjects = [];
 let lowTemperatureObjects = [];
 let windSpeedObjects = [];
 let windGustObjects = [];
-
+console.log(getToday())
+console.log(formatDate(testSunday(new Date())))
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
 fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
@@ -16,10 +17,10 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
 .then(response => 
     
     
-    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())))
+    response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
 
-        //console.log(data);
+        console.log(data);
         //saturday grid
 
         
@@ -95,8 +96,14 @@ function testSunday(date){
     return new Date(date.setDate(sunday));
 }
     dt = new Date(); 
-    console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
-    console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun Jun 19
+    //console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
+    //console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun Jun 19
+
+function getToday() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() ); 
+    return `${tomorrow.getFullYear()}-0${tomorrow.getMonth() + 1}-${tomorrow.getDate()}`;
+}
 
 
 

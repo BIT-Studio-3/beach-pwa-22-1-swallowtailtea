@@ -80,7 +80,7 @@ p{
 #weekendgrid{
     display: grid;
     grid-template-columns: repeat(8, 2fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     width: 70%;
     margin-left: 200px;
     margin-top: 20px;
