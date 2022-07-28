@@ -13,20 +13,34 @@
   box-sizing: border-box;
 }
 
+.darkmode{
+    background-color: black;
+    color: white;
+    border-color: white;
+}
 
+.lightmode{
+    background-color: white;
+    color: black;
+    border-color: black;
+    /* original colors
+    background-color: #dafff3;
+    color:blueviolet;*/
+}
 
 body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
-    background-size: cover;
+    /*background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
+    background-size: cover;*/
+
 }
 
 /*general display stuff*/
-nav, h1, p, button, div{
+nav, h1, h2, p, button, div{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white; /*overall text colour*/
+    /*color: white; /*overall text colour*/
     
 
 }
@@ -37,8 +51,6 @@ nav{
     align-items: center;
     justify-content: space-around;
     padding: 0.5% 0.5%;
-    border: 1px solid #666;
-    background-color:#dafff3;
     font-size: 1.1rem;
     height: 70px;
 }
@@ -50,13 +62,13 @@ a{
     text-decoration: none;
 }
 
+
 a:link , a:visited{
-    color: #8a2be2;
+    color: black;
 }
 
 /* The website name that is in the nav bar */
 .nav-header{
-    color:blueviolet;
     font-family:'Times New Roman', Times, serif;
     font-size: 2rem;
     font-weight: bold;
@@ -65,7 +77,6 @@ a:link , a:visited{
 
 /* The titles for all the pages*/
 h1{
-    color:rgb(138, 43, 226);
     font-family:'Times New Roman', Times, serif;
     font-size: 35px;
     margin-right: 45px;
@@ -84,14 +95,11 @@ p{
     width: 70%;
     margin-left: 200px;
     margin-top: 20px;
-    background-color:#dafff3;
-    
 }
 
 #weekendgrid div{
     padding: 5px;
     border:1px solid black;
-    color:#8a2be2;
     font-weight: 600;    
 }
 
@@ -163,8 +171,8 @@ p{
 }
 
 .dropbtn{
-    color: rgb(138, 43, 226);
-    background-color:#dafff3;
+    /*color: rgb(138, 43, 226);
+    background-color:#dafff3;*/
     padding: 15px;
     font-size: 16px;
     border: none;
@@ -217,7 +225,7 @@ p{
 /* Used in the radio buttons styling */
 .form-control {
     font-family: system-ui, sans-serif;
-    color: #fff;
+  
     font-size: 1rem;
     font-weight: bold;
     line-height: 1.1;
@@ -269,6 +277,7 @@ input[type="radio"]:checked {
 
 
 .inputgridholder {
+    color: black;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 50%;
