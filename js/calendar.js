@@ -15,7 +15,7 @@ function tide_Calendar()
         let tideInfo = data.values;
 
         // filter out times not in sunlight hours
-        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
+        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= amTime && t.time.substring(11,13) <= pmTime);
 
         // create new array of objects containing tide info for one day
         let days = [];
