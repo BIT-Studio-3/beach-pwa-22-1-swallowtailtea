@@ -1,6 +1,5 @@
 document.querySelector("#calendarHeading").innerText += ` ${currentLocation.name}`;
 
-
 //tide calander method
 function tide_Calendar()
 {
@@ -12,7 +11,7 @@ function tide_Calendar()
     fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => response.json()).then(data =>
     {
 
-
+   
         let tideInfo = data.values;
 
         // filter out times not in sunlight hours
