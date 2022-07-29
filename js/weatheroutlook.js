@@ -12,6 +12,12 @@ let windGustObjects = [];
 // console.log(formatDate(testSunday(new Date())))
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
+for (let index = 0; index < titles.length; index++) {
+    let div = document.createElement("div");
+    div.innerHTML = titles[index];
+    weekendGrid.appendChild(div);
+}
+
 fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
 .then(response => response.json())
 .then(response => 
@@ -22,14 +28,6 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
 
         //console.log(data);
         //saturday grid
-
-        
-
-    for (let index = 0; index < titles.length; index++) {
-        let div = document.createElement("div");
-        div.innerHTML = titles[index];
-        weekendGrid.appendChild(div);
-    }
 
     //date that needs to be formatted to say the day
 
