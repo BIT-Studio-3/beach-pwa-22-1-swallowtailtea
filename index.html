@@ -11,19 +11,16 @@ title: Homepage
 
 <form>
     <div class = "adjustTime">
-        <label for="amTime">Morning Time </label>
-        <input type="time" id="amTime">
-        <p>
-          Value of the <code>time</code> input: <code>
-                  "<span id="amValue">n/a</span>"</code>.
-        </p>
-      </form>
-      <label for="pmTime">Night Time </label>
-      <input type="time" id="pmTime">
-      <p>
-        Value of the <code>time</code> input: <code>
-                "<span id="pmValue">n/a</span>"</code>.
-      </p>
+        <div class = morningTime>
+            <label for="amTime">Morning Time(04:00am - 10:00am) </label>
+            <input type="time" id="amTime" min="04:00" max="10:00">
+            <span class="validity"></span>
+        </div>
+        <div class = "nightTime">
+            <label for="pmTime">Night Time(04:00pm - 10:00pm) </label>
+            <input type="time" id="pmTime" min="16:00" max="22:00">
+            <span class="validity"></span>
+        </div>
     </div>   
 </form>
 
@@ -89,5 +86,6 @@ document.querySelectorAll("input").forEach(r =>
 
 <script src="/js/weatheroutlook.js"></script>
 <script src="/js/weekendTideModule.js"></script>
+<script src ="/js/nightTime.js"></script>
 
 

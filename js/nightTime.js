@@ -23,11 +23,12 @@ function adjustTime(){
    let pmValue = document.getElementById("pmValue");
 
    amTime.addEventListener("input", function() {
-      amValue.innerText = amTime.value;  
+      amValue.innerText = amTime.value; 
    }, false);
    pmTime.addEventListener("input", function() {
       pmValue.innerText = pmTime.value;  
    }, false);
+
 
     /* if ((updatedAmTime <=10 && updatedAmTime >= 4) && (updatedPmTime <= 10 && updatedPmTime >= 4)){
         //do something        
@@ -36,3 +37,5 @@ function adjustTime(){
         //produce error
      } */
 }
+
+adjustTime();
