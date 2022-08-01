@@ -14,9 +14,6 @@ function adjustTime(){
    let amTimeControl = document.createElement("input");
    input.setAttribute('id', 'amTime');
    input.setAttribute('type', 'time');*/
-   amTimeControl = document.querySelector('input[type="time"]');
-   amTimeControl.value = defaultAmTime; 
-
    let amTime = document.getElementById("amTime");
    let pmTime = document.getElementById("pmTime");
    let amValue = document.getElementById("amValue");
