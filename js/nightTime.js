@@ -1,9 +1,5 @@
-let defaultAmTime = 6;
-let defaultPmTime = 6;
-
-let updatedAmTime;
-let updatedPmTime;
-
+let defaultAmTime = '06:00';
+let defaultPmTime = '18:00';
 function adjustTime(){
 
   /* let amTimeLabel = document.createElement("label");
@@ -14,19 +10,17 @@ function adjustTime(){
    input.setAttribute('type', 'time');*/
    let amTime = document.getElementById("amTime");
    let pmTime = document.getElementById("pmTime");
-   let amValue = document.getElementById("amValue");
-   let pmValue = document.getElementById("pmValue");
 
    //Morning Time
    let amTimeLabel = document.getElementById("amTime");
-   amTimeLabel.setAttribute('value', '06:00');
+   amTimeLabel.setAttribute('value', defaultAmTime);
    amTimeLabel.setAttribute('min', '04:00');
    amTimeLabel.setAttribute('max', '10:00');
    document.querySelector('body').append("amTimeLabel");
 
    //Night Time
    let pmTimeLabel = document.getElementById("pmTime");
-   pmTimeLabel.setAttribute('value', '18:00');
+   pmTimeLabel.setAttribute('value', defaultPmTime);
    pmTimeLabel.setAttribute('min', '16:00');
    pmTimeLabel.setAttribute('max', '22:00');
    document.querySelector('body').append("pmTimeLabel");
