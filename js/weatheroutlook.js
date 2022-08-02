@@ -103,9 +103,7 @@ function getToday() {
     const today = new Date();
     today.setDate(today.getDate() ); 
     num = today.getDate();
-    if (num < 10) {
-        num = "0" + num;
-    }
+    if (num < 10) num = "0" + num;
     return `${today.getFullYear()}-0${today.getMonth() + 1}-${num}`;
 }
 
