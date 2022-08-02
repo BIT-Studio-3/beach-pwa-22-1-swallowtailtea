@@ -17,6 +17,8 @@ for (let index = 0; index < titles.length; index++) {
     div.innerHTML = titles[index];
     weekendGrid.appendChild(div);
 }
+console.log(formatDate(testSunday(new Date())))
+console.log(getToday())
 
 fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
 .then(response => response.json())
@@ -100,7 +102,11 @@ function testSunday(date){
 function getToday() {
     const today = new Date();
     today.setDate(today.getDate() ); 
-    return `${today.getFullYear()}-0${today.getMonth() + 1}-${today.getDate()}`;
+    num = today.getDate();
+    if (num < 10) {
+        num = "0" + num;
+    }
+    return `${today.getFullYear()}-0${today.getMonth() + 1}-${num}`;
 }
 
 
