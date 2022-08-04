@@ -4,6 +4,7 @@
 /* Variable created for styling used in the Radio buttons */
 :root {
     --form-control-color: #599bb3;
+    --font-family: sans-serif;
 }
 
 /* Used to make the sizing uniform for any device which is on using the radio buttons */
@@ -40,9 +41,10 @@
 
 
 body{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /*background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
-    background-size: cover;*/
+
+    font-family: var(--font-family);
+    background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
+    background-size: cover;
 
 }
 
@@ -53,7 +55,6 @@ nav, h1, h2, p, button, div{
     justify-content: center;
     /*color: white; /*overall text colour*/
     
-
 }
 
 /*the nav bar itself */
@@ -84,7 +85,9 @@ a:link.darkmode_text , a:visited.darkmode_text{
 
 /* The website name that is in the nav bar */
 .nav-header{
-    font-family:'Times New Roman', Times, serif;
+
+    color:blueviolet;
+    font-family: var(--font-family);
     font-size: 2rem;
     font-weight: bold;
     margin-right: 25%;
@@ -92,7 +95,10 @@ a:link.darkmode_text , a:visited.darkmode_text{
 
 /* The titles for all the pages*/
 h1{
-    font-family:'Times New Roman', Times, serif;
+
+    color:rgb(138, 43, 226);
+    font-family: var(--font-family);
+
     font-size: 35px;
     margin-right: 45px;
 }
@@ -239,8 +245,10 @@ p{
 
 /* Used in the radio buttons styling */
 .form-control {
-    font-family: system-ui, sans-serif;
-  
+
+    font-family: var(--font-family);
+    color: #fff;
+
     font-size: 1rem;
     font-weight: bold;
     line-height: 1.1;
@@ -318,7 +326,7 @@ input[type="radio"]:checked {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+    font-family: var(--font-family);
 	font-size:20px;
 	font-weight:bold;
 	padding:13px 32px;
