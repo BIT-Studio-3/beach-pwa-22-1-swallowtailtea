@@ -43,7 +43,7 @@
 body{
 
     font-family: var(--font-family);
-    background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
+    /* background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg'); */
     background-size: cover;
 
 }
@@ -86,7 +86,7 @@ a:link.darkmode_text , a:visited.darkmode_text{
 /* The website name that is in the nav bar */
 .nav-header{
 
-    color:grey;
+    color:black;
     font-family: var(--font-family);
     font-size: 2rem;
     font-weight: bold;
@@ -96,7 +96,7 @@ a:link.darkmode_text , a:visited.darkmode_text{
 /* The titles for all the pages*/
 h1{
 
-    color:grey;
+    color:black;
     font-family: var(--font-family);
 
     font-size: 35px;
@@ -134,7 +134,7 @@ p{
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    background-color: grey;
+    background-color: black;
     margin: 0px 20px;
     box-shadow: 5px 5px 5px rgb(44, 33, 85);
     margin-top: 20px;
@@ -247,7 +247,7 @@ p{
 .form-control {
 
     font-family: var(--font-family);
-    color: #fff;
+    color: black;
 
     font-size: 1rem;
     font-weight: bold;
