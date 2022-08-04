@@ -21,7 +21,7 @@ function buildTideModule(location, requestedDays)
 
     requestedDays.forEach(day => 
     {
-        console.log(buildNIWA_URL(NIWA_PATHS.chart_png, location, 1, formatDate(nextDay(day))));
+        //console.log(buildNIWA_URL(NIWA_PATHS.chart_png, location, 1, formatDate(nextDay(day))));
         let dayHeading = document.createElement("h2");
         dayHeading.innerText = dayNames[day];
         let chartDiv = buildChartDiv(buildNIWA_URL(NIWA_PATHS.chart_png, location, 1, formatDate(nextDay(day))));
