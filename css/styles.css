@@ -86,7 +86,7 @@ a:link.darkmode_text , a:visited.darkmode_text{
 /* The website name that is in the nav bar */
 .nav-header{
 
-    color:blueviolet;
+    color:grey;
     font-family: var(--font-family);
     font-size: 2rem;
     font-weight: bold;
@@ -96,7 +96,7 @@ a:link.darkmode_text , a:visited.darkmode_text{
 /* The titles for all the pages*/
 h1{
 
-    color:rgb(138, 43, 226);
+    color:grey;
     font-family: var(--font-family);
 
     font-size: 35px;
@@ -134,7 +134,7 @@ p{
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    background-color: rgb(84, 84, 219);
+    background-color: grey;
     margin: 0px 20px;
     box-shadow: 5px 5px 5px rgb(44, 33, 85);
     margin-top: 20px;
