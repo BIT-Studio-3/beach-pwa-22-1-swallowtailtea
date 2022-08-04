@@ -14,20 +14,46 @@
   box-sizing: border-box;
 }
 
+.darkmode{
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.lightmode{
+    background-color: white;
+    
+    border-color: black;
+    /* original colors
+    background-color: #dafff3;
+    color:blueviolet;*/
+}
+
+.lightmode_text{
+    color: black;
+}
+
+.darkmode_text{
+    color: white;
+}
+
+
 
 
 body{
+
     font-family: var(--font-family);
     background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg');
     background-size: cover;
+
 }
 
 /*general display stuff*/
-nav, h1, p, button, div{
+nav, h1, h2, p, button, div{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white; /*overall text colour*/
+    /*color: white; /*overall text colour*/
     
 }
 
@@ -37,8 +63,6 @@ nav{
     align-items: center;
     justify-content: space-around;
     padding: 0.5% 0.5%;
-    border: 1px solid #666;
-    background-color:#dafff3;
     font-size: 1.1rem;
     height: 70px;
 }
@@ -50,12 +74,18 @@ a{
     text-decoration: none;
 }
 
-a:link , a:visited{
-    color: #8a2be2;
+
+
+a:link.lightmode_text , a:visited.lightmode_text{
+    color: black;
+}
+a:link.darkmode_text , a:visited.darkmode_text{
+    color: white;
 }
 
 /* The website name that is in the nav bar */
 .nav-header{
+
     color:blueviolet;
     font-family: var(--font-family);
     font-size: 2rem;
@@ -65,8 +95,10 @@ a:link , a:visited{
 
 /* The titles for all the pages*/
 h1{
+
     color:rgb(138, 43, 226);
     font-family: var(--font-family);
+
     font-size: 35px;
     margin-right: 45px;
 }
@@ -84,14 +116,11 @@ p{
     width: 70%;
     margin-left: 200px;
     margin-top: 20px;
-    background-color:#dafff3;
-    
 }
 
 #weekendgrid div{
     padding: 5px;
     border:1px solid black;
-    color:#8a2be2;
     font-weight: 600;    
 }
 
@@ -163,8 +192,8 @@ p{
 }
 
 .dropbtn{
-    color: rgb(138, 43, 226);
-    background-color:#dafff3;
+    /*color: rgb(138, 43, 226);
+    background-color:#dafff3;*/
     padding: 15px;
     font-size: 16px;
     border: none;
@@ -216,8 +245,10 @@ p{
 
 /* Used in the radio buttons styling */
 .form-control {
+
     font-family: var(--font-family);
     color: #fff;
+
     font-size: 1rem;
     font-weight: bold;
     line-height: 1.1;
@@ -235,7 +266,8 @@ input[type="radio"] {
     /* background-color: #fff; */
     margin: 0;
     font: inherit;
-    color: #599bb3;
+    color:gray;
+    /*color: #599bb3;*/
     width: 1.15em;
     height: 1.15em;
     border: 0.15em solid currentColor;
@@ -262,7 +294,9 @@ input[type="radio"]:checked::before {
 
 
 input[type="radio"]:checked {
-    background-color: #8a2be2;
+
+    background-color: black;
+    /*background-color: #8a2be2;*/
 }
 
 
@@ -314,7 +348,7 @@ justify-content: center;
 align-items: center;
 position: relative;
 background-color: #deece8;
-color:rgb(138, 43, 226);
+/*color:rgb(138, 43, 226);*/
 border-radius: 10px;
 border: 2px solid grey;
 padding: 2px;
