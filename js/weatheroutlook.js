@@ -28,7 +28,7 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
 
-        //console.log(data);
+        console.log(data);
         //saturday grid
 
     //date that needs to be formatted to say the day
