@@ -22,9 +22,7 @@ console.log(getToday())
 
 fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
 .then(response => response.json())
-.then(response => 
-    
-    
+.then(response =>         
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
 

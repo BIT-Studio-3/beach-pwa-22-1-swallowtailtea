@@ -1,5 +1,5 @@
 const rotate = [22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247, 270, 292.5, 315, 337.5 ]
-const compassarr = ["north-northeast", "northeast", "east-northeast", "east", "east-southeast", "southeast", "south-southeast", "south", "south-southwest", "southwest", "west-southwest", "west", "west-northwest", "northwest", "north-northwest"] 
+const compassarr = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"] 
 
 
 const compRotate = (compass) => {

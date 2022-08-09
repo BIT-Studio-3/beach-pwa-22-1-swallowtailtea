@@ -301,6 +301,10 @@ input[type="radio"]:checked {
 
 #weatherarrow {
     background-image:url('https://www.pngfind.com/pngs/m/30-303038_up-arrow-comments-upward-arrow-icon-png-transparent.png');
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    width: 75%;
+    padding-bottom: 100vh;
 }
 
 
@@ -309,7 +313,6 @@ input[type="radio"]:checked {
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 50%;
     grid-row-gap: 0px;
-
 }
  .inputgridholder ul {
     display: block;
