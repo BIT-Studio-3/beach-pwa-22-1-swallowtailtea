@@ -11,7 +11,17 @@ title: Homepage
 
 <script>
 function myFunction() {
-   element.classList.toggle("dark-mode");
+    //element.classList.toggle("dark-mode");
+    if(document.getElementsByClassName("darkmode") != null){
+        let a = document.getElementsByClassName( "darkmode" );
+        [...a].forEach( x => x.className += " lightmode" );
+        [...a].forEach( x => x.classList.remove("darkmode") );
+    }
+    else{
+        let a = document.getElementsByClassName( "lightmode" );
+        [...a].forEach( x => x.className += " darkmode" );
+        [...a].forEach( x => x.classList.remove("lightmode") );
+    }
 }
 </script>
 
