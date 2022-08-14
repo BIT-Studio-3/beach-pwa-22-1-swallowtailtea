@@ -10,14 +10,16 @@ title: Homepage
 <button onclick="myFunction()">Toggle dark mode</button>
 
 <script>
+let isDarkMode = false;
 function myFunction() {
-    //element.classList.toggle("dark-mode");
-    if(document.getElementsByClassName("darkmode") != null){
+    if(isDarkMode == true){ //if dark mode change to light mode
+        isDarkMode = false;
         let a = document.getElementsByClassName( "darkmode" );
         [...a].forEach( x => x.className += " lightmode" );
         [...a].forEach( x => x.classList.remove("darkmode") );
     }
     else{
+        isDarkMode = true;
         let a = document.getElementsByClassName( "lightmode" );
         [...a].forEach( x => x.className += " darkmode" );
         [...a].forEach( x => x.classList.remove("lightmode") );
