@@ -49,23 +49,12 @@ let pmTime = '18:00';
 function amDropDown() {
    document.getElementById("amDropdown").classList.toggle("show");
  }
- 
- window.onclick = function(event) {
-   if (!event.target.matches('.dropbtn')) {
-     let dropdowns = document.getElementsByClassName("dropDownContent");
-     for (let i = 0; i < dropdowns.length; i++) {
-       let openDropdown = dropdowns[i];
-       if (openDropdown.classList.contains('show')) {
-         openDropdown.classList.remove('show');
-       }
-     }
-   }
- }
+
  function pmDropDown() {
    document.getElementById("pmDropdown").classList.toggle("show");
  }
  
- window.onclick = function(event) {
+ button.onclick = function(event) {
    if (!event.target.matches('.dropbtn')) {
      let dropdowns = document.getElementsByClassName("dropDownContent");
      for (let i = 0; i < dropdowns.length; i++) {
