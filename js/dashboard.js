@@ -30,14 +30,6 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
     speeddiv.classList.add("wind_speed");
     arrowGrid.appendChild(speeddiv);
 
-    let gustdiv = document.createElement("div");
-
-
-    windGustObjects.push(buildWindObject(data.wind_gust_spd));
-    gustdiv.innerHTML = getWindString(windGustObjects[i])
-    gustdiv.classList.add("wind_gust");
-
-    arrowGrid.appendChild(gustdiv);
 
     let windDirection = document.createElement("div");
     windDirection.innerHTML = `${data.wind_cdir}`; 
