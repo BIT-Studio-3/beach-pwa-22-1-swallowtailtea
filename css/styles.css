@@ -299,12 +299,10 @@ input[type="radio"]:checked {
     /*background-color: #8a2be2;*/
 }
 
-#weatherarrow {
-    background-image:url('https://www.pngfind.com/pngs/m/30-303038_up-arrow-comments-upward-arrow-icon-png-transparent.png');
-    grid-template-columns: repeat(2, 1fr);
+#arrowgrid {
     display: grid;
-    width: 75%;
-    padding-bottom: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 
