@@ -22,7 +22,7 @@
 
 .lightmode{
     background-color: white;
-    
+    color: black;
     border-color: black;
     /* original colors
     background-color: #dafff3;
@@ -38,13 +38,24 @@
     color: white;
 }
 
-
-.lightmode_text{
+.lightmode div{
     color: black;
+    border-color: black;
 }
 
-.darkmode_text{
+
+.darkmode div{
     color: white;
+    border-color: white;
+}
+
+
+.lightmode input[type="radio"]:checked {
+    background-color: black;
+}
+
+.darkmode input[type="radio"]:checked {
+    background-color: white;
 }
 
 
@@ -86,10 +97,10 @@ a{
 
 
 
-a:link.lightmode_text , a:visited.lightmode_text{
+a:link.lightmode , a:visited.lightmode{
     color: black;
 }
-a:link.darkmode_text , a:visited.darkmode_text{
+a:link.darkmode , a:visited.darkmode{
     color: white;
 }
 
@@ -128,7 +139,7 @@ p{
 
 #weekendgrid div{
     padding: 5px;
-    border:1px solid black;
+    border:1px solid;
     font-weight: 600;    
 }
 
@@ -253,7 +264,6 @@ p{
 .form-control {
 
     font-family: var(--font-family);
-    color: black;
 
     font-size: 1rem;
     font-weight: bold;
