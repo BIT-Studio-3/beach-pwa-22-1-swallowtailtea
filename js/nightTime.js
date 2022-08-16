@@ -1,5 +1,5 @@
 
-let defaultAmTime = '06:00';
+/*let defaultAmTime = '06:00';
 let defaultPmTime = '18:00';
 function adjustTime(){
 
@@ -8,9 +8,9 @@ function adjustTime(){
 
    let amTimeControl = document.createElement("input");
    input.setAttribute('id', 'amTime');
-   input.setAttribute('type', 'time');*/
+   input.setAttribute('type', 'time'); **
    let amTime = document.getElementById("amTime");
-   let pmTime = document.getElementById("pmTime");
+   let pmTime = document.getElementById("pmTime"); 
 
    //Morning Time
    let amTimeLabel = document.getElementById("amTime");
@@ -40,21 +40,26 @@ function adjustTime(){
      }
      else{
         //produce error
-     } */
-}  
+     } **
+}  */
 
-let amTime = '06:00';
-let pmTime = '18:00';
+//Set variables
+let defaultAmTime = '06:00';
+let defaultPmTime = '18:00';
 
+//Adjusts morning
 function amDropDown() {
    document.getElementById("amDropdown").classList.toggle("show");
  }
 
+ //Adjusts night
  function pmDropDown() {
    document.getElementById("pmDropdown").classList.toggle("show");
  }
  
- button.onclick = function(event) {
+
+ //calls the function and controls the onclick events
+ window.onclick = function(event) {
    if (!event.target.matches('.dropbtn')) {
      let dropdowns = document.getElementsByClassName("dropDownContent");
      for (let i = 0; i < dropdowns.length; i++) {
@@ -66,6 +71,15 @@ function amDropDown() {
    }
  }
 
+ let amTime = document.getElementById("amDropdown");
+ let amTimeItems = amTime.children;
+ let pmTime = document.getElementById("pmDropdown");
+
+ for (let i = 0; i < amTimeItems.length; i++){
+  amTimeItems[i].onclick = function(){
+    console.log(this.children[0].innerText);
+  }
+}
 amDropDown();
 pmDropDown();
 //adjustTime();
