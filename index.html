@@ -7,10 +7,31 @@ title: Homepage
 
 <h1>Weather Dashboard</h1>
 
+<!--<button onclick="changeColorTheme()">Toggle dark mode</button> -->
+<button onclick="setColourTheme('currentTheme')">Toggle dark mode2</button>
+
+<script>
+//let isDarkMode = false;
+function changeColorTheme(currentTheme) {
+    if(currentTheme == "darkmode"){ //if dark mode change to light mode
+        //isDarkMode = false;
+        let a = document.getElementsByClassName( "darkmode" );
+        [...a].forEach( x => x.className += " lightmode" );
+        [...a].forEach( x => x.classList.remove("darkmode") );
+    }
+    else{
+        //isDarkMode = true;
+        let a = document.getElementsByClassName( "lightmode" );
+        [...a].forEach( x => x.className += " darkmode" );
+        [...a].forEach( x => x.classList.remove("lightmode") );
+    }
+}
+</script>
+
 <div id="weekendgrid" class="lightmode"></div>
 
 
-<div class="inputgridholder lightmode_text">
+<div class="inputgridholder lightmode">
     <div>
         <ul>
             <h2 style= "text-align: left;">Temperature</h2>

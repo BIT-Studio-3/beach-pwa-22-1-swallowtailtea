@@ -22,19 +22,40 @@
 
 .lightmode{
     background-color: white;
-    
+    color: black;
     border-color: black;
     /* original colors
     background-color: #dafff3;
     color:blueviolet;*/
 }
 
-.lightmode_text{
+.lightmode a{
     color: black;
 }
 
-.darkmode_text{
+
+.darkmode a{
     color: white;
+}
+
+.lightmode div{
+    color: black;
+    border-color: black;
+}
+
+
+.darkmode div{
+    color: white;
+    border-color: white;
+}
+
+
+.lightmode input[type="radio"]:checked {
+    background-color: black;
+}
+
+.darkmode input[type="radio"]:checked {
+    background-color: white;
 }
 
 
@@ -76,17 +97,16 @@ a{
 
 
 
-a:link.lightmode_text , a:visited.lightmode_text{
+a:link.lightmode , a:visited.lightmode{
     color: black;
 }
-a:link.darkmode_text , a:visited.darkmode_text{
+a:link.darkmode , a:visited.darkmode{
     color: white;
 }
 
 /* The website name that is in the nav bar */
 .nav-header{
 
-    color:black;
     font-family: var(--font-family);
     font-size: 2rem;
     font-weight: bold;
@@ -96,7 +116,6 @@ a:link.darkmode_text , a:visited.darkmode_text{
 /* The titles for all the pages*/
 h1{
 
-    color:black;
     font-family: var(--font-family);
 
     font-size: 35px;
@@ -120,7 +139,7 @@ p{
 
 #weekendgrid div{
     padding: 5px;
-    border:1px solid black;
+    border:1px solid;
     font-weight: 600;    
 }
 
@@ -210,7 +229,6 @@ p{
     display: none;
     position: absolute;
     left: -6.5%;
-    background-color: #f1f1f1;
     min-width: 160px;
     overflow: hidden;
     box-shadow: 0px 8px 16px 0px rgb(0,0,0,0.2);
@@ -218,7 +236,6 @@ p{
 }
 
 .dropdown-content a{
-    color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -247,7 +264,6 @@ p{
 .form-control {
 
     font-family: var(--font-family);
-    color: black;
 
     font-size: 1rem;
     font-weight: bold;
