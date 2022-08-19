@@ -7,20 +7,20 @@ title: Homepage
 
 <h1>Weather Dashboard</h1>
 
-<!--<button onclick="changeColorTheme()">Toggle dark mode</button> -->
-<button onclick="setColourTheme('currentTheme')">Toggle dark mode2</button>
+<button onclick="changeColorTheme()">Toggle dark mode</button>
+<!--<button onclick="setColourTheme('currentTheme')">Toggle dark mode2</button>-->
 
 <script>
-//let isDarkMode = false;
+let isDarkMode = false;
 function changeColorTheme(currentTheme) {
-    if(currentTheme == "darkmode"){ //if dark mode change to light mode
-        //isDarkMode = false;
+    if(isDarkMode == true /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+        isDarkMode = false;
         let a = document.getElementsByClassName( "darkmode" );
         [...a].forEach( x => x.className += " lightmode" );
         [...a].forEach( x => x.classList.remove("darkmode") );
     }
     else{
-        //isDarkMode = true;
+        isDarkMode = true;
         let a = document.getElementsByClassName( "lightmode" );
         [...a].forEach( x => x.className += " darkmode" );
         [...a].forEach( x => x.classList.remove("lightmode") );
