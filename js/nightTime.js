@@ -43,10 +43,6 @@ function adjustTime(){
      } **
 }  */
 
-//Set variables
-let defaultAmTime = '06:00';
-let defaultPmTime = '18:00';
-
 //Adjusts morning
 function amDropDown() {
    document.getElementById("amDropdown").classList.toggle("show");
