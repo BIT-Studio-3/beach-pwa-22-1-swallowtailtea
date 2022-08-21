@@ -437,3 +437,173 @@ i:hover{
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
+
+/* Calendar code */
+
+:root{
+    --main-bg-colour: #D5F9DE;
+    --main-brand-colour: #8FA6CB;
+    --main-splash-colour: #7D84B2;
+}
+
+.calendar{
+    height: max-content;
+    width: max-content;
+    display: grid;
+    justify-content: center;
+    border-radius: 60px;
+    position: relative;
+    background: var(--main-bg-colour);
+    top: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.div_month{
+    justify-self: center;
+    font-size: 30pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
+
+
+.inner_grid{
+    padding: 20px;
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: fit-content;
+    margin: auto;
+}
+
+.inner_grid .square{
+    text-align: center;
+    background-color: var(--main-brand-colour);
+    font-size: 14pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width:140px;
+    height:90px;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+    
+}
+
+.inner_grid div span{
+    position: absolute;
+}
+
+.inner_grid div:hover span{
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.inner_grid div span:nth-child(1),
+.inner_grid div span:nth-child(3) {
+    width: 2px;
+    height: 0;
+    background-color: var(--main-splash-colour);
+}
+
+.inner_grid div:hover span:nth-child(1),
+.inner_grid div:hover span:nth-child(3) {
+    height: 100%;
+}
+
+.inner_grid div span:nth-child(1) {
+    bottom: 0;
+    left: 0;
+}
+
+.inner_grid div span:nth-child(3) {
+    top: 0;
+    right: 0;
+}
+
+.inner_grid div span:nth-child(2),
+.inner_grid div span:nth-child(4) {
+    width: 0;
+    height: 2px;
+    background-color: var(--main-splash-colour);
+}
+
+.inner_grid div:hover span:nth-child(2),
+.inner_grid div:hover span:nth-child(4) {
+    width: 100%;
+}
+
+.inner_grid div span:nth-child(2) {
+    top: 0;
+    left: 0;
+}
+
+.inner_grid div span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+
+.inner_grid div:hover span:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.inner_grid div:hover span:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.inner_grid div:hover span:nth-child(4) {
+    transition-delay: 0.6s;
+}
+
+
+.inner_grid .tidedata{
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16pt;
+}
+
+.inner_grid .square.disabled{
+    background-color: var(--main-bg-colour);
+    opacity: 0.5;
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 680px) {
+    *{
+        box-sizing: border-box;
+    }
+
+    .calendar{
+        display: grid;
+    }
+
+    .inner_grid{
+        max-width: 680px;
+        align-items: flex-start;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    }
+
+    .inner_grid .square{
+        padding: 10px;
+        font-size: 10pt;
+        width: max-content;
+        height: max-content;
+        
+    }
+
+    .inner_grid .tidedata{
+        text-align:center;
+        font-size: 10pt;
+    }
+
+    .inner_grid .square.disabled{
+        font-style: opacity 0.5;
+    }
+}
