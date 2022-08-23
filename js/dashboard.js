@@ -135,6 +135,11 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
             tidediv.innerHTML = uniquedays[i];
             tidegrid.appendChild(tidediv); 
             console.log("Hello");
+
+            let div = document.createElement("div");
+            tidegrid.appendChild(div);
+
+
         }
     });
     
