@@ -292,6 +292,9 @@ input[type="radio"]:checked::before {
     transform: scale(1);
 }
 
+.flex {
+    display: flex;
+}
 
 input[type="radio"]:checked {
 
@@ -320,6 +323,18 @@ input[type="radio"]:checked {
 .arrowgh2 {
     font-size: large;
     font-weight: bold;
+    display: flexbox;
+}
+
+#tidegrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 40%;
+    border-radius: 40px;
+    outline: 4px groove #1C6EA4;
+    outline-offset: 20px;
+    margin-left: 60px;
 }
 
 .inputgridholder {

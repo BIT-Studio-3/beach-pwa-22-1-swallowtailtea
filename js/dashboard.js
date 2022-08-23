@@ -8,15 +8,24 @@ let arrowGrid = document.querySelector("#arrowgrid");
  let lowTideObjects = [];
  let windSpeedsObjects = [];
  let winddirObjects = [];
-
+ let saturday = [];
+ let sunday = [];
+ let today = [];
+ let alldays = [];
 
 let heads = ["Date","Speed", "Gust", "Direction"]
+let theads = ["Date", "High", "Low", "Change"]
 
 let hdiv = document.createElement("div");
-hdiv.innerHTML = "Wind Forecast"
+hdiv.innerHTML = "Wind Forecast";
 hdiv.classList.add("arrow1");
-hdiv.classList.add("h1");
 arrowGrid.append(hdiv);
+
+let tdiv = document.createElement("div");
+tdiv.innerHTML = "Tide Forecast";
+tdiv.classList.add("arrow1");
+tidegrid.append(tdiv);
+
 
 for (let index = 0; index < heads.length; index++) {
     let div = document.createElement("div");
@@ -25,7 +34,14 @@ for (let index = 0; index < heads.length; index++) {
     arrowGrid.appendChild(div);
 }
 
-fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
+for (let index = 0; index < theads.length; index++) {
+    let div = document.createElement("div");
+    div.classList.add("arrowgh2");
+    div.innerHTML = theads[index];
+    tidegrid.appendChild(div);
+}
+
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=c8f6822e6fb74710b512e86525e1112e')
 .then(response => response.json())
 .then(response =>         
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
@@ -58,8 +74,11 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
 );
 
 
+
+
 fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => response.json()).then(data =>
     {
+        
 
         let tideInfo = data.values;
 
@@ -87,19 +106,38 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         {
             days = days.concat([[tideInfo[0]]]);
         }
-
         //outputting the data to the webpage
         days.forEach(day =>
         {
-            if (day[0].time.substring(0,10) == formatDate(testSaturday(new Date())) || day[0].time.substring(0,10) == formatDate(testSunday(new Date())) || day[0].time.substring(0,10) == getToday())
-            {
-                console.log(day[0]);
+            for (let i = 0; i < day.length; i++) {
+                if (day[i].time.substring(0,10) == getToday()) {
+                    alldays.push(reformatDate(day[i].time.substring(0,10)));
+
+                    today.push(day[i].value)
+                }
+                if (day[i].time.substring(0,10) == formatDate(testSaturday(new Date())))
+                {
+                    alldays.push(reformatDate(day[i].time.substring(0,10)));
+                    saturday.push(day[i].value)
+                }
+                if (day[i].time.substring(0,10) == formatDate(testSunday(new Date())))
+                {
+                    alldays.push(reformatDate(day[i].time.substring(0,10)));
+                    sunday.push(day[i].value)
+                }      
             }
+
         });
+        let uniquedays = [...new Set(alldays)];
+        console.log(uniquedays);
+        for (let i = 0; i < 3; i++) {
+            let tidediv = document.createElement("div");
+            tidediv.innerHTML = uniquedays[i];
+            tidegrid.appendChild(tidediv); 
+            console.log("Hello");
+        }
     });
     
-
-
 
 
 
