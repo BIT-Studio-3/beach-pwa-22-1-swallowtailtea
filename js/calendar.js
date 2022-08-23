@@ -114,7 +114,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         tidedata1.classList.add("tidedata");
         tidedata2.classList.add("tidedata");
         square.classList.add("square");
-        square.innerHTML = `${i+1}`;
+        square.innerHTML = `${i}`;
         square.innerHTML += `<span></span>
         <span></span>
         <span></span>

@@ -441,6 +441,13 @@ i:hover{
 
 /* Calendar code */
 
+:root{
+    --main-brand-colour: gray;
+    --main-splash-colour: black;
+}
+:root .darkmode input[type="radio"]:checked {
+    --main-splash-color: white;
+}
 
 .calendar{
     height: max-content;
