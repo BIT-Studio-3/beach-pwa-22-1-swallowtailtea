@@ -128,19 +128,74 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
             }
 
         });
+
+
         let uniquedays = [...new Set(alldays)];
-        console.log(uniquedays);
-        for (let i = 0; i < 3; i++) {
-            let tidediv = document.createElement("div");
-            tidediv.innerHTML = uniquedays[i];
-            tidegrid.appendChild(tidediv); 
-            console.log("Hello");
 
-            let div = document.createElement("div");
-            tidegrid.appendChild(div);
+        //todays div
+        let tidediv = document.createElement("div");
+        tidediv.innerHTML = uniquedays[0];
+        tidegrid.appendChild(tidediv); 
+        
+        let div = document.createElement("div");
+        let max = today.max()
+        div.innerHTML = max;
+        console.log(div)
+        tidegrid.appendChild(div);
 
+        let tmindiv = document.createElement("div");
+        let min = today.min()
+        tmindiv.innerHTML = min;
+        tidegrid.appendChild(tmindiv);
 
-        }
+        let tcdiv = document.createElement("div");
+        let tchange = max - min
+        tcdiv.innerHTML = tchange.toFixed(2);
+        tidegrid.appendChild(tcdiv);
+
+        //saturday div
+        let satdiv = document.createElement("div");
+        satdiv.innerHTML = uniquedays[1];
+        tidegrid.appendChild(satdiv); 
+
+        let sdiv = document.createElement("div");
+        let smax = saturday.max()
+        sdiv.innerHTML = smax;
+        tidegrid.appendChild(sdiv);
+
+        let smindiv = document.createElement("div");
+        let smin = saturday.min()
+        smindiv.innerHTML = smin;
+        tidegrid.appendChild(smindiv);
+
+        let satcdiv = document.createElement("div");
+        let satchange = smax - smin
+        satcdiv.innerHTML = satchange.toFixed(2);
+        tidegrid.appendChild(satcdiv);
+
+        //sunday tide append
+        let sundiv = document.createElement("div");
+        sundiv.innerHTML = uniquedays[2];
+        tidegrid.appendChild(sundiv); 
+
+        let sunmdiv = document.createElement("div");
+        let sunmax = sunday.max()
+        sunmdiv.innerHTML = sunmax;
+        console.log(div)
+        tidegrid.appendChild(sunmdiv);
+
+        let sunmin = document.createElement("div");
+        let sumin = sunday.min()
+        sunmin.innerHTML = sumin;
+        tidegrid.appendChild(sunmin);
+
+        let suchange = document.createElement("div");
+        let sundaychange = sunmax - sumin
+        suchange.innerHTML = sundaychange.toFixed(2);
+        console.log(sundaychange);
+        tidegrid.appendChild(suchange);
+
+       
     });
     
 
@@ -225,4 +280,13 @@ function changeToCurrentUnit(className, weatherArray, stringFunction)
         }
     });
 }
+
+Array.prototype.max = function() {
+    return Math.max.apply(null, this);
+  };
+  
+  Array.prototype.min = function() {
+    return Math.min.apply(null, this);
+  };
+  
     
