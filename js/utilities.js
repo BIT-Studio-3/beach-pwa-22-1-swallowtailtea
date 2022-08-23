@@ -10,6 +10,8 @@
 let currentTempUnit = (localStorage.currentTempUnit == null) ? "celsius" : localStorage.currentTempUnit;
 let currentWindUnit = (localStorage.currentWindUnit == null) ? "mps" : localStorage.currentWindUnit;
 
+let currentTheme = (localStorage.currentTheme == null) ? "lightmode" : localStorage.currentTheme;
+
 //Function to convert celsius to fahrenheit
 function celsiusToFah(celsius) 
 {
@@ -87,6 +89,16 @@ function setCurrentUnit(storageKey, desiredUnit)
     changeToCurrentUnit(".wind_speed", windSpeedObjects, getWindString);
     changeToCurrentUnit(".wind_gust", windGustObjects, getWindString);
 }
+
+function setColourTheme(storageKey, desiredUnit)
+{
+    localStorage.setItem(storageKey, desiredUnit);
+    currentTheme = localStorage.currentTheme;
+    changeColorTheme(currentTheme);
+    console.log(currentTheme);
+}
+
+
 
 // round a number to a maximum or 'roundTo' places
 function roundToOrLess(myNumber = 0, roundTo)  
