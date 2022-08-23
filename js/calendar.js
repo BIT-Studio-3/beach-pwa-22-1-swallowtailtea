@@ -56,7 +56,7 @@ function tide_Calendar()
                     let tide = time.value;
                     timeHeading.classList.add("tide_listing");
                     timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
-
+                    console.log(timeHeading);
                     dayLi.append(timeHeading);
                 });
             ul.append(dayLi);

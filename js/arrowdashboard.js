@@ -1,29 +1,29 @@
-// // const options = { 
-// //     method: 'GET', 
-// //     headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
+// const rotate = [22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247, 270, 292.5, 315, 337.5 ]
+// const compassarr = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"] 
 
-// let body = document.querySelector("body");
+
+// const compRotate = (compass) => {
+//     for (let i = 0; i < compass.length; i++) {
+//         if (compassarr[i] == compass) {
+//             document.querySelector("#weatherarrow").style.transform = `"rotate(${rotate[i]}360deg)"`;
+//         }       
+//     }
+// }
+
 let arrowGrid = document.querySelector("#arrowgrid");
  let highTideObjects = [];
  let lowTideObjects = [];
  let windSpeedsObjects = [];
  let winddirObjects = [];
 
-
-let heads = ["Date","Speed", "Gust", "Direction"]
-
-let hdiv = document.createElement("div");
-hdiv.innerHTML = "Wind Forecast"
-hdiv.classList.add("arrow1");
-hdiv.classList.add("h1");
-arrowGrid.append(hdiv);
+let heads = ["Tide High", "Tide Low", "Wind Speed", "Direction"]
 
 for (let index = 0; index < heads.length; index++) {
     let div = document.createElement("div");
-    div.classList.add("arrowgh2");
     div.innerHTML = heads[index];
     arrowGrid.appendChild(div);
 }
+
 
 fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
 .then(response => response.json())
@@ -31,77 +31,11 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
 
-    //date that needs to be formatted to say the day
-
-    let datetime = document.createElement("div");
-    datetime.innerHTML = reformatDate(data.datetime);
-    arrowGrid.appendChild(datetime);
+        console.log(data);
+        //saturday grid
 
 
-    let speeddiv = document.createElement("div");
-    windSpeedObjects.push(buildWindObject(data.wind_spd));
-    speeddiv.innerHTML = getWindString(windSpeedObjects[i])
-    speeddiv.classList.add("wind_speed");
-    arrowGrid.appendChild(speeddiv);
-
-    
-    let gustdiv = document.createElement("div");
-    windGustObjects.push(buildWindObject(data.wind_gust_spd));
-    gustdiv.innerHTML = getWindString(windGustObjects[i]);
-    arrowGrid.appendChild(gustdiv);
-
-    let windDirection = document.createElement("div");
-    windDirection.innerHTML = `${data.wind_cdir}`; 
-    arrowGrid.appendChild(windDirection);
-
-    })
-);
-
-
-fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => response.json()).then(data =>
-    {
-
-        let tideInfo = data.values;
-
-        // filter out times not in sunlight hours
-        tideInfo = tideInfo.filter(t => t.time.substring(11,13) >= 6 && t.time.substring(11,13) <= 18);
-        // create new array of objects containing tide info for one day
-        let days = [];
-        let index = 1;
-
-        //sorting the daylight hours into each day
-        while(tideInfo.length > 1)
-        {
-            if (tideInfo[index] != null && tideInfo[0].time.substring(0,10) == tideInfo[index].time.substring(0,10))
-            {
-            index++;
-            }
-            else
-            {
-            days.push(tideInfo.splice(0, index));
-            index = 0;
-            }
-        }
-
-        if(tideInfo.length > 0)
-        {
-            days = days.concat([[tideInfo[0]]]);
-        }
-
-        //outputting the data to the webpage
-        days.forEach(day =>
-        {
-            if (day[0].time.substring(0,10) == formatDate(testSaturday(new Date())) || day[0].time.substring(0,10) == formatDate(testSunday(new Date())) || day[0].time.substring(0,10) == getToday())
-            {
-                console.log(day[0]);
-            }
-        });
-    });
-    
-
-
-
-
+    }));
 
 
  //testing out a function that shows the Saturday and Saturday in console
@@ -114,6 +48,9 @@ function testSunday(date){
     let sunday = date.getDate() - (date.getDay() -1) + 6;
     return new Date(date.setDate(sunday));
 }
+    dt = new Date(); 
+    //console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
+    //console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun Jun 19
 
 function getToday() {
     const today = new Date();

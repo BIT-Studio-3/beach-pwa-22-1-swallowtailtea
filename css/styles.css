@@ -301,10 +301,26 @@ input[type="radio"]:checked {
 
 #arrowgrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    width: 40%;
+    border-radius: 40px;
+    outline: 4px groove #1C6EA4;
+    outline-offset: 20px;
+    margin-left: 20px;
 }
 
+.arrow1 { 
+    grid-area: 1 / 1 / 2 / 5;
+    justify-items: center;
+    font-size:xx-large;
+    font-weight: bold; 
+}
+
+.arrowgh2 {
+    font-size: large;
+    font-weight: bold;
+}
 
 .inputgridholder {
     grid-template-columns: repeat(2, 1fr);
