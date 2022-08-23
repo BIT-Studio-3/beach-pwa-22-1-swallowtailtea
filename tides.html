@@ -6,6 +6,26 @@ title: Tide Calendar
 <h1 id="calendarHeading">{{ title }} for</h1>
 
 <div class="calendar">
+
+<button onclick="changeColorTheme()">Toggle dark mode</button>
+
+<script>
+let isDarkMode = false;
+function changeColorTheme(currentTheme) {
+    if(isDarkMode == true /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+        isDarkMode = false;
+        let a = document.getElementsByClassName( "darkmode" );
+        [...a].forEach( x => x.className += " lightmode" );
+        [...a].forEach( x => x.classList.remove("darkmode") );
+    }
+    else{
+        isDarkMode = true;
+        let a = document.getElementsByClassName( "lightmode" );
+        [...a].forEach( x => x.className += " darkmode" );
+        [...a].forEach( x => x.classList.remove("lightmode") );
+    }
+}
+</script>
     
 </div>
 

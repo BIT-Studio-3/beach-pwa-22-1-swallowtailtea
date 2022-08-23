@@ -5,6 +5,7 @@
 :root {
     --form-control-color: #599bb3;
     --font-family: sans-serif;
+
 }
 
 /* Used to make the sizing uniform for any device which is on using the radio buttons */
@@ -57,7 +58,6 @@
 .darkmode input[type="radio"]:checked {
     background-color: white;
 }
-
 
 
 
@@ -441,11 +441,6 @@ i:hover{
 
 /* Calendar code */
 
-:root{
-    --main-bg-colour: #D5F9DE;
-    --main-brand-colour: #8FA6CB;
-    --main-splash-colour: #7D84B2;
-}
 
 .calendar{
     height: max-content;
