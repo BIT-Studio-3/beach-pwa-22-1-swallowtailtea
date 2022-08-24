@@ -139,18 +139,19 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         
         let div = document.createElement("div");
         let max = today.max()
-        div.innerHTML = max;
+        div.innerHTML = max +"m";
         console.log(div)
         tidegrid.appendChild(div);
 
         let tmindiv = document.createElement("div");
         let min = today.min()
-        tmindiv.innerHTML = min;
+        tmindiv.innerHTML = min +"m";
         tidegrid.appendChild(tmindiv);
 
         let tcdiv = document.createElement("div");
         let tchange = max - min
-        tcdiv.innerHTML = tchange.toFixed(2);
+        tcdiv.innerHTML = tchange.toFixed(2) +"m";
+        tcdiv.classList.add("green");
         tidegrid.appendChild(tcdiv);
 
         //saturday div
@@ -160,17 +161,19 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
 
         let sdiv = document.createElement("div");
         let smax = saturday.max()
-        sdiv.innerHTML = smax;
+        sdiv.innerHTML = smax +"m";
         tidegrid.appendChild(sdiv);
 
         let smindiv = document.createElement("div");
         let smin = saturday.min()
-        smindiv.innerHTML = smin;
+        smindiv.innerHTML = smin +"m";
         tidegrid.appendChild(smindiv);
 
         let satcdiv = document.createElement("div");
         let satchange = smax - smin
-        satcdiv.innerHTML = satchange.toFixed(2);
+        satcdiv.innerHTML = satchange.toFixed(2) +"m";
+        satcdiv.classList.add("green");
+
         tidegrid.appendChild(satcdiv);
 
         //sunday tide append
@@ -180,19 +183,18 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
 
         let sunmdiv = document.createElement("div");
         let sunmax = sunday.max()
-        sunmdiv.innerHTML = sunmax;
-        console.log(div)
+        sunmdiv.innerHTML = sunmax +"m";
         tidegrid.appendChild(sunmdiv);
 
         let sunmin = document.createElement("div");
         let sumin = sunday.min()
-        sunmin.innerHTML = sumin;
+        sunmin.innerHTML = sumin +"m";
         tidegrid.appendChild(sunmin);
 
         let suchange = document.createElement("div");
         let sundaychange = sunmax - sumin
-        suchange.innerHTML = sundaychange.toFixed(2);
-        console.log(sundaychange);
+        suchange.innerHTML = sundaychange.toFixed(2) +"m";
+        suchange.classList.add("green");
         tidegrid.appendChild(suchange);
 
        

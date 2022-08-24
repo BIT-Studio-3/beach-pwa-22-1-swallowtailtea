@@ -293,13 +293,21 @@ input[type="radio"]:checked::before {
 }
 
 .flex {
-    display: flex;
+    display:flex;
+    width: 60%;
+    margin: auto;
 }
+
+
 
 input[type="radio"]:checked {
 
     background-color: black;
     /*background-color: #8a2be2;*/
+}
+
+.green{
+    color: green;
 }
 
 #arrowgrid {
@@ -413,6 +421,17 @@ cursor: pointer;
 @media screen and (max-width: 641px){
     .nav-header{
         font-size: 1.2rem;
+    }
+
+    .flex{
+        flex-direction:column;
+        margin: auto;
+        margin-bottom: 200px;
+        width: 130%;
+    }
+    #tidegrid{
+        position: relative;
+        top: 80px;
     }
 }
 
