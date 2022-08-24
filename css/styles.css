@@ -314,11 +314,16 @@ input[type="radio"]:checked {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    width: 40%;
+    width: 70%;
     border-radius: 40px;
     outline: 4px groove #1C6EA4;
     outline-offset: 20px;
     margin-left: 20px;
+    padding: 30px;
+}
+
+#arrowgrid div{
+    padding-bottom: 5px;
 }
 
 .arrow1 { 
@@ -338,12 +343,18 @@ input[type="radio"]:checked {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    width: 40%;
+    width: 70%;
     border-radius: 40px;
     outline: 4px groove #1C6EA4;
     outline-offset: 20px;
     margin-left: 60px;
+    padding: 30px;
 }
+
+#tidegrid div{
+    padding-bottom: 5px;
+}
+
 
 .inputgridholder {
     grid-template-columns: repeat(2, 1fr);
@@ -354,6 +365,7 @@ input[type="radio"]:checked {
  .inputgridholder ul {
     display: block;
 } 
+
 
 
 .form-control + .form-control {

@@ -6,7 +6,8 @@
 let arrowGrid = document.querySelector("#arrowgrid");
  let highTideObjects = [];
  let lowTideObjects = [];
- let windSpeedsObjects = [];
+ let windSpeedObjects = [];
+ let windGustObjects = [];
  let winddirObjects = [];
  let saturday = [];
  let sunday = [];
@@ -17,12 +18,12 @@ let heads = ["Date","Speed", "Gust", "Direction"]
 let theads = ["Date", "High", "Low", "Change"]
 
 let hdiv = document.createElement("div");
-hdiv.innerHTML = "Wind Forecast";
+hdiv.innerHTML = "Wind";
 hdiv.classList.add("arrow1");
 arrowGrid.append(hdiv);
 
 let tdiv = document.createElement("div");
-tdiv.innerHTML = "Tide Forecast";
+tdiv.innerHTML = "Tide";
 tdiv.classList.add("arrow1");
 tidegrid.append(tdiv);
 
@@ -41,7 +42,7 @@ for (let index = 0; index < theads.length; index++) {
     tidegrid.appendChild(div);
 }
 
-fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=c8f6822e6fb74710b512e86525e1112e')
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=c824463538944250bbf1cbe97119b604')
 .then(response => response.json())
 .then(response =>         
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
@@ -173,7 +174,6 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         let satchange = smax - smin
         satcdiv.innerHTML = satchange.toFixed(2) +"m";
         satcdiv.classList.add("green");
-
         tidegrid.appendChild(satcdiv);
 
         //sunday tide append
@@ -195,6 +195,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         let sundaychange = sunmax - sumin
         suchange.innerHTML = sundaychange.toFixed(2) +"m";
         suchange.classList.add("green");
+
         tidegrid.appendChild(suchange);
 
        
