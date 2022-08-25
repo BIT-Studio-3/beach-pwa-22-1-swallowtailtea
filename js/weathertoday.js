@@ -25,3 +25,12 @@ document.getElementById("Wind Direction").innerHTML = Wind_Direction;
 document.getElementById("Wind Speed").innerHTML = Wind_Speed;
 document.getElementById("Cloud Coverage").innerHTML = Cloud_Coverage;
 })
+
+
+
+fetch("https://api.weatherbit.io/v2.0/history/hourly?lat=-45.874&lon=170.503&start_date=2022-08-25&end_date=2022-08-25&tz=local&key=c85da2b1e276414da98bb90531c73e60&include=minutely")
+.then(res => res.json())
+.then(data => { 
+    console.log(data);
+ 
+})
