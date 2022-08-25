@@ -106,7 +106,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     })
     console.log(lowHigh)
     console.log(data.values);
-    for(let i = 0; i <= 30; i++)
+    for(let i = 1; i <= 31; i++)
     {
         let square = document.createElement("div");
         let tidedata1 = document.createElement("div");
