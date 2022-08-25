@@ -119,7 +119,6 @@ h1{
     font-family: var(--font-family);
 
     font-size: 35px;
-    margin-right: 45px;
 }
 
 p{
@@ -319,14 +318,15 @@ input[type="radio"]:checked {
 
 
 .inputgridholder {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
     grid-row-gap: 0px;
-
 }
  .inputgridholder ul {
     display: block;
+    padding: 0%;
 } 
 
 
