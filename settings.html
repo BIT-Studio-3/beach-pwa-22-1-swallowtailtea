@@ -42,6 +42,38 @@ title: Settings
         </ul>
     </div>
 
+    <div>
+        <ul>
+            <h2 style= "text-align: left;">Theme</h2>
+
+            <form action="">
+            <label class="form-control" onclick="changeColorTheme('light')">
+                <input type="radio" name="radio" id=" " checked />
+                Light Mode
+            </label>
+            <label class="form-control" onclick="changeColorTheme('dark')">
+                <input type="radio" name="radio" id=" "  />
+                Dark Mode
+            </label>
+            </form>
+        </ul>
+    </div>
+
+    <script>
+    function changeColorTheme(desiredTheme ) {
+        if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+            let a = document.getElementsByClassName( "darkmode" );
+            [...a].forEach( x => x.className += " lightmode" );
+            [...a].forEach( x => x.classList.remove("darkmode") );
+        }
+        else{
+            let a = document.getElementsByClassName( "lightmode" );
+            [...a].forEach( x => x.className += " darkmode" );
+            [...a].forEach( x => x.classList.remove("lightmode") );
+        }
+    }
+    </script>
+
     
 <!--
     <div>
