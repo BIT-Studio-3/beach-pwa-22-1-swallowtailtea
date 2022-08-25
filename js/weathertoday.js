@@ -5,13 +5,23 @@ fetch("http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f69462320562
 .then(res => res.json())
 .then(data => { 
     console.log(data.current);
-    console.log("wind gust is " + data.current.gust_kph + " kph");
-    console.log("The current temp is " + data.current.temp_c + "C");
-    console.log("It feels like " + data.current.feelslike_c + "C");
-    console.log("You have a line of site of " + data.current.vis_km + "km");
-    console.log("The wind is coming in at a " + data.current.wind_degree + " degree angle")
-    console.log("The wind direction is " + data.current.wind_dir)
-    console.log("The wind speed is " + data.current.wind_kph + " kph")
-    console.log("The cloud coverage is " + data.current.cloud + "%")
+    Gust = ("Wind gust is " + data.current.gust_kph + " kph");
+    Current_Temp = ("The current temp is " + data.current.temp_c + "C");
+    Feels_Like = ("It feels like " + data.current.feelslike_c + "C");
+    Line_Of_Site =("You have a line of site of " + data.current.vis_km + "km");
+    Wind_Angle = ("The wind is coming in at a " + data.current.wind_degree + " degree angle")
+    Wind_Direction = ("The wind direction is " + data.current.wind_dir)
+    Wind_Speed = ("The wind speed is " + data.current.wind_kph + " kph")
+    Cloud_Coverage = ("The cloud coverage is " + data.current.cloud + "%")
 
+
+
+document.getElementById("Gust").innerHTML = Gust;
+document.getElementById("Current Temp").innerHTML = Current_Temp;
+document.getElementById("Feels Like").innerHTML = Feels_Like;
+document.getElementById("Line Of Site").innerHTML = Line_Of_Site;
+document.getElementById("Wind Angle").innerHTML = Wind_Angle;
+document.getElementById("Wind Direction").innerHTML = Wind_Direction;
+document.getElementById("Wind Speed").innerHTML = Wind_Speed;
+document.getElementById("Cloud Coverage").innerHTML = Cloud_Coverage;
 })
