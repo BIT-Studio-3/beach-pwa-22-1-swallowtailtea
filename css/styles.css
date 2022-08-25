@@ -548,6 +548,10 @@ i:hover{
     opacity: 0.5;
 }
 
+.inner_grid .todayDate{
+    border: 1px solid black;
+}
+
 @keyframes to-top {
     0% {
         transform: translateY(100%);

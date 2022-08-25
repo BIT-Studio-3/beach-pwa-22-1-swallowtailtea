@@ -79,14 +79,14 @@ const month_name = today.toLocaleDateString('default', { month: 'long'});
 month.innerHTML = month_name;
 month.classList.add("div_month");
 
-let day = today.getDate();
-
-console.log(day);
-
-
 let inner_grid = document.createElement("div");
 inner_grid.classList.add("inner_grid");
 
+let todayDate = document.createElement("div");
+const day = today.getDate();
+todayDate.innerHTML = day;
+todayDate.classList.add("today_date");
+console.log(todayDate);
 
 calendar.append(month,inner_grid);
 
