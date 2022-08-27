@@ -47,18 +47,62 @@ title: Settings
             <h2 style= "text-align: left;">Theme</h2>
 
             <form action="">
-            <label class="form-control" onclick="changeColorTheme('light')">
-                <input type="radio" name="radio" id=" " checked />
+            <label class="form-control">
+                <input type="radio" name="radio" id="check" onclick="changeStatus()"></input>
                 Light Mode
             </label>
-            <label class="form-control" onclick="changeColorTheme('dark')">
-                <input type="radio" name="radio" id=" "  />
+            <label class="form-control">
+                <input type="radio" name="radio" id="check" onclick="changeStatus()"></input>
                 Dark Mode
             </label>
+
+            <div style="display: flex;flex-direction: row;">
+                <p style="margin: 0;">Activate Dark Mode:</p>
+                <input type="checkbox" id="check" onclick="changeStatus()"></input>
+            </div>
             </form>
         </ul>
     </div>
 
+    <script>
+        //We're going to use "check" to get the ckeckbox element
+        const check = document.getElementById("check")
+
+        //If darkMode doesn’t exist in the LocalStorage, create it. False by default
+        if (localStorage.getItem('darkMode')===null){
+            localStorage.setItem('darkMode', "false");
+        }
+
+        //checkStatus is only called one time in the program, when you reload the page
+        //It gives the page it's default look, depening on waht darkMode is set to
+        checkStatus()
+
+        function checkStatus(){
+            if (localStorage.getItem('darkMode')==="true"){
+                check.checked = true;                                       //the checkbox is checked (if you load the page by default it isn’t)
+                document.getElementsByTagName("p")[0].style.color="#FFF";   //the thext in the p is set to white
+                document.body.style.backgroundColor = "#181A1B";            //the backgornd is set to a dark grey
+            }else{
+                check.checked = false;
+                document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes but for light mode
+                document.body.style.backgroundColor = "#FFF";
+            }
+        }
+
+        function changeStatus(){                                            //This function gets called every time the checkbox is clicked
+            if (localStorage.getItem('darkMode')==="true"){                 //if darkMode was active and this function is called it means the user now wants light
+                localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+                document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes as in checkStatus
+                document.body.style.backgroundColor = "#FFF";
+            } else{
+                localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+                document.getElementsByTagName("p")[0].style.color="#FFF";
+                document.body.style.backgroundColor = "#181A1B";
+            }
+        }
+    </script>
+
+    <!--
     <script>
     function changeColorTheme(desiredTheme ) {
         if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
@@ -72,7 +116,7 @@ title: Settings
             [...a].forEach( x => x.classList.remove("lightmode") );
         }
     }
-    </script>
+    </script>-->
 
     
 <!--
