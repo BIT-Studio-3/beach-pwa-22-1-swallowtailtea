@@ -131,72 +131,55 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         });
 
 
+        const makeDay = (type, inner, clazz) => {
+            let tidediv = document.createElement(type);
+            tidediv.innerHTML = inner;
+            if (clazz) 
+                tidediv.classList.add(clazz);            
+            
+            tidegrid.appendChild(tidediv); 
+        }
+
         let uniquedays = [...new Set(alldays)];
 
         //todays div
-        let tidediv = document.createElement("div");
-        tidediv.innerHTML = uniquedays[0];
-        tidegrid.appendChild(tidediv); 
+        makeDay("div", uniquedays[0]);
         
-        let div = document.createElement("div");
-        let max = today.max()
-        div.innerHTML = max +"m";
-        console.log(div)
-        tidegrid.appendChild(div);
+        let max = today.max() 
+        makeDay("div", max + "m")
+        
+        let min = today.min() 
+        makeDay("div", min + "m")
 
-        let tmindiv = document.createElement("div");
-        let min = today.min()
-        tmindiv.innerHTML = min +"m";
-        tidegrid.appendChild(tmindiv);
-
-        let tcdiv = document.createElement("div");
-        let tchange = max - min
-        tcdiv.innerHTML = tchange.toFixed(2) +"m";
-        tcdiv.classList.add("green");
-        tidegrid.appendChild(tcdiv);
+        let tchange = (max - min).toFixed(2) + "m"
+        makeDay("div", tchange, "green")        
 
         //saturday div
-        let satdiv = document.createElement("div");
-        satdiv.innerHTML = uniquedays[1];
-        tidegrid.appendChild(satdiv); 
+        makeDay("div", uniquedays[1])
 
-        let sdiv = document.createElement("div");
-        let smax = saturday.max()
-        sdiv.innerHTML = smax +"m";
-        tidegrid.appendChild(sdiv);
+        let smax = saturday.max();
+        makeDay("div", smax + "m")
 
-        let smindiv = document.createElement("div");
         let smin = saturday.min()
-        smindiv.innerHTML = smin +"m";
-        tidegrid.appendChild(smindiv);
 
-        let satcdiv = document.createElement("div");
-        let satchange = smax - smin
-        satcdiv.innerHTML = satchange.toFixed(2) +"m";
-        satcdiv.classList.add("green");
-        tidegrid.appendChild(satcdiv);
+        makeDay("div", smin + "m")
+
+        let satchange = (smax - smin).toFixed(2) + "m"
+        makeDay("div", satchange, "green")
+
 
         //sunday tide append
-        let sundiv = document.createElement("div");
-        sundiv.innerHTML = uniquedays[2];
-        tidegrid.appendChild(sundiv); 
+        makeDay("div", uniquedays[2])
 
-        let sunmdiv = document.createElement("div");
-        let sunmax = sunday.max()
-        sunmdiv.innerHTML = sunmax +"m";
-        tidegrid.appendChild(sunmdiv);
+        let sumax = sunday.max();
+        makeDay("div", sumax + "m")
 
-        let sunmin = document.createElement("div");
         let sumin = sunday.min()
-        sunmin.innerHTML = sumin +"m";
-        tidegrid.appendChild(sunmin);
 
-        let suchange = document.createElement("div");
-        let sundaychange = sunmax - sumin
-        suchange.innerHTML = sundaychange.toFixed(2) +"m";
-        suchange.classList.add("green");
+        makeDay("div", sumin + "m")
 
-        tidegrid.appendChild(suchange);
+        let sundaychange = (sumax - sumin).toFixed(2) + "m"
+        makeDay("div", sundaychange, "green")
 
        
     });
