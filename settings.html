@@ -48,75 +48,94 @@ title: Settings
 
             <form action="">
             <label class="form-control">
-                <input type="radio" name="radio" id="check" onclick="changeStatus()"></input>
+                <input class="theme" type="radio" name="radio" id="check" onclick="changeStatus('light')"></input>
                 Light Mode
             </label>
             <label class="form-control">
-                <input type="radio" name="radio" id="check" onclick="changeStatus()"></input>
+                <input class="theme" type="radio" name="radio" id="check" onclick="changeStatus('dark')"></input>
                 Dark Mode
             </label>
 
-            <div style="display: flex;flex-direction: row;">
-                <p style="margin: 0;">Activate Dark Mode:</p>
-                <input type="checkbox" id="check" onclick="changeStatus()"></input>
-            </div>
             </form>
         </ul>
     </div>
 
     <script>
         //We're going to use "check" to get the ckeckbox element
-        const check = document.getElementById("check")
-
+        //const check = document.getElementById("check");
+        const checks = document.getElementsByClassName("theme");
+        
         //If darkMode doesn’t exist in the LocalStorage, create it. False by default
         if (localStorage.getItem('darkMode')===null){
             localStorage.setItem('darkMode', "false");
         }
+        
 
         //checkStatus is only called one time in the program, when you reload the page
         //It gives the page it's default look, depening on waht darkMode is set to
         checkStatus()
 
+        
         function checkStatus(){
-            if (localStorage.getItem('darkMode')==="true"){
-                check.checked = true;                                       //the checkbox is checked (if you load the page by default it isn’t)
-                document.getElementsByTagName("p")[0].style.color="#FFF";   //the thext in the p is set to white
-                document.body.style.backgroundColor = "#181A1B";            //the backgornd is set to a dark grey
-            }else{
-                check.checked = false;
-                document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes but for light mode
-                document.body.style.backgroundColor = "#FFF";
+            
+            
+
+            if (localStorage.getItem('darkMode')==="false"){ //lightmode
+                checks[0].checked = true; 
+        
+                changeColorTheme('dark');
+            }else{ //darkmode
+               
+                checks[1].checked = true; 
+                changeColorTheme('light');
             }
+            
+       
+            console.log(checks[0].checked);
+            console.log(checks[1].checked);
         }
 
-        function changeStatus(){                                            //This function gets called every time the checkbox is clicked
+        function changeStatus(desiredTheme){                                            //This function gets called every time the checkbox is clicked
+            
+            if(desiredTheme == 'dark' ){
+                localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+                changeColorTheme('dark');
+            }
+            else if (desiredTheme == 'light'){
+                localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+                changeColorTheme('light');
+            }
+
+            /*
             if (localStorage.getItem('darkMode')==="true"){                 //if darkMode was active and this function is called it means the user now wants light
                 localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
-                document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes as in checkStatus
-                document.body.style.backgroundColor = "#FFF";
+                changeColorTheme('dark');
+                //document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes as in checkStatus
+                //document.body.style.backgroundColor = "#FFF";
+
             } else{
                 localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
-                document.getElementsByTagName("p")[0].style.color="#FFF";
-                document.body.style.backgroundColor = "#181A1B";
+                changeColorTheme('light');
+               // document.getElementsByTagName("p")[0].style.color="#FFF";
+                //document.body.style.backgroundColor = "#181A1B";
+            }*/
+        }
+
+        function changeColorTheme(desiredTheme ) {
+            if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+                let a = document.getElementsByClassName( "darkmode" );
+                [...a].forEach( x => x.className += " lightmode" );
+                [...a].forEach( x => x.classList.remove("darkmode") );
+            }
+            else{
+                let a = document.getElementsByClassName( "lightmode" );
+                [...a].forEach( x => x.className += " darkmode" );
+                [...a].forEach( x => x.classList.remove("lightmode") );
             }
         }
     </script>
 
-    <!--
-    <script>
-    function changeColorTheme(desiredTheme ) {
-        if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
-            let a = document.getElementsByClassName( "darkmode" );
-            [...a].forEach( x => x.className += " lightmode" );
-            [...a].forEach( x => x.classList.remove("darkmode") );
-        }
-        else{
-            let a = document.getElementsByClassName( "lightmode" );
-            [...a].forEach( x => x.className += " darkmode" );
-            [...a].forEach( x => x.classList.remove("lightmode") );
-        }
-    }
-    </script>-->
+
 
     
 <!--
