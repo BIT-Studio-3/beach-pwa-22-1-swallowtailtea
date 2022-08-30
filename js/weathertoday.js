@@ -25,9 +25,9 @@ function showPosition(position) {
       city = data.city;
       country = data.countryName;
 
-      location = country +" "+ city
+      location = country +" "+ city;
       document.getElementById("Location").innerHTML = location ;
-
+});
       fetch(
         `http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f6946232056220106&q=${city}&days=7&aqi=no&alerts=yes`
       )
@@ -57,5 +57,5 @@ function showPosition(position) {
           document.getElementById("Cloud Coverage").innerHTML = Cloud_Coverage;
           
         });
-    });
+    
 }
