@@ -481,7 +481,6 @@ i:hover{
     grid-template-columns: repeat(7, 1fr);
     width: fit-content;
     margin: auto;
-    border-top: 1px solid lightgray;
     padding-bottom: 30px;
 }
 
@@ -489,9 +488,6 @@ i:hover{
     display: flex;
     flex-direction: column;
     position: relative;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    border-left: 1px solid lightgray;
 }
 
 .monthNum{
@@ -579,12 +575,12 @@ i:hover{
   width: 200px;
   height: 70%;
   background-color: black;
+  position: absolute;
   color: #fff;
   border-radius: 10px;
   top: 30px;
   padding: 5px 0;
-  z-index: 1;
-  position: absolute;
+  z-index: 99;
 }
 
 .square:hover .square2{
