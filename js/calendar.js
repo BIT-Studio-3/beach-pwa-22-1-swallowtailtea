@@ -114,7 +114,10 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         tidedata1.classList.add("tidedata");
         tidedata2.classList.add("tidedata");
         square.classList.add("square");
-        square.innerHTML = `${i}`;
+        let monthNum = document.createElement("div");
+        monthNum.classList.add("monthNum");
+        monthNum.innerHTML = `${i}`;
+        //square.innerHTML = `${i}`;
         square.innerHTML += `<span></span>
         <span></span>
         <span></span>
@@ -143,7 +146,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     {
         square.classList.add("disabled");
     }
-    square.append(tidedata1,tidedata2);
+    square.append(monthNum,tidedata1,tidedata2);
     inner_grid.append(square);
     }
 

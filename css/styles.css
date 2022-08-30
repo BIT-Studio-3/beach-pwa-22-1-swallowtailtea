@@ -5,7 +5,6 @@
 :root {
     --form-control-color: #599bb3;
     --font-family: sans-serif;
-
 }
 
 /* Used to make the sizing uniform for any device which is on using the radio buttons */
@@ -38,6 +37,8 @@
 .darkmode a{
     color: white;
 }
+
+.darkm
 
 .lightmode div{
     color: black;
@@ -466,7 +467,6 @@ i:hover{
     justify-self: center;
     font-size: 30pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-style: italic;
 }
 
 
@@ -478,8 +478,18 @@ i:hover{
     margin: auto;
 }
 
-.inner_grid .square{
+.square{
+    display: flex;
+    flex-direction: column;
+}
+
+.monthNum{
     text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.inner_grid .square{
     background-color: var(--main-brand-colour);
     font-size: 14pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
