@@ -194,7 +194,7 @@ p{
 
 .chart_div > img{
     width: 100%;
-    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    /*box-shadow: 5px 5px 5px rgb(44, 33, 85);*/
     transition: 0.2s;
 }
 
@@ -423,7 +423,7 @@ i:hover{
 }
 /* tide calendar */
 .calendar_parent{
-    background:white;
+    /*background:white;*/
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -432,8 +432,8 @@ i:hover{
 }
 
 .calendar_child div{
-    border:1px solid black;
-    color: black;
+    border:1px solid;
+    /*color: black;*/
     padding-bottom: 10px;
     padding-top: 10px;
 }
