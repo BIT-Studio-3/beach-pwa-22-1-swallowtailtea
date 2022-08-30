@@ -11,24 +11,79 @@ title: Homepage
 <!--<button onclick="setColourTheme('currentTheme')">Toggle dark mode2</button>-->
 
 <script>
-let isDarkMode = false;
-function changeColorTheme(currentTheme) {
-    if(isDarkMode == true /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
-        isDarkMode = false;
-        let a = document.getElementsByClassName( "darkmode" );
-        [...a].forEach( x => x.className += " lightmode" );
-        [...a].forEach( x => x.classList.remove("darkmode") );
-    }
-    else{
-        isDarkMode = true;
-        let a = document.getElementsByClassName( "lightmode" );
-        [...a].forEach( x => x.className += " darkmode" );
-        [...a].forEach( x => x.classList.remove("lightmode") );
-    }
-}
+  //We're going to use "check" to get the ckeckbox element
+  //const check = document.getElementById("check");
+  const checks = document.getElementsByClassName("theme");
+  
+  //If darkMode doesn’t exist in the LocalStorage, create it. False by default
+  if (localStorage.getItem('darkMode')===null){
+      localStorage.setItem('darkMode', "false");
+  }
+  
+
+  //checkStatus is only called one time in the program, when you reload the page
+  //It gives the page it's default look, depening on waht darkMode is set to
+  checkStatus()
+
+  
+  function checkStatus(){
+      
+      
+
+      if (localStorage.getItem('darkMode')==="false"){ //lightmode
+  
+          changeColorTheme('dark');
+      }else{ //darkmode
+         
+          changeColorTheme('light');
+      }
+      
+ 
+      console.log(localStorage.darkMode);
+      console.log(checks[1].checked);
+  }
+
+  function changeStatus(desiredTheme){                                            //This function gets called every time the checkbox is clicked
+      
+      if(desiredTheme == 'dark' ){
+          localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+          changeColorTheme('dark');
+      }
+      else if (desiredTheme == 'light'){
+          localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+          changeColorTheme('light');
+      }
+
+      /*
+      if (localStorage.getItem('darkMode')==="true"){                 //if darkMode was active and this function is called it means the user now wants light
+          localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+          changeColorTheme('dark');
+          //document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes as in checkStatus
+          //document.body.style.backgroundColor = "#FFF";
+
+      } else{
+          localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+          changeColorTheme('light');
+         // document.getElementsByTagName("p")[0].style.color="#FFF";
+          //document.body.style.backgroundColor = "#181A1B";
+      }*/
+  }
+
+  function changeColorTheme(desiredTheme ) {
+      if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+          let a = document.getElementsByClassName( "darkmode" );
+          [...a].forEach( x => x.className += " lightmode" );
+          [...a].forEach( x => x.classList.remove("darkmode") );
+      }
+      else{
+          let a = document.getElementsByClassName( "lightmode" );
+          [...a].forEach( x => x.className += " darkmode" );
+          [...a].forEach( x => x.classList.remove("lightmode") );
+      }
+  }
 </script>
 
-<div id="weekendgrid" class="lightmode"></div>
+<div id="weekendgrid"></div>
 
 <!-- <script src="/js/tempwind.js"></script> -->
 
