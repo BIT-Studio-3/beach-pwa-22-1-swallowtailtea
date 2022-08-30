@@ -102,7 +102,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     wantedData.splice(116)
     let lowHigh = wantedData.filter(x =>{
         let wTime = new Date(x.time).getUTCHours()
-        return wTime >= 7 && wTime <= 16
+        return wTime >= 6 && wTime <= 18
     })
     console.log(lowHigh)
     console.log(data.values);
@@ -111,10 +111,14 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         let square = document.createElement("div");
         let tidedata1 = document.createElement("div");
         let tidedata2 = document.createElement("div");
+        let tidedata1Full = document.createElement("div");
+        let tidedata2Full = document.createElement("div");
+        let monthNum = document.createElement("div");
         tidedata1.classList.add("tidedata");
         tidedata2.classList.add("tidedata");
+        tidedata1Full.classList.add("tidedata1Full");
+        tidedata2Full.classList.add("tidedata2Full");
         square.classList.add("square");
-        let monthNum = document.createElement("div");
         monthNum.classList.add("monthNum");
         monthNum.innerHTML = `${i}`;
         //square.innerHTML = `${i}`;
@@ -134,10 +138,12 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
             {
                 
                 tidedata1.innerHTML = `${wHour}:${wMintue} - ${d.value}m`
+                tidedata1Full.innerHTML = `${wHour}:${wMintue}am - ${d.value}m`
             }
             else
             {
                 tidedata2.innerHTML = `${wHour}:${wMintue} - ${d.value}m`
+                tidedata2Full.innerHTML = `${wHour}:${wMintue}pm - ${d.value}m`
             }
         }
     })
@@ -146,7 +152,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     {
         square.classList.add("disabled");
     }
-    square.append(monthNum,tidedata1,tidedata2);
+    square.append(monthNum,tidedata1,tidedata2,tidedata1Full, tidedata2Full);
     inner_grid.append(square);
     }
 

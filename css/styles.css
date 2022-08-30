@@ -481,6 +481,7 @@ i:hover{
 .square{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .monthNum{
@@ -561,6 +562,24 @@ i:hover{
 .inner_grid .todayDate{
     border: 1px solid black;
 }
+
+.tidedata1Full, .tidedata2Full{
+  display: none;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.square:hover > .tidedata1Full .tidedata2Full{
+    display: flex;
+    flex-direction: column;
+}
+
 
 @keyframes to-top {
     0% {
