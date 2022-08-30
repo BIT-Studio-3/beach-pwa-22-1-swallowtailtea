@@ -563,21 +563,22 @@ i:hover{
     border: 1px solid black;
 }
 
-.tidedata1Full, .tidedata2Full{
+.square2{
   display: none;
-  width: 120px;
+  flex-direction: column;
+  width: 100%;
+  height: 70%;
   background-color: black;
   color: #fff;
-  text-align: center;
-  border-radius: 6px;
+  border-radius: 10px;
+  top: 30px;
   padding: 5px 0;
-  position: absolute;
   z-index: 1;
+  position: absolute;
 }
 
-.square:hover > .tidedata1Full .tidedata2Full{
+.square:hover .square2{
     display: flex;
-    flex-direction: column;
 }
 
 

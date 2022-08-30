@@ -108,6 +108,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     console.log(data.values);
     for(let i = 1; i <= 31; i++)
     {
+        let square2 = document.createElement("div");
         let square = document.createElement("div");
         let tidedata1 = document.createElement("div");
         let tidedata2 = document.createElement("div");
@@ -118,6 +119,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         tidedata2.classList.add("tidedata");
         tidedata1Full.classList.add("tidedata1Full");
         tidedata2Full.classList.add("tidedata2Full");
+        square2.classList.add("square2");
         square.classList.add("square");
         monthNum.classList.add("monthNum");
         monthNum.innerHTML = `${i}`;
@@ -152,7 +154,8 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     {
         square.classList.add("disabled");
     }
-    square.append(monthNum,tidedata1,tidedata2,tidedata1Full, tidedata2Full);
+    square2.append(tidedata1Full, tidedata2Full)
+    square.append(monthNum,tidedata1,tidedata2, square2);
     inner_grid.append(square);
     }
 
