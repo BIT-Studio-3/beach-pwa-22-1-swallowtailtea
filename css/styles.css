@@ -492,7 +492,7 @@ i:hover{
 
 .inner_grid .square{
     background-color: var(--main-brand-colour);
-    font-size: 14pt;
+    font-size: 16pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width:140px;
     height:90px;
@@ -566,7 +566,7 @@ i:hover{
 .square2{
   display: none;
   flex-direction: column;
-  width: 100%;
+  width: 200px;
   height: 70%;
   background-color: black;
   color: #fff;
@@ -580,7 +580,6 @@ i:hover{
 .square:hover .square2{
     display: flex;
 }
-
 
 @keyframes to-top {
     0% {
