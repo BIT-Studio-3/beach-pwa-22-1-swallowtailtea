@@ -11,8 +11,6 @@ title: Homepage
 <!--<button onclick="setColourTheme('currentTheme')">Toggle dark mode2</button>-->
 
 <script>
-  //We're going to use "check" to get the ckeckbox element
-  //const check = document.getElementById("check");
   const checks = document.getElementsByClassName("theme");
   
   //If darkMode doesn’t exist in the LocalStorage, create it. False by default
@@ -20,16 +18,9 @@ title: Homepage
       localStorage.setItem('darkMode', "false");
   }
   
-
-  //checkStatus is only called one time in the program, when you reload the page
-  //It gives the page it's default look, depening on waht darkMode is set to
   checkStatus()
 
-  
   function checkStatus(){
-      
-      
-
       if (localStorage.getItem('darkMode')==="false"){ //lightmode
   
           changeColorTheme('dark');
@@ -38,9 +29,7 @@ title: Homepage
           changeColorTheme('light');
       }
       
- 
       console.log(localStorage.darkMode);
-      console.log(checks[1].checked);
   }
 
   function changeStatus(desiredTheme){                                            //This function gets called every time the checkbox is clicked
@@ -53,20 +42,6 @@ title: Homepage
           localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
           changeColorTheme('light');
       }
-
-      /*
-      if (localStorage.getItem('darkMode')==="true"){                 //if darkMode was active and this function is called it means the user now wants light
-          localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
-          changeColorTheme('dark');
-          //document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes as in checkStatus
-          //document.body.style.backgroundColor = "#FFF";
-
-      } else{
-          localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
-          changeColorTheme('light');
-         // document.getElementsByTagName("p")[0].style.color="#FFF";
-          //document.body.style.backgroundColor = "#181A1B";
-      }*/
   }
 
   function changeColorTheme(desiredTheme ) {

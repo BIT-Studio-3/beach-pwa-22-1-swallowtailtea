@@ -152,22 +152,22 @@ p{
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    background-color: black;
+    /*background-color: black;*/
     margin: 0px 20px;
-    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    /*box-shadow: 5px 5px 5px rgb(44, 33, 85);*/
     margin-top: 20px;
 }
 
 .tide_module > h1{
-    color: white;
+    /*color: white;*/
     padding: 10px 0px 5px 0px;
-    text-shadow: 2px 2px 2px rgb(44, 33, 85);
+    /*text-shadow: 2px 2px 2px rgb(44, 33, 85);*/
 
 }
 
 .tide_module > h1 > span{
     padding-left: 10px;
-    color:#dafff3;
+    /*color:#dafff3;*/
 }
 
 .chart_container{
