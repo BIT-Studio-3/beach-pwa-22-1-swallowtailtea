@@ -5,7 +5,6 @@
 :root {
     --form-control-color: #599bb3;
     --font-family: sans-serif;
-
 }
 
 /* Used to make the sizing uniform for any device which is on using the radio buttons */
@@ -38,6 +37,8 @@
 .darkmode a{
     color: white;
 }
+
+.darkm
 
 .lightmode div{
     color: black;
@@ -458,44 +459,56 @@ i:hover{
     position: relative;
     background: var(--main-bg-colour);
     top: 100%;
-    width: 100%;
+    width: 90%;
     z-index: 1;
+    border: 7px solid lightgray;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
 }
 
 .div_month{
     justify-self: center;
     font-size: 30pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-style: italic;
+    padding: 15px;
 }
 
 
 .inner_grid{
-    padding: 20px;
+    padding: 0;
     display:grid;
     grid-template-columns: repeat(7, 1fr);
     width: fit-content;
     margin: auto;
+    padding-bottom: 30px;
+}
+
+.square{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.monthNum{
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .inner_grid .square{
-    text-align: center;
     background-color: var(--main-brand-colour);
-    font-size: 14pt;
+    opacity: 0.5;
+    font-size: 16pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width:140px;
     height:90px;
     cursor: pointer;
     animation: to-top 1s forwards;
-    
 }
 
 .inner_grid div span{
     position: absolute;
-}
-
-.inner_grid div:hover span{
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
 }
 
 .inner_grid div span:nth-child(1),
@@ -542,19 +555,6 @@ i:hover{
     right: 0;
 }
 
-.inner_grid div:hover span:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.inner_grid div:hover span:nth-child(3) {
-    transition-delay: 0.4s;
-}
-
-.inner_grid div:hover span:nth-child(4) {
-    transition-delay: 0.6s;
-}
-
-
 .inner_grid .tidedata{
     text-align: center;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -564,6 +564,25 @@ i:hover{
 .inner_grid .square.disabled{
     background-color: var(--main-bg-colour);
     opacity: 0.5;
+}
+
+
+.square2{
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  height: 70%;
+  background-color: black;
+  position: absolute;
+  color: #fff;
+  border-radius: 10px;
+  top: 30px;
+  padding: 5px 0;
+  z-index: 99;
+}
+
+.square:hover .square2{
+    display: flex;
 }
 
 @keyframes to-top {

@@ -3,9 +3,32 @@ layout: index.njk
 title: Tide Calendar
 ---
 
-<h1 id="calendarHeading">{{ title }} for</h1>
-
 <div class="calendar">
+<<<<<<< HEAD
+=======
+
+<p></p>
+<button onclick="changeColorTheme()">Toggle dark mode</button>
+<p></p>
+
+<script>
+let isDarkMode = false;
+function changeColorTheme(currentTheme) {
+    if(isDarkMode == true /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+        isDarkMode = false;
+        let a = document.getElementsByClassName( "darkmode" );
+        [...a].forEach( x => x.className += " lightmode" );
+        [...a].forEach( x => x.classList.remove("darkmode") );
+    }
+    else{
+        isDarkMode = true;
+        let a = document.getElementsByClassName( "lightmode" );
+        [...a].forEach( x => x.className += " darkmode" );
+        [...a].forEach( x => x.classList.remove("lightmode") );
+    }
+}
+</script>
+>>>>>>> a1894bd0f6e547c5428aaf1631c14367fcee8fd8
     
 </div>
 
