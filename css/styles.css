@@ -498,6 +498,7 @@ i:hover{
 
 .inner_grid .square{
     background-color: var(--main-brand-colour);
+    opacity: 0.5;
     font-size: 16pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width:140px;
@@ -565,9 +566,6 @@ i:hover{
     opacity: 0.5;
 }
 
-.inner_grid .todayDate{
-    border: 1px solid black;
-}
 
 .square2{
   display: none;

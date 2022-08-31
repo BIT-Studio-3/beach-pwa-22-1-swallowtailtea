@@ -86,7 +86,6 @@ let todayDate = document.createElement("div");
 const day = today.getDate();
 todayDate.innerHTML = day;
 todayDate.classList.add("today_date");
-console.log(todayDate);
 
 calendar.append(month,inner_grid);
 
