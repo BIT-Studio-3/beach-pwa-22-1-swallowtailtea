@@ -1,6 +1,3 @@
-/* const lat = -45.874;
-const lon = 170.503; */
-
 var x = document.getElementById("lat and long");
 
 function getLocation() {
@@ -55,7 +52,7 @@ function showPosition(position) {
           document.getElementById("Wind Direction").innerHTML = Wind_Direction;
           document.getElementById("Wind Speed").innerHTML = Wind_Speed;
           document.getElementById("Cloud Coverage").innerHTML = Cloud_Coverage;
-          
+
         });
-    
+
 }
