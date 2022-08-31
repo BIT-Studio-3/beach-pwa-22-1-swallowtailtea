@@ -1,32 +1,44 @@
 var x = document.getElementById("lat and long");
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+document.getElementById('Try')
+  .addEventListener('click', getLocation)
+
+  var x = document.getElementById("demo");
+
+  function getLocation(e) {
+    e.preventDefault();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
   }
-}
+  
+  function showPosition(position) {
+    const lat = position.coords.latitude
+    const lng = position.coords.longitude
 
-function showPosition(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
-  x.innerHTML = "Latitude: " + lat + "<br>Longitude: " + lon;
+    // Testing purposes
+ 
 
-  fetch(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+      fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      city = data.city;
-      country = data.countryName;
+      x.innerHTML = `${data.city}<br>
+      Latitude: ${lat}<br>
+      Longitude: ${lng}<br>`
+    
+  
 
-      location = country +" "+ city;
-      document.getElementById("Location").innerHTML = location ;
-});
+  
+
+
+
+
       fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f6946232056220106&q=${city}&days=7&aqi=no&alerts=yes`
+        `http://api.weatherapi.com/v1/forecast.json?key=0b5fdfe1f70b42f6946232056220106&q=${data.city}&days=7&aqi=no&alerts=yes`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -54,5 +66,5 @@ function showPosition(position) {
           document.getElementById("Cloud Coverage").innerHTML = Cloud_Coverage;
 
         });
-
-}
+})
+      }
