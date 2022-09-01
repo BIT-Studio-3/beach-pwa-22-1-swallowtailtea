@@ -19,7 +19,8 @@ for (let index = 0; index < titles.length; index++) {
 }
 
 
-fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=c8f6822e6fb74710b512e86525e1112e')
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=c824463538944250bbf1cbe97119b604')
+
 .then(response => response.json())
 .then(response =>         
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
