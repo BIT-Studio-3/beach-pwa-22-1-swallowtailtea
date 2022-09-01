@@ -11,7 +11,7 @@ function tide_Calendar()
     fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => response.json()).then(data =>
     {
 
-
+        console.log(data);
         let tideInfo = data.values;
 
         // filter out times not in sunlight hours
@@ -48,6 +48,7 @@ function tide_Calendar()
 
             let dayHeading = document.createElement("h3");
             dayHeading.innerText = day[0].time.substring(0,10);
+            console.log(dayHeading);'[-p0i98'
             dayLi.append(dayHeading);
             day.forEach(time =>
                 {
@@ -55,7 +56,7 @@ function tide_Calendar()
                     let tide = time.value;
                     timeHeading.classList.add("tide_listing");
                     timeHeading.innerText = "Time " + time.time.substring(11,16) + " || " + "Tide height " + tide + "M";
-
+                    console.log(timeHeading);
                     dayLi.append(timeHeading);
                 });
             ul.append(dayLi);
