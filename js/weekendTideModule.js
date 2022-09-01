@@ -7,6 +7,7 @@ function buildTideModule(location, requestedDays)
     
     let tideModule = document.createElement("div");
     tideModule.classList.add("tide_module");
+    
 
     let locationHeading = document.createElement("h1");
     let locationSpan = document.createElement("span");

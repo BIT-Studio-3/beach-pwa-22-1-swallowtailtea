@@ -119,7 +119,6 @@ h1{
     font-family: var(--font-family);
 
     font-size: 35px;
-    margin-right: 45px;
 }
 
 p{
@@ -153,22 +152,22 @@ p{
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    background-color: black;
+    /*background-color: black;*/
     margin: 0px 20px;
-    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    /*box-shadow: 5px 5px 5px rgb(44, 33, 85);*/
     margin-top: 20px;
 }
 
 .tide_module > h1{
-    color: white;
+    /*color: white;*/
     padding: 10px 0px 5px 0px;
-    text-shadow: 2px 2px 2px rgb(44, 33, 85);
+    /*text-shadow: 2px 2px 2px rgb(44, 33, 85);*/
 
 }
 
 .tide_module > h1 > span{
     padding-left: 10px;
-    color:#dafff3;
+    /*color:#dafff3;*/
 }
 
 .chart_container{
@@ -195,7 +194,7 @@ p{
 
 .chart_div > img{
     width: 100%;
-    box-shadow: 5px 5px 5px rgb(44, 33, 85);
+    /*box-shadow: 5px 5px 5px rgb(44, 33, 85);*/
     transition: 0.2s;
 }
 
@@ -373,13 +372,15 @@ input[type="radio"]:checked {
 
 
 .inputgridholder {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
  .inputgridholder ul {
     display: block;
+    padding: 0%;
 } 
 
 
@@ -490,7 +491,7 @@ i:hover{
 }
 /* tide calendar */
 .calendar_parent{
-    background:white;
+    /*background:white;*/
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -499,8 +500,8 @@ i:hover{
 }
 
 .calendar_child div{
-    border:1px solid black;
-    color: black;
+    border:1px solid;
+    /*color: black;*/
     padding-bottom: 10px;
     padding-top: 10px;
 }
