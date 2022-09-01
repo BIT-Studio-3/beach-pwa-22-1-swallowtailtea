@@ -308,6 +308,13 @@ input[type="radio"]:checked::before {
     transform: scale(1);
 }
 
+.flex {
+    display:flex;
+    width: 60%;
+    margin: auto;
+}
+
+
 
 input[type="radio"]:checked {
 
@@ -315,7 +322,54 @@ input[type="radio"]:checked {
     /*background-color: #8a2be2;*/
 }
 
+.green{
+    color: green;
+}
 
+#arrowgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 70%;
+    border-radius: 40px;
+    outline: 4px groove #1C6EA4;
+    outline-offset: 20px;
+    margin-left: 20px;
+    padding: 30px;
+}
+
+#arrowgrid div{
+    padding-bottom: 5px;
+}
+
+.arrow1 { 
+    grid-area: 1 / 1 / 2 / 5;
+    justify-items: center;
+    font-size:xx-large;
+    font-weight: bold; 
+}
+
+.arrowgh2 {
+    font-size: large;
+    font-weight: bold;
+    display: flexbox;
+}
+
+#tidegrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 70%;
+    border-radius: 40px;
+    outline: 4px groove #1C6EA4;
+    outline-offset: 20px;
+    margin-left: 60px;
+    padding: 30px;
+}
+
+#tidegrid div{
+    padding-bottom: 5px;
+}
 
 
 .inputgridholder {
@@ -323,11 +377,11 @@ input[type="radio"]:checked {
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 50%;
     grid-row-gap: 0px;
-
 }
  .inputgridholder ul {
     display: block;
 } 
+
 
 
 .form-control + .form-control {
@@ -395,6 +449,19 @@ cursor: pointer;
 @media screen and (max-width: 641px){
     .nav-header{
         font-size: 1.2rem;
+    }
+
+    .flex{
+        flex-direction:column;
+        margin: auto;
+        margin-bottom: 200px;
+        width: 130%;
+    }
+    #tidegrid{
+        position: relative;
+        top: 80px;
+        margin-left: 20px;
+
     }
 }
 
