@@ -7,72 +7,63 @@ title: Homepage
 
 <h1>Weather Dashboard</h1>
 
-<!--<button onclick="changeColorTheme()">Toggle dark mode</button>-->
-<button onclick="setColourTheme('currentTheme')">Toggle dark mode2</button>
-
 <script>
-let isDarkMode = false;
-function changeColorTheme(currentTheme) {
-    if(isDarkMode == true /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
-        isDarkMode = false;
-        let a = document.getElementsByClassName( "darkmode" );
-        [...a].forEach( x => x.className += " lightmode" );
-        [...a].forEach( x => x.classList.remove("darkmode") );
-    }
-    else{
-        isDarkMode = true;
-        let a = document.getElementsByClassName( "lightmode" );
-        [...a].forEach( x => x.className += " darkmode" );
-        [...a].forEach( x => x.classList.remove("lightmode") );
-    }
-}
+  const checks = document.getElementsByClassName("theme");
+  
+  //If darkMode doesn’t exist in the LocalStorage, create it. False by default
+  if (localStorage.getItem('darkMode')===null){
+      localStorage.setItem('darkMode', "false");
+  }
+  
+  checkStatus()
+
+  function checkStatus(){
+      if (localStorage.getItem('darkMode')==="false"){ //lightmode
+  
+          changeColorTheme('dark');
+      }else{ //darkmode
+         
+          changeColorTheme('light');
+      }
+      
+      console.log(localStorage.darkMode);
+  }
+
+  function changeStatus(desiredTheme){                                            //This function gets called every time the checkbox is clicked
+      
+      if(desiredTheme == 'dark' ){
+          localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+          changeColorTheme('dark');
+      }
+      else if (desiredTheme == 'light'){
+          localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+          changeColorTheme('light');
+      }
+  }
+
+  function changeColorTheme(desiredTheme ) {
+      if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+          let a = document.getElementsByClassName( "darkmode" );
+          [...a].forEach( x => x.className += " lightmode" );
+          [...a].forEach( x => x.classList.remove("darkmode") );
+      }
+      else{
+          let a = document.getElementsByClassName( "lightmode" );
+          [...a].forEach( x => x.className += " darkmode" );
+          [...a].forEach( x => x.classList.remove("lightmode") );
+      }
+  }
 </script>
 
-<div id="weekendgrid" class="lightmode"></div>
+<div id="weekendgrid"></div>
 
-
-<div class="inputgridholder lightmode">
-    <div>
-        <ul>
-            <h2 style= "text-align: left;">Temperature</h2>
-            <form action="">
-                <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'celsius')">
-                    <input type="radio" name="radio" id="celsius" checked />
-                    Celsius
-                </label>
-                <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'fahrenheit')" >
-                    <input type="radio" name="radio" id="fahrenheit" />
-                    Fahrenheit     
-                </label>
-                </form>
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <h2 style= "text-align: left;">Wind</h2>
-
-            <form action="">
-            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'kmph')" >
-                <input type="radio" name="radio" id="kmph" checked />
-                Kilometers Per Hour
-            </label>
-            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'mps')" >
-                <input type="radio" name="radio" id="mps"  />
-                Meters Per Second
-            </label>
-            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
-                <input type="radio" name="radio" id="knot"  />
-                Knots
-            </label>
-            </form>
-        </ul>
-    </div>
-</div>
 
 <!-- <script src="/js/tempwind.js"></script> -->
 
-
-
+<div class="flex">
+    <div id = "arrowgrid"></div>
+    <div id = "tidegrid"></div>
+</div>
 <!-- Set the currently selected units to be checked -->
 <script>
 document.querySelectorAll("input").forEach(r =>
@@ -90,8 +81,8 @@ document.querySelectorAll("input").forEach(r =>
 
 
 
-<script src="/js/weatheroutlook.js"></script>
-<script src="/js/weathertoday.js"></script>
 
+<script src="/js/weathertoday.js"></script>
+<script src="/js/dashboard.js"></script>
 
 
