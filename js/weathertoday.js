@@ -26,7 +26,7 @@ document.getElementById('Try')
   )
     .then((res) => res.json())
     .then((data) => {
-      x.innerHTML = `${data.city}<br>
+      x.innerHTML = `${data.countryName} <br> ${data.city} <br>
       Latitude: ${lat}<br>
       Longitude: ${lng}<br>`
     
