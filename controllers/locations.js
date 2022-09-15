@@ -21,3 +21,7 @@ const getLocation = async (req, res) => {
         })
     }
 }; 
+
+export{
+    getLocation
+}
