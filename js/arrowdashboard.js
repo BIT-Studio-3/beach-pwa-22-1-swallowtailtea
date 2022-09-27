@@ -1,82 +1,39 @@
-// const options = { 
-//     method: 'GET', 
-//     headers: { 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com', 'X-RapidAPI-Key': '1965ab000emsh3a33d23ec75627ep1864f5jsn8bc810fd95ac' } };
+// const rotate = [22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247, 270, 292.5, 315, 337.5 ]
+// const compassarr = ["NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"] 
 
-let body = document.querySelector("body");
-let weekendGrid = document.querySelector("#weekendgrid");
-let highTemperatureObjects = [];
-let lowTemperatureObjects = [];
-let windSpeedObjects = [];
-let windGustObjects = [];
-// console.log(getToday())
-// console.log(formatDate(testSunday(new Date())))
-let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
-for (let index = 0; index < titles.length; index++) {
+// const compRotate = (compass) => {
+//     for (let i = 0; i < compass.length; i++) {
+//         if (compassarr[i] == compass) {
+//             document.querySelector("#weatherarrow").style.transform = `"rotate(${rotate[i]}360deg)"`;
+//         }       
+//     }
+// }
+
+let arrowGrid = document.querySelector("#arrowgrid");
+ let highTideObjects = [];
+ let lowTideObjects = [];
+ let windSpeedsObjects = [];
+ let winddirObjects = [];
+
+let heads = ["Tide High", "Tide Low", "Wind Speed", "Direction"]
+
+for (let index = 0; index < heads.length; index++) {
     let div = document.createElement("div");
-    div.innerHTML = titles[index];
-    weekendGrid.appendChild(div);
+    div.innerHTML = heads[index];
+    arrowGrid.appendChild(div);
 }
 
 
-fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=c824463538944250bbf1cbe97119b604')
-
+fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key=2f9b7e299e6e464c990c58f364cf96f9')
 .then(response => response.json())
 .then(response =>         
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
 
+        console.log(data);
+        //saturday grid
 
-    //date that needs to be formatted to say the day
-
-    let datetime = document.createElement("div");
-    datetime.innerHTML = reformatDate(data.datetime);
-    weekendGrid.appendChild(datetime);
-
-    
-    // weather conditions, like partly cloudy or patchy rain
-    let conditions = document.createElement("div");
-    conditions.innerHTML = `${data.weather.description}`;
-    weekendGrid.appendChild(conditions);
-
-    //chance of precipitation
-    let chanceofRain = document.createElement("div");
-    chanceofRain.innerHTML = `${data.pop}` + " %";
-    weekendGrid.appendChild(chanceofRain);
-
-    // fetching  and appending the high temperature
-    let hightempdiv = document.createElement("div");
-    highTemperatureObjects.push(buildTemperatureObject(data.max_temp));
-    hightempdiv.innerHTML = getTemperatureString(highTemperatureObjects[i]);
-    hightempdiv.classList.add("high_temperature");
-    weekendGrid.appendChild(hightempdiv);
-
-    // fetching and appending low temperature
-    let lowtempdiv = document.createElement("div");
-    lowTemperatureObjects.push(buildTemperatureObject(data.min_temp));
-    lowtempdiv.innerHTML = getTemperatureString(lowTemperatureObjects[i]);
-    lowtempdiv.classList.add("low_temperature");
-    weekendGrid.appendChild(lowtempdiv);
-
-
-    let speeddiv = document.createElement("div");
-    windSpeedObjects.push(buildWindObject(data.wind_spd));
-    speeddiv.innerHTML = getWindString(windSpeedObjects[i])
-    speeddiv.classList.add("wind_speed");
-    weekendGrid.appendChild(speeddiv);
-
-    let gustdiv = document.createElement("div");
-
-
-    windGustObjects.push(buildWindObject(data.wind_gust_spd));
-    gustdiv.innerHTML = getWindString(windGustObjects[i])
-    gustdiv.classList.add("wind_gust");
-
-    weekendGrid.appendChild(gustdiv);
-
-    let windDirection = document.createElement("div");
-    windDirection.innerHTML = `${data.wind_cdir}`; 
-    weekendGrid.appendChild(windDirection);
 
     }));
 

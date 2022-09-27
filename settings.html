@@ -1,0 +1,175 @@
+---
+layout: index.njk 
+title: Settings
+---
+
+<h1>{{ title }}</h1>
+
+<div class="inputgridholder lightmode">
+    <div>
+        <ul>
+            <h2 style= "text-align: left;">Temperature</h2>
+            <form action="">
+                <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'celsius')">
+                    <input type="radio" name="radio" id="celsius" checked />
+                    Celsius
+                </label>
+                <label class="form-control" onclick="setCurrentUnit('currentTempUnit', 'fahrenheit')" >
+                    <input type="radio" name="radio" id="fahrenheit" />
+                    Fahrenheit     
+                </label>
+                </form>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <h2 style= "text-align: left;">Wind</h2>
+
+            <form action="">
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'kmph')" >
+                <input type="radio" name="radio" id="kmph" checked />
+                Kilometers Per Hour
+            </label>
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'mps')" >
+                <input type="radio" name="radio" id="mps"  />
+                Meters Per Second
+            </label>
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
+                <input type="radio" name="radio" id="knot"  />
+                Knots
+            </label>
+            </form>
+        </ul>
+    </div>
+
+    <div>
+        <ul>
+            <h2 style= "text-align: left;">Theme</h2>
+
+            <form action="">
+            <label class="form-control">
+                <input class="theme" type="radio" name="radio" id="check" onclick="changeStatus('light')"></input>
+                Light Mode
+            </label>
+            <label class="form-control">
+                <input class="theme" type="radio" name="radio" id="check" onclick="changeStatus('dark')"></input>
+                Dark Mode
+            </label>
+
+            </form>
+        </ul>
+    </div>
+
+    <script>
+        //We're going to use "check" to get the ckeckbox element
+        //const check = document.getElementById("check");
+        const checks = document.getElementsByClassName("theme");
+        
+        //If darkMode doesn’t exist in the LocalStorage, create it. False by default
+        if (localStorage.getItem('darkMode')===null){
+            localStorage.setItem('darkMode', "false");
+        }
+        
+
+        //checkStatus is only called one time in the program, when you reload the page
+        //It gives the page it's default look, depening on waht darkMode is set to
+        checkStatus()
+
+        
+        function checkStatus(){
+            
+            
+
+            if (localStorage.getItem('darkMode')==="false"){ //lightmode
+                checks[1].checked = true; 
+        
+                changeColorTheme('dark');
+            }else{ //darkmode
+               
+                checks[0].checked = true; 
+                changeColorTheme('light');
+            }
+            
+       
+            console.log(checks[0].checked);
+            console.log(checks[1].checked);
+        }
+
+        function changeStatus(desiredTheme){                                            //This function gets called every time the checkbox is clicked
+            
+            if(desiredTheme == 'dark' ){
+                localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+                changeColorTheme('dark');
+            }
+            else if (desiredTheme == 'light'){
+                localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+                changeColorTheme('light');
+            }
+
+            /*
+            if (localStorage.getItem('darkMode')==="true"){                 //if darkMode was active and this function is called it means the user now wants light
+                localStorage.setItem('darkMode', "false");                  //so we set it to false, to indicate we are in light mode
+                changeColorTheme('dark');
+                //document.getElementsByTagName("p")[0].style.color="black";  //same CSS changes as in checkStatus
+                //document.body.style.backgroundColor = "#FFF";
+
+            } else{
+                localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
+                changeColorTheme('light');
+               // document.getElementsByTagName("p")[0].style.color="#FFF";
+                //document.body.style.backgroundColor = "#181A1B";
+            }*/
+        }
+
+        function changeColorTheme(desiredTheme ) {
+            if(desiredTheme == 'light' /*currentTheme == "darkmode"*/){ //if dark mode change to light mode
+                let a = document.getElementsByClassName( "darkmode" );
+                [...a].forEach( x => x.className += " lightmode" );
+                [...a].forEach( x => x.classList.remove("darkmode") );
+            }
+            else{
+                let a = document.getElementsByClassName( "lightmode" );
+                [...a].forEach( x => x.className += " darkmode" );
+                [...a].forEach( x => x.classList.remove("lightmode") );
+            }
+        }
+    </script>
+
+
+
+    
+<!--
+    <div>
+        <ul>
+            <h2 style= "text-align: left;">Location</h2>
+
+            <form action="">
+
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'kmph')" >
+                <input type="radio" name="radio" id="kmph" checked />
+                Marina
+            </label>
+
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'mps')" >
+                <input type="radio" name="radio" id="mps"  />
+                Vayxhall Yacht Club
+            </label>
+
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
+                <input type="radio" name="radio" id="knot"  />
+                Port Chalmers
+            </label>
+
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
+                <input type="radio" name="radio" id="knot"  />
+                Broad Bay Boating
+            </label>
+
+            <label class="form-control" onclick="setCurrentUnit('currentWindUnit', 'knot')" >
+                <input type="radio" name="radio" id="knot"  />
+                Tairoa Head
+            </label>
+            </form>
+        </ul>
+    </div> -->
+</div>
