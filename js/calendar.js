@@ -104,8 +104,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         let wTime = new Date(x.time).getUTCHours()
         return wTime >= 6 && wTime <= 18
     })
-    console.log(lowHigh)
-    console.log(data.values);
+   
     for(let i = 1; i <= 31; i++)
     {
         let square2 = document.createElement("div");
@@ -161,3 +160,25 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
 
 })
 calendar.append(month,inner_grid);
+
+fetch('https://api.niwa.co.nz/tides/data?lat=-45.878761&long=170.502792&numberOfDays=30&startDate=2022-10-05&interval=10&apikey=xWhbCEFDBpnluLEGBoq5ZtujrcN4ZGRf')
+.then(response => response.json())
+.then(data => {
+    let index = 5;
+    console.log(data.values.find(element => element = 10))
+    console.log("==============================================================================")
+    console.log(data.values.find(element1 => element1 = 13))
+    console.log("==============================================================================")
+    console.log(`Using an index of ${index} the item returned is ${data.values.at(index)}`);
+    console.log("==============================================================================")
+    console.log(data)
+    console.log("==============================================================================")
+    console.log(data.values[2])
+
+    //This works for showing the tide at a specific time. at an interval of 10min
+    //so the idea is to have a loop function looping over the array to find the data that has the requested time from the user. 
+    // if the user has entered  "i want to see the tides at 6am to 6pm"
+    //the loop will have to look either by using a formula to find what where that requested time is in the array of data.
+    // or the loop can look in to the time variable and look at time im and check it to the user input variable. 
+
+})

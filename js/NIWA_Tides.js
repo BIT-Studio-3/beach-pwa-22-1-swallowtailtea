@@ -3,7 +3,7 @@
 // Please see locations.js for the available locations 
 
 const NIWA_URL = "https://api.niwa.co.nz/tides/"
-const NIWA_KEY = "&apikey=F8g5zg4vEey0dOJriP6XxU5o1RVbgeW3";
+const NIWA_KEY = "&apikey=xWhbCEFDBpnluLEGBoq5ZtujrcN4ZGRf";
 const NIWA_PATHS = {
     chart_png: "chart.png?",
     chart_svg: "chart.svg?",
