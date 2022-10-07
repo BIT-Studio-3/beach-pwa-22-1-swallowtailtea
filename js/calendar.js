@@ -175,19 +175,27 @@ fetch('https://api.niwa.co.nz/tides/data?lat=-45.878761&long=170.502792&numberOf
     console.log("==============================================================================")
     console.log(data.values[2].time)
 
+    
+
+    const start = "06:00";
+    const end = "18:00";
+
 
     for (let i = 0; i < data.values.length; i++) {
-        //console.log(data.values[i].time);
+       Time = data.values[i].time;
+       
+       if (Time.slice(11,16) == start) {
+            Date = Time.slice(0,10);
+            Time = Time.slice(11,16);
+           console.log("Date:", Date, "Time:", Time ) ;
+       }
+       else {
+           
+       }
+
         
-        if(data.values[2].time == "2021-10-05T13:00:00Z")
-    {
-        console.log("true")
+
     }
-    else
-    {
-        console.log("false1")
-    }
-}
     
 
     //This works for showing the tide at a specific time. at an interval of 10min
