@@ -104,7 +104,8 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         let wTime = new Date(x.time).getUTCHours()
         return wTime >= 6 && wTime <= 18
     })
-   
+    console.log(lowHigh)
+    console.log(data.values);
     for(let i = 1; i <= 31; i++)
     {
         let square2 = document.createElement("div");
@@ -183,15 +184,13 @@ fetch('https://api.niwa.co.nz/tides/data?lat=-45.878761&long=170.502792&numberOf
 
     for (let i = 0; i < data.values.length; i++) {
        Time = data.values[i].time;
-       
+       hight = data.values[i].value;
        if (Time.slice(11,16) == start) {
             Date = Time.slice(0,10);
             Time = Time.slice(11,16);
-           console.log("Date:", Date, "Time:", Time ) ;
+           console.log("Date:", Date, "Time:", Time, "Tide Hight", hight ) ;
        }
-       else {
-           
-       }
+       
 
         
 
