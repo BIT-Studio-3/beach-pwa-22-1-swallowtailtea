@@ -173,12 +173,31 @@ fetch('https://api.niwa.co.nz/tides/data?lat=-45.878761&long=170.502792&numberOf
     console.log("==============================================================================")
     console.log(data)
     console.log("==============================================================================")
-    console.log(data.values[2])
+    console.log(data.values[2].time)
+
+
+    for (let i = 0; i < data.values.length; i++) {
+        //console.log(data.values[i].time);
+        
+        if(data.values[2].time == "2021-10-05T13:00:00Z")
+    {
+        console.log("true")
+    }
+    else
+    {
+        console.log("false1")
+    }
+}
+    
 
     //This works for showing the tide at a specific time. at an interval of 10min
     //so the idea is to have a loop function looping over the array to find the data that has the requested time from the user. 
+    
+    
+    
+    
     // if the user has entered  "i want to see the tides at 6am to 6pm"
     //the loop will have to look either by using a formula to find what where that requested time is in the array of data.
     // or the loop can look in to the time variable and look at time im and check it to the user input variable. 
 
-})
+});
