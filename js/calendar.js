@@ -17,7 +17,9 @@ todayDate.classList.add("today_date");
 
 calendar.append(month, inner_grid);
 
-fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
+fetch(
+  "https://api.niwa.co.nz/tides/data?lat=-45.878761&long=170.502792&numberOfDays=30&startDate=2022-10-05&interval=10&apikey=xWhbCEFDBpnluLEGBoq5ZtujrcN4ZGRf"
+)
   .then((response) => response.json())
   .then((data) => {
     const start = "06:00";
@@ -26,9 +28,17 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let hightidedata = document.createElement("div");
     lowtidedata.classList.add("lowtidedata");
 
+    let wantedData = data.values;
+    wantedData.splice(0, 2);
+    wantedData.splice(116);
+    let lowHigh = wantedData.filter((x) => {
+      let wTime = new Date(x.time).getUTCHours();
+      return wTime >= 6 && wTime <= 18;
+    });
+
     //-----------------------------------------------
-   
-   //-------------------------------------------------
+
+    //-------------------------------------------------
 
     for (let i = 1; i <= 31; i++) {
       let square2 = document.createElement("div");
@@ -51,36 +61,45 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         <span></span>
         <span></span>
         <span></span>`;
-       for (let i = 0; i < data.values.length; i++) {
+
+      for (let i = 0; i < data.values.length; i++) {
         TimeStart = data.values[i].time;
         HightStart = data.values[i].value;
         if (TimeStart.slice(11, 16) == start) {
           Date = TimeStart.slice(0, 10);
           TimeStart = TimeStart.slice(11, 16);
-          console.log("Date:", Date, "Time:", TimeStart, "Tide Hight", HightStart);
+          console.log(
+            "Date:",
+            Date,
+            "Time:",
+            TimeStart,
+            "Tide Hight",
+            HightStart
+          );
+          tidedata1.innerHTML = `${TimeStart} - ${HightStart}m`;
+          tidedata1Full.innerHTML = `${TimeStart}am - ${HightStart}m`;
         }
       }
-
-      for (let i = 0; i < data.values.length; i++) {
-        TimeEnd = data.values[i].time;
-        HightEnd = data.values[i].value;
-        if (TimeEnd.slice(11, 16) == end) {
-          Date = TimeEnd.slice(0, 10);
-          TimeEnd = TimeEnd.slice(11, 16);
-          console.log("Date:", Date, "Time:", TimeEnd, "Tide Hight", HightEnd);
-        }
-      }
-        TimeStart = TimeStart.slice(11, 16);
-        console.log(TimeStart)
-        TimeEnd = TimeEnd.slice(11, 16);
-          if (tidedata1.innerHTML == "") {
-            tidedata1.innerHTML = `${TimeStart} - ${HightStart}m`;
-            tidedata1Full.innerHTML = `${TimeStart}am - ${HightStart}m`;
+      {
+        for (let i = 0; i < data.values.length; i++) {
+          TimeEnd = data.values[i].time;
+          HightEnd = data.values[i].value;
+          if (TimeEnd.slice(11, 16) == end) {
+            Date = TimeEnd.slice(0, 10);
+            TimeEnd = TimeEnd.slice(11, 16);
+            console.log(
+              "Date:",
+              Date,
+              "Time:",
+              TimeEnd,
+              "Tide Hight",
+              HightEnd
+            );
             tidedata2.innerHTML = `${TimeEnd} - ${HightEnd}m`;
             tidedata2Full.innerHTML = `${TimeEnd}pm - ${HightEnd}m`;
-          } 
-        
-
+          }
+        }
+      }
 
       if (i < day) {
         square.classList.add("disabled");
@@ -98,7 +117,7 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     let index = 5;
-   /*  console.log(data.values.find((element) => (element = 10)));
+    /*  console.log(data.values.find((element) => (element = 10)));
     console.log(
       "=============================================================================="
     );
@@ -128,11 +147,11 @@ fetch(
       if (TimeStart.slice(11, 16) == start) {
         Date = TimeStart.slice(0, 10);
         TimeStart = TimeStart.slice(11, 16);
-      //  console.log("Date:", Date, "Time:", TimeStart, "Tide Hight", HightStart);
+        //  console.log("Date:", Date, "Time:", TimeStart, "Tide Hight", HightStart);
       }
     }
 
-     for (let i = 0; i < data.values.length; i++) {
+    for (let i = 0; i < data.values.length; i++) {
       TimeEnd = data.values[i].time;
       HightEnd = data.values[i].value;
       if (TimeEnd.slice(11, 16) == end) {
@@ -141,7 +160,7 @@ fetch(
         //console.log("Date:", Date, "Time:", TimeEnd, "Tide Hight", HightEnd);
       }
     }
- 
+
     //This works for showing the tide at a specific time. at an interval of 10min
     //so the idea is to have a loop function looping over the array to find the data that has the requested time from the user.
 
