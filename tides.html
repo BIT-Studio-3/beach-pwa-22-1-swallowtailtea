@@ -7,6 +7,12 @@ title: Tide Calendar
     
 </div>
 
+<form id="UserTime">  
+    <label>AM:<input id="AM" name="AM" value="6:00"></label>
+    <label>PM:<input id="PM" name="PM" value="18:00"></label>
+    <input type="submit" value="Submit">
+  </form>
+  
 <script>
     const checks = document.getElementsByClassName("theme");
     
@@ -55,6 +61,8 @@ title: Tide Calendar
             [...a].forEach( x => x.classList.remove("lightmode") );
         }
     }
+
+    
 </script>
 
 <script src="/js/calendar.js"></script>

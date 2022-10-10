@@ -16,7 +16,28 @@ todayDate.innerHTML = day;
 todayDate.classList.add("today_date");
 
 calendar.append(month, inner_grid);
+  function getData(form) {
+    var formData = new FormData(form);
+  
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+  
+    console.log(Object.fromEntries(formData));
+    //put the data into two variables called AM and PM  
+    var AM = formData.get("AM");
+    var PM = formData.get("PM");
+    //console log the variables to see if they are working  
+    console.log(PM); 
+    console.log(AM);
 
+  }
+  
+  document.getElementById("UserTime").addEventListener("submit", function (event) {
+    event.preventDefault();
+    getData(event.target);
+  });
+  
 fetch(
   "https://api.niwa.co.nz/tides/data?lat=-45.878761&long=170.502792&numberOfDays=30&startDate=2022-10-05&interval=10&apikey=xWhbCEFDBpnluLEGBoq5ZtujrcN4ZGRf"
 )
@@ -65,39 +86,26 @@ fetch(
       for (let i = 0; i < data.values.length; i++) {
         TimeStart = data.values[i].time;
         HightStart = data.values[i].value;
+        TimeEnd = data.values[i].time;
+          HightEnd = data.values[i].value;
         if (TimeStart.slice(11, 16) == start) {
           Date = TimeStart.slice(0, 10);
           TimeStart = TimeStart.slice(11, 16);
-          console.log(
-            "Date:",
-            Date,
-            "Time:",
-            TimeStart,
-            "Tide Hight",
-            HightStart
-          );
           tidedata1.innerHTML = `${TimeStart} - ${HightStart}m`;
           tidedata1Full.innerHTML = `${TimeStart}am - ${HightStart}m`;
+         
         }
+        if (TimeEnd.slice(11, 16) == end) {
+            Date = TimeEnd.slice(0, 10);
+            TimeEnd = TimeEnd.slice(11, 16);
+             tidedata2.innerHTML = `${TimeEnd} - ${HightEnd}m`;
+          tidedata2Full.innerHTML = `${TimeEnd}pm - ${HightEnd}m`;
+          }
       }
       {
         for (let i = 0; i < data.values.length; i++) {
-          TimeEnd = data.values[i].time;
-          HightEnd = data.values[i].value;
-          if (TimeEnd.slice(11, 16) == end) {
-            Date = TimeEnd.slice(0, 10);
-            TimeEnd = TimeEnd.slice(11, 16);
-            console.log(
-              "Date:",
-              Date,
-              "Time:",
-              TimeEnd,
-              "Tide Hight",
-              HightEnd
-            );
-            tidedata2.innerHTML = `${TimeEnd} - ${HightEnd}m`;
-            tidedata2Full.innerHTML = `${TimeEnd}pm - ${HightEnd}m`;
-          }
+          
+          
         }
       }
 
@@ -168,3 +176,5 @@ fetch(
     //the loop will have to look either by using a formula to find what where that requested time is in the array of data.
     // or the loop can look in to the time variable and look at time im and check it to the user input variable.
   });
+
+
