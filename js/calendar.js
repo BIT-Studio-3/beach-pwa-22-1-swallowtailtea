@@ -55,9 +55,9 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         TimeStart = data.values[i].time;
         HightStart = data.values[i].value;
         if (TimeStart.slice(11, 16) == start) {
-          //Date = TimeStart.slice(0, 10);
+          Date = TimeStart.slice(0, 10);
           TimeStart = TimeStart.slice(11, 16);
-          //console.log("Date:", Date, "Time:", TimeStart, "Tide Hight", HightStart);
+          console.log("Date:", Date, "Time:", TimeStart, "Tide Hight", HightStart);
         }
       }
 
@@ -65,23 +65,20 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
         TimeEnd = data.values[i].time;
         HightEnd = data.values[i].value;
         if (TimeEnd.slice(11, 16) == end) {
-         // Date = TimeEnd.slice(0, 10);
+          Date = TimeEnd.slice(0, 10);
           TimeEnd = TimeEnd.slice(11, 16);
-         // console.log("Date:", Date, "Time:", TimeEnd, "Tide Hight", HightEnd);
+          console.log("Date:", Date, "Time:", TimeEnd, "Tide Hight", HightEnd);
         }
       }
-        TimeStart1 = TimeStart.slice(11, 16);
+        TimeStart = TimeStart.slice(11, 16);
         console.log(TimeStart)
-        TimeEnd1 = TimeEnd.slice(11, 16);
+        TimeEnd = TimeEnd.slice(11, 16);
           if (tidedata1.innerHTML == "") {
-            tidedata1.innerHTML = `${TimeStart1} - ${HightStart}m`;
-            tidedata1Full.innerHTML = `${TimeStart1}am - ${HightStart}m`;
-            
-          } else {
-            tidedata2.innerHTML = `${TimeEnd1} - ${HightEnd}m`;
-            tidedata2Full.innerHTML = `${TimeEnd1}pm - ${HightEnd}m`;
-            
-          }
+            tidedata1.innerHTML = `${TimeStart} - ${HightStart}m`;
+            tidedata1Full.innerHTML = `${TimeStart}am - ${HightStart}m`;
+            tidedata2.innerHTML = `${TimeEnd} - ${HightEnd}m`;
+            tidedata2Full.innerHTML = `${TimeEnd}pm - ${HightEnd}m`;
+          } 
         
 
 
