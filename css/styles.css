@@ -43,12 +43,10 @@
     border-color: black;
 }*/
 
-
 .darkmode div{
     /*color: white;*/
     border-color: white;
 }
-
 
 .lightmode input[type="radio"]:checked {
     background-color: black;
@@ -58,10 +56,7 @@
     background-color: white;
 }
 
-
-
 body{
-
     font-family: var(--font-family);
     /* background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg'); */
     background-size: cover;
@@ -488,26 +483,8 @@ cursor: pointer;
 i:hover{
     background-color: #f1f1f1;   
 }
-/* tide calendar */
-.calendar_parent{
-    /*background:white;*/
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding-right: 5%; 
-    text-align: center; 
-}
-
-.calendar_child div{
-    border:1px solid;
-    /*color: black;*/
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
 
 /* Calendar code */
-
 
 :root{
     --main-brand-colour: gray;
@@ -672,40 +649,21 @@ i:hover{
         opacity: 1;
     }
 }
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 900px) {
     *{
         box-sizing: border-box;
     }
 
     .calendar{
-        display:grid; /*changes the image column from flex to grid to fit page */
-        grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: 400px;
-        grid-gap:25px;
-        height: 50%; 
+        display: flex;
+        flex-wrap: wrap;
+        height: 650px;
+        column-gap: 25px;
     }
 
     .inner_grid{
-        max-width: 680px;
-        align-items: flex-start;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+        flex-direction: row;
     }
 
-    .inner_grid .square{
-        padding: 10px;
-        font-size: 10pt;
-        width: max-content;
-        height: max-content;
         
-    }
-
-    .inner_grid .tidedata{
-        text-align:center;
-        font-size: 10pt;
-    }
-
-    .inner_grid .square.disabled{
-        font-style: opacity 0.5;
-    }
 }
