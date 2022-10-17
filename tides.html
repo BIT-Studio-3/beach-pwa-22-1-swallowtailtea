@@ -13,7 +13,7 @@ title: Tide Calendar
     <input type="submit" value="Submit">
   </form> -->
    
-AM
+ AM
   <form>
     <select id="UserTimeAM">
       <option value="01:00"selected="selected">1 AM</option>
@@ -28,6 +28,7 @@ AM
       <option value="10:00">10 AM</option>
       <option value="11:00">11 AM</option>
       <option value="00:00">12 AM</option>
+      <input type="submit" value="Submit" onclick="return call()">
     </select>
   </form>
 PM
@@ -45,8 +46,9 @@ PM
       <option value="22:00">10 PM</option>
       <option value="23:00">11 PM</option>
       <option value="24:00">12 PM</option>
+      <input type="submit" value="Submit" onclick="return call()">
     </select>
-  </form>
+  </form> 
   
 <script>
     const checks = document.getElementsByClassName("theme");
