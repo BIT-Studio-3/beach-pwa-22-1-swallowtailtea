@@ -37,17 +37,15 @@
 .darkmode a{
     color: white;
 }
-
-.darkm
-
+/*
 .lightmode div{
     color: black;
     border-color: black;
-}
+}*/
 
 
 .darkmode div{
-    color: white;
+    /*color: white;*/
     border-color: white;
 }
 
@@ -639,12 +637,24 @@ i:hover{
   flex-direction: column;
   width: 200px;
   height: 70%;
-  background-color: black;
+  /*background-color: black;*/
   position: absolute;
-  color: #fff;
+  /*color: #fff;*/
   border-radius: 10px;
   top: 30px;
   padding: 5px 0;
+}
+
+.lightmode .square2{
+    background-color: black;
+    color: white;
+
+}
+
+.darkmode .square2{
+    background-color: white;
+    color: black;
+
 }
 
 .square:hover .square2{
