@@ -16,8 +16,8 @@ todayDate.innerHTML = day;
 todayDate.classList.add("today_date");
 
 calendar.append(month,inner_grid);
-
- var AM
+var AM 
+var Temp
 var PM
 var e = document.getElementById("UserTimeAM");
 function onChangeAM() {
@@ -25,11 +25,13 @@ function onChangeAM() {
   var text = e.options[e.selectedIndex].text;
   console.log(AM, text);
  
-   AM = e.value;
-   
+   Temp = e.value;
+   localStorage.setItem(AM, Temp);
 }
 e.onchangeAM = onChangeAM;
 onChangeAM();
+localStorage.getItem(AM, Temp);
+console.log(Temp)
 
 var e = document.getElementById("UserTimePM");
 function onChangePM() {
@@ -116,7 +118,7 @@ fetch(
         
     lowHigh.forEach(d =>{
     let wDate = new Date(d.time).getUTCDate();
-    var AM_Hour = AM;
+    var AM_Hour = Temp;
     var PM_Hour = PM;
     //AM_Hour = ("0" + AM_Hour);
 
