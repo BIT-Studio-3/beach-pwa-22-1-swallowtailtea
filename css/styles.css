@@ -669,10 +669,10 @@ i:hover{
 
     .calendar{
         display:grid; /*changes the image column from flex to grid to fit page */
-       /* grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: 400px;
         grid-gap:25px;
-        height: 50%; */
+        height: 50%; 
     }
 
     .inner_grid{
