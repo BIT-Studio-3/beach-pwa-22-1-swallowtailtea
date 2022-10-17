@@ -17,7 +17,27 @@ todayDate.classList.add("today_date");
 
 calendar.append(month,inner_grid);
 
-  function getData(form) {
+
+var e = document.getElementById("UserTimeAM");
+function onChangeAM() {
+  var AM = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(AM, text);
+  //call();
+}
+e.onchangeAM = onChangeAM;
+onChangeAM();
+
+var e = document.getElementById("UserTimePM");
+function onChangePM() {
+  var PM = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(PM, text);
+ // call();
+}
+e.onchangePM = onChangePM;
+onChangePM();
+  /* function getData(form) {
     var formData = new FormData(form);
   
     for (var pair of formData.entries()) {
@@ -38,10 +58,13 @@ calendar.append(month,inner_grid);
     event.preventDefault();
     getData(event.target);
     call();
-  });
+  }); */
   
+
+
 //make a funtion called call
-function call(){
+//function call(){
+  
 fetch(
   buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
 
@@ -86,8 +109,8 @@ fetch(
         <span></span>`
     lowHigh.forEach(d =>{
     let wDate = new Date(d.time).getUTCDate();
-    let AM_Hour = AM.value;
-    let PM_Hour = PM.value;
+    let AM_Hour = AM;
+    let PM_Hour = PM;
     AM_Hour = ("0" + AM_Hour);
 
      
@@ -118,7 +141,7 @@ fetch(
     }
 
 })
-}
+//}
 calendar.append(month,inner_grid);
 
 
