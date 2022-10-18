@@ -27,6 +27,20 @@ tdiv.innerHTML = "Tide";
 tdiv.classList.add("arrow1");
 tidegrid.append(tdiv);
 
+// Alert which displays to the user if the tides are too high
+const talert = (n, day) => {
+    if (n >= 3) {
+        window.alert("BEWARE. Tide warning in place for the day" + day + " With predictions of tides " + n + " Meters high")
+    }
+}
+
+// Alert which displays to the user if the wind is too high
+
+const walert = (n) => {
+    if (n >= 3) {
+        window.alert("BEWARE. Wind warning in place  With predictions of winds upwards of " + n + " Meters")
+    }
+}
 
 for (let index = 0; index < heads.length; index++) {
     let div = document.createElement("div");
@@ -70,6 +84,8 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
     let windDirection = document.createElement("div");
     windDirection.innerHTML = `${data.wind_cdir}`; 
     arrowGrid.appendChild(windDirection);
+
+    walert(windSpeedObjects[i])
 
     })
 );
@@ -181,7 +197,12 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         let sundaychange = (sumax - sumin).toFixed(2) + "m"
         makeDay("div", sundaychange, "green")
 
-       
+       talert(max, uniquedays[0])
+       talert(smax, uniquedays[1])
+       talert(sumax, uniquedays[2])
+
+
+
     });
     
 
