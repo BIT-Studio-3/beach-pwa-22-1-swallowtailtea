@@ -502,13 +502,11 @@ i:hover{
     border-radius: 60px;
     position: relative;
     background: var(--main-bg-colour);
-    top: 100%;
-    width: 90%;
+    width: 100%;
     z-index: 1;
     border: 7px solid lightgray;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
+    margin: auto;
+    margin-top: 50px;
 }
 
 .div_month{
@@ -521,11 +519,12 @@ i:hover{
 
 .inner_grid{
     padding: 0;
-    display:grid;
-    grid-template-columns: repeat(7, 1fr);
     width: fit-content;
     margin: auto;
     padding-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
 }
 
 .square{
@@ -649,21 +648,27 @@ i:hover{
         opacity: 1;
     }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
     *{
         box-sizing: border-box;
     }
 
-    .calendar{
+    /* .calendar{
         display: flex;
         flex-wrap: wrap;
         height: 650px;
         column-gap: 25px;
-    }
+    } */
 
     .inner_grid{
-        flex-direction: row;
+        grid-template-columns: repeat(5,1fr);
+    }     
+}
+@media only screen and (max-width: 700px) {
+    *{
+        box-sizing: border-box;
     }
-
-        
+    .inner_grid{
+        grid-template-columns: repeat(3,1fr);
+    }    
 }
