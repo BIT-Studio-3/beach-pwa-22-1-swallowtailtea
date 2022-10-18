@@ -537,6 +537,7 @@ i:hover{
     text-align: center;
     align-items: center;
     padding-bottom: 10px;
+    font-weight: 500;
 }
 
 .inner_grid .square{
@@ -671,4 +672,14 @@ i:hover{
     .inner_grid{
         grid-template-columns: repeat(3,1fr);
     }    
+}
+
+@media only screen and (max-width: 430px) {
+    *{
+        box-sizing: border-box;
+    }
+    .inner_grid{
+        grid-template-columns: repeat(2,1fr);
+    }    
+
 }
