@@ -24,12 +24,13 @@ var PM;
 var e = document.getElementById("UserTimeAM");
 function onChangeAM() {
   var text = e.options[e.selectedIndex].text;
-  // console.log(AM, text);
-  temp = e.value;
-  console.log("hi" + e.value)
-  AM = temp.slice(1, 2);
+
+  temp1 = e.value;
+
+  AM = temp1.slice(1,2);
   
  console.log("AM: " + AM);
+ call();
 }
 e.onchangeAM = onChangeAM;
 onChangeAM();
@@ -38,14 +39,14 @@ onChangeAM();
 
 //--------------------------------------------------------------
 
-var e = document.getElementById("UserTimePM");
+var a = document.getElementById("UserTimePM");
 function onChangePM() {
-  var text = e.options[e.selectedIndex].text;
-
-  // console.log(PM, text);
-  PM = e.value;
+  var text = a.options[a.selectedIndex].text;
+temp2 = a.value;
+  PM = temp2.slice(1,2);
   
-  console.log("Cookie PM: " + PM);
+  console.log("PM: " + PM);
+  call();
 }
 e.onchangePM = onChangePM;
 onChangePM();
@@ -59,16 +60,14 @@ onChangePM();
     var formData = new FormData(form);
   
     for (var pair of formData.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
+
     }
-  
-    console.log(Object.fromEntries(formData));
+
     //put the data into two variables called AM and PM  
     var AM = formData.get("AM");
     var PM = formData.get("PM");
     //console log the variables to see if they are working  
-    console.log(PM); 
-    console.log(AM);
+
 
   }
   
@@ -80,9 +79,14 @@ onChangePM();
 
 //make a funtion called call that will call the function that will create the calendar
 
+function call() {
+
+
+
 fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
   .then((response) => response.json())
   .then((data) => {
+
     let lowtidedata = document.createElement("div");
     let hightidedata = document.createElement("div");
     lowtidedata.classList.add("lowtidedata");
@@ -90,14 +94,14 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let wantedData = data.values;
     wantedData.splice(0, 2);
     wantedData.splice(116);
-    //console.log(wantedData)
+
     let lowHigh = wantedData.filter((x) => {
     let wTime = new Date(x.time).getUTCHours();
-    let temp = 1
-   // onChangeAM(AM);
-      return wTime >= AM && wTime <= 5;
+    
+
+      return wTime >= AM && PM <= 13;
     });
-    //console.log(lowHigh)
+
     for (let i = 1; i <= 31; i++) {
       let square2 = document.createElement("div");
       let square = document.createElement("div");
@@ -151,5 +155,5 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
       inner_grid.append(square);
     }
   });
-
+}
 calendar.append(month, inner_grid);
