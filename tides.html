@@ -28,7 +28,7 @@ title: Tide Calendar
       <option value="10:00">10 AM</option>
       <option value="11:00">11 AM</option>
       <option value="00:00">12 AM</option>
-      <input type="submit" value="Submit" onclick="event.preventDefault(); onChangeAM()">
+     <!-- <input type="submit" value="Submit" onclick="event.preventDefault(); onChangeAM()">  -->
     </select>
   </form>
 PM
@@ -46,10 +46,11 @@ PM
       <option value="22:00">10 PM</option>
       <option value="23:00">11 PM</option>
       <option value="24:00">12 PM</option>
-      <input type="submit" value="Submit" onclick="event.preventDefault(); onChangePM()">
+      <input type="submit" value="Submit" onclick="event.preventDefault(); onChangePM(); onChangeAM();">
     </select>
   </form> 
   
+  <button onclick="reload();">reload</button>
 <script>
     const checks = document.getElementsByClassName("theme");
     

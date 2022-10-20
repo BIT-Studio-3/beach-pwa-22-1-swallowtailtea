@@ -30,10 +30,10 @@ function onChangeAM() {
   AM = temp1.slice(1,2);
   
  console.log("AM: " + AM);
- call();
+ //call();
 }
 e.onchangeAM = onChangeAM;
-onChangeAM();
+//onChangeAM();
 
 
 
@@ -49,8 +49,14 @@ temp2 = a.value;
   call();
 }
 e.onchangePM = onChangePM;
-onChangePM();
+//onChangePM();
 
+
+         function reload(){
+          location.reload();
+         }
+  
+  	
 
 
 
