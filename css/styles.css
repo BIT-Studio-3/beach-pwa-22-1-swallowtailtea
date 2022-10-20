@@ -37,11 +37,6 @@
 .darkmode a{
     color: white;
 }
-/*
-.lightmode div{
-    color: black;
-    border-color: black;
-}*/
 
 .darkmode div{
     /*color: white;*/
@@ -653,14 +648,6 @@ i:hover{
     *{
         box-sizing: border-box;
     }
-
-    /* .calendar{
-        display: flex;
-        flex-wrap: wrap;
-        height: 650px;
-        column-gap: 25px;
-    } */
-
     .inner_grid{
         grid-template-columns: repeat(5,1fr);
     }     
