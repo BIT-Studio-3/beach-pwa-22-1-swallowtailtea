@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/BIT-Studio-2/project-22-1-saitama-money#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1"
+    "@11ty/eleventy": "^1.0.1",
+    "netlify-cli": "^12.0.11"
   }
 }
