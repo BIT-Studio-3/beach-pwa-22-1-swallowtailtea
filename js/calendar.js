@@ -27,7 +27,7 @@ function onChangeAM() {
 
   temp1 = e.value;
 
-  AM = temp1.slice(1,2);
+  AM = temp1;
   
  console.log("AM: " + AM);
  //call();
@@ -43,7 +43,7 @@ var a = document.getElementById("UserTimePM");
 function onChangePM() {
   var text = a.options[a.selectedIndex].text;
 temp2 = a.value;
-  PM = temp2.slice(1,2);
+  PM = temp2;
   
   console.log("PM: " + PM);
   call();
@@ -105,7 +105,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let wTime = new Date(x.time).getUTCHours();
     
 
-      return wTime >= AM && wTime <= PM;
+      return wTime >= AM && wTime < PM;
       
     });
 
