@@ -105,7 +105,8 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let wTime = new Date(x.time).getUTCHours();
     
 
-      return wTime >= AM && PM <= 13;
+      return wTime >= AM && wTime <= PM;
+      
     });
 
     for (let i = 1; i <= 31; i++) {
