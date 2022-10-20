@@ -90,12 +90,6 @@ todayDate.classList.add("today_date");
 
 calendar.append(month,inner_grid);
 
-let am = 8;
-let pm = 11;
-
-var am1 = 8;
-var pm1 = 12;
-
 fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
 .then(response => response.json())
 .then(data => {
