@@ -38,19 +38,10 @@
     color: white;
 }
 
-.darkm
-
-.lightmode div{
-    color: black;
-    border-color: black;
-}
-
-
 .darkmode div{
-    color: white;
+    /*color: white;*/
     border-color: white;
 }
-
 
 .lightmode input[type="radio"]:checked {
     background-color: black;
@@ -60,10 +51,7 @@
     background-color: white;
 }
 
-
-
 body{
-
     font-family: var(--font-family);
     /* background-image: url('/img/vidar-nordli-mathisen-PJiv1ekeVZk-unsplash.jpg'); */
     background-size: cover;
@@ -490,23 +478,6 @@ cursor: pointer;
 i:hover{
     background-color: #f1f1f1;   
 }
-/* tide calendar */
-.calendar_parent{
-    /*background:white;*/
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding-right: 5%; 
-    text-align: center; 
-}
-
-.calendar_child div{
-    border:1px solid;
-    /*color: black;*/
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
 
 /* Calendar code */
 
@@ -526,13 +497,11 @@ i:hover{
     border-radius: 60px;
     position: relative;
     background: var(--main-bg-colour);
-    top: 100%;
-    width: 90%;
+    width: 100%;
     z-index: 1;
     border: 7px solid lightgray;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
+    margin: auto;
+    margin-top: 50px;
 }
 
 .div_month{
@@ -545,11 +514,12 @@ i:hover{
 
 .inner_grid{
     padding: 0;
-    display:grid;
-    grid-template-columns: repeat(7, 1fr);
     width: fit-content;
     margin: auto;
     padding-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
 }
 
 .square{
@@ -562,6 +532,7 @@ i:hover{
     text-align: center;
     align-items: center;
     padding-bottom: 10px;
+    font-weight: 500;
 }
 
 .inner_grid .square{
@@ -638,12 +609,24 @@ i:hover{
   flex-direction: column;
   width: 200px;
   height: 70%;
-  background-color: black;
+  /*background-color: black;*/
   position: absolute;
-  color: #fff;
+  /*color: #fff;*/
   border-radius: 10px;
   top: 30px;
   padding: 5px 0;
+}
+
+.lightmode .square2{
+    background-color: black;
+    color: white;
+
+}
+
+.darkmode .square2{
+    background-color: white;
+    color: black;
+
 }
 
 .square:hover .square2{
@@ -661,36 +644,29 @@ i:hover{
         opacity: 1;
     }
 }
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 1000px) {
     *{
         box-sizing: border-box;
     }
-
-    .calendar{
-        display: grid;
-    }
-
     .inner_grid{
-        max-width: 680px;
-        align-items: flex-start;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+        grid-template-columns: repeat(5,1fr);
+    }     
+}
+@media only screen and (max-width: 700px) {
+    *{
+        box-sizing: border-box;
     }
+    .inner_grid{
+        grid-template-columns: repeat(3,1fr);
+    }    
+}
 
-    .inner_grid .square{
-        padding: 10px;
-        font-size: 10pt;
-        width: max-content;
-        height: max-content;
-        
+@media only screen and (max-width: 430px) {
+    *{
+        box-sizing: border-box;
     }
+    .inner_grid{
+        grid-template-columns: repeat(2,1fr);
+    }    
 
-    .inner_grid .tidedata{
-        text-align:center;
-        font-size: 10pt;
-    }
-
-    .inner_grid .square.disabled{
-        font-style: opacity 0.5;
-    }
 }
