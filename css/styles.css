@@ -213,7 +213,6 @@ p{
 .dropbtn{
     /*color: rgb(138, 43, 226);
     background-color:#dafff3;*/
-    padding: 15px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -221,7 +220,6 @@ p{
 
 .dropdown{
     position: relative;
-    left: 2%;
     display: inline-block;
 }
 
@@ -693,4 +691,5 @@ i:hover{
     .inner_grid .square.disabled{
         font-style: opacity 0.5;
     }
+
 }
