@@ -29,7 +29,7 @@ tidegrid.append(tdiv);
 
 // Alert which displays to the user if the tides are too high
 const talert = (n, day) => {
-    if (n >= 3) {
+    if (n >= 2.3) {
         window.alert("BEWARE. Tide warning in place for the day" + day + " With predictions of tides " + n + " Meters high")
     }
 }
@@ -171,10 +171,13 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         makeDay("div", tchange, "green")        
 
         //saturday div
+
+        
         makeDay("div", uniquedays[1])
 
         let smax = saturday.max();
-        makeDay("div", smax + "m")
+        console.log(smax)
+        makeDay("div", 1 + "m")
 
         let smin = saturday.min()
 
