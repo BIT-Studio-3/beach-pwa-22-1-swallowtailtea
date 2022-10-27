@@ -22,16 +22,14 @@ z-index: -1;
 
 #main-menu {
 display: block;
-height: 100px;
+height: 80px;
 width: 100%;
-background-color: black;
 margin: 0px;  
 z-index: 9;
 padding: 0;
 }
 
 #main-menu ul {
-color: white;
 width: 100%;
 height: 100%;
 margin: 0px auto;
@@ -48,13 +46,11 @@ font-size: 2rem;
 }
 
 #main-menu a {
-color: white;
 font-size: 1.5rem;
 text-decoration: none;
 }
 
 #main-menu a:hover {
-text-decoration: underline;
 color: gray;
 }
 
@@ -75,11 +71,11 @@ padding: 0px;
 font-family: 'Cabin', Sans-serif;
 background: linear-gradient(
     to bottom, 
-    #000, #000 20%, 
+    grey, grey 20%, 
     transparent 20%, transparent 40%, 
-    #000 40%, #000 60%, 
+    grey 40%, grey 60%, 
     transparent 60%, transparent 80%, 
-    #000 80%, #000 100%
+    grey 80%, grey 100%
 );
 }
 
@@ -133,7 +129,7 @@ visibility: visible;
 opacity: 0.4;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
 #main-menu h1{
     display: none;
 }
