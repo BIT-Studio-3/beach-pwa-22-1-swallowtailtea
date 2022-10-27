@@ -139,6 +139,6 @@ opacity: 0.4;
     display: none;
 }
 #hamburger-menu {
-    display: inline;
+    display: inline-block;
 }
 }

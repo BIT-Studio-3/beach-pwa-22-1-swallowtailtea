@@ -10,7 +10,15 @@
             <li><a href="/tides">Tides</a></li>
             <li><a href="/detailed_Weather">Todays Weather</a></li>
             <li><a href="/tide_chart">Tide Chart</a></li>
-            <li><a href="/settings">Settings</a></li>        
+            <li><a href="/settings">Settings</a></li>      
+            <div class="dropdown">
+                <li>
+                    <button onclick="dropFunction()" id="select" class ="dropbtn lightmode">Locations 🡇
+                    </button>
+                </li>
+                <div id="Dropdown" class="dropdown-content lightmode">
+                </div> 
+            </div>  
         </ul>
     </nav>
 
@@ -30,15 +38,9 @@
 
 <div class = "overlay"></div> 
 
+<script src="/js/dropdown.js"></script>
+
 </header>
     
-    <script src="/js/dropdown.js"></script>
 
-                <!-- <div class="dropdown">
-                <li>
-                    <button onclick="dropFunction()" id="select">Locations 🡇
-                    </button>
-                </li>
-                <div id="Dropdown" class="dropdown-content lightmode">
-                </div> </div>
-                -->
+
