@@ -6,6 +6,7 @@ margin: 0px;
 font-size: 20px;
 }
 
+/*
 .overlay{
 position: fixed;
 top: 0;
@@ -18,7 +19,7 @@ transition: opacity .35s, visibility .35s, height .35s;
 overflow: hidden;
 background: black;
 z-index: -1;
-}
+}*/
 
 #main-menu {
 display: block;
