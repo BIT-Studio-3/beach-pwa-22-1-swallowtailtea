@@ -38,19 +38,15 @@
     color: white;
 }
 
-.darkm
-
 .lightmode div{
     color: black;
     border-color: black;
 }
 
-
 .darkmode div{
     color: white;
     border-color: white;
 }
-
 
 .lightmode input[type="radio"]:checked {
     background-color: black;
@@ -59,8 +55,6 @@
 .darkmode input[type="radio"]:checked {
     background-color: white;
 }
-
-
 
 body{
 
@@ -71,32 +65,13 @@ body{
 }
 
 /*general display stuff*/
-nav, h1, h2, p, button, div{
+h1, h2, p, div{
     display: flex;
     align-items: center;
     justify-content: center;
     /*color: white; /*overall text colour*/
     
 }
-
-/*the nav bar itself */
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0.5% 0.5%;
-    font-size: 1.1rem;
-    height: 70px;
-}
-
-/* the website links */
-a{
-    margin: 2%;
-    outline: none;
-    text-decoration: none;
-}
-
-
 
 a:link.lightmode , a:visited.lightmode{
     color: black;
@@ -105,14 +80,6 @@ a:link.darkmode , a:visited.darkmode{
     color: white;
 }
 
-/* The website name that is in the nav bar */
-.nav-header{
-
-    font-family: var(--font-family);
-    font-size: 2rem;
-    font-weight: bold;
-    margin-right: 25%;
-}
 
 /* The titles for all the pages*/
 h1{
@@ -382,8 +349,6 @@ input[type="radio"]:checked {
     padding: 0%;
 } 
 
-
-
 .form-control + .form-control {
     margin-top: 0.5em;
 }
@@ -412,82 +377,6 @@ input[type="radio"]:checked {
 	top:1px;
 }
 
-i{
-display: flex;
-justify-content: center;
-align-items: center;
-position: relative;
-background-color: #deece8;
-/*color:rgb(138, 43, 226);*/
-border-radius: 10px;
-border: 2px solid grey;
-padding: 2px;
-width: 20px;
-cursor: pointer;
-}
-
-@media screen and (max-width: 1168px){
-    .nav-header{
-      font-size: 1.5rem;  
-    }
-}
-
-@media screen and (max-width: 900px){
-    .nav-header{
-        margin-right: 2%;
-        font-size: 1.4rem;
-    }
-}
-
-@media screen and (max-width: 770px){
-
-    nav, #select{
-        font-size: 0.9rem;
-    }
-}
-
-@media screen and (max-width: 641px){
-    .nav-header{
-        font-size: 1.2rem;
-    }
-
-    .flex{
-        flex-direction:column;
-        margin: auto;
-        margin-bottom: 200px;
-        width: 130%;
-    }
-    #tidegrid{
-        position: relative;
-        top: 80px;
-        margin-left: 20px;
-
-    }
-}
-
-@media screen and (max-width: 590px){
-    .nav-header{
-        font-size: 0.9rem;
-    }
-
-    nav, #select{
-        font-size: 0.8rem;
-    }
-}
-
-@media screen and (max-width: 445px){
-    .nav-header{
-        font-size: 0.8rem;
-    }
-
-    nav, #select{
-        font-size: 0.6rem;
-    }
-}
-
-i:hover{
-    background-color: #f1f1f1;   
-}
 /* tide calendar */
 .calendar_parent{
     /*background:white;*/
