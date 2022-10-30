@@ -66,9 +66,9 @@ title: Settings
     <form>
         <label for="startTime">Start time: </label>
         <input type="time1" class="AM" step="3600">
-        <button onclick="myFunction()">Try it</button>
-        <input type="time" class="PM" min="13:00" max="24:00">
         
+        <input type="time" id="PM" min="13:00" max="24:00">
+        <button onclick="myFunction()">Try it</button>
       </form>
     
     
@@ -78,7 +78,8 @@ title: Settings
         
 function myFunction() {
     event.preventDefault();
-    console.log(time);
+    var time3 = document.getElementById("PM")
+    console.log(time3.value);
 }
 
         //We're going to use "check" to get the ckeckbox element
