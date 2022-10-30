@@ -60,7 +60,27 @@ title: Settings
         </ul>
     </div>
 
+    
+    
+
+    <form>
+        <label for="startTime">Start time: </label>
+        <input type="time1" class="AM" step="3600">
+        <button onclick="myFunction()">Try it</button>
+        <input type="time" class="PM" min="13:00" max="24:00">
+        
+      </form>
+    
+    
+    
+
     <script>
+        
+function myFunction() {
+    event.preventDefault();
+    console.log(time);
+}
+
         //We're going to use "check" to get the ckeckbox element
         //const check = document.getElementById("check");
         const checks = document.getElementsByClassName("theme");
@@ -173,3 +193,6 @@ title: Settings
         </ul>
     </div> -->
 </div>
+
+<!-- add calender.js --> 
+<script src="js\calendar.js"></script>
