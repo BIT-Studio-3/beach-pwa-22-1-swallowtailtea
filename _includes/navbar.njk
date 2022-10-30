@@ -1,0 +1,46 @@
+<style>
+    {% include 'css/navbar.css' %}   
+</style>
+
+<header id = "header">
+    <nav id = "main-menu">
+        <ul>
+            <li><h1>The Docking Station</h1></li>
+            <li><a href="/">Homepage</a></li>
+            <li><a href="/tides">Tides</a></li>
+            <li><a href="/detailed_Weather">Todays Weather</a></li>
+            <li><a href="/tide_chart">Tide Chart</a></li>
+            <li><a href="/settings">Settings</a></li>      
+            <div class="dropdown">
+                <li>
+                    <button onclick="dropFunction()" id="select" class ="dropbtn lightmode">Locations 🡇
+                    </button>
+                </li>
+                <div id="Dropdown" class="dropdown-content lightmode">
+                </div> 
+            </div>  
+        </ul>
+    </nav>
+
+    <input type="checkbox" id="hamburger-input" class="burger-shower" />
+    <label id = "hamburger-menu" for ="hamburger-input">
+    <nav id = "sidebar-menu">
+        <h3>Menu</h3>
+            <ul>
+                <li><a href="/" class="lightmode_text">Homepage</a></li>
+                <li><a href="/tides" class="lightmode_text">Tides</a></li>
+                <li><a href="/detailed_Weather" class="lightmode_text">Todays Weather</a></li>
+                <li><a href="/tide_chart" class="lightmode_text">Tide Chart</a></li>
+                <li><a href="/settings" class="lightmode_text">Settings</a></li>
+            </ul>
+    </nav>
+    </label> 
+
+<div class = "overlay"></div> 
+
+<script src="/js/dropdown.js"></script>
+
+</header>
+    
+
+
