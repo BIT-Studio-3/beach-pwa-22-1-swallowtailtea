@@ -126,6 +126,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         //outputting the data to the webpage
         days.forEach(day =>
         {
+            
             for (let i = 0; i < day.length; i++) {
                 if (day[i].time.substring(0,10) == getToday()) {
                     alldays.push(reformatDate(day[i].time.substring(0,10)));
@@ -233,9 +234,7 @@ function getToday() {
     num = today.getDate();
     if (num < 10) num = "0" + num;
     num = `${today.getFullYear()}-${today.getMonth() + 1}-${num}`;
-    console.log('num', num)
-    //return "2022-10-31"
-    return `${today.getFullYear()}-${today.getMonth() + 1}-${num}`;
+    return num;
 }
 
 
