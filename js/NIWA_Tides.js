@@ -38,6 +38,6 @@ function buildNIWA_URL(path = NIWA_PATHS.data, locationObject = locations[0], da
     {
         urlQuery += `&interval=${interval}`;
     }
-    urlQuery += NIWA_KEY;
+    //urlQuery += NIWA_KEY;
     return urlQuery;
 }

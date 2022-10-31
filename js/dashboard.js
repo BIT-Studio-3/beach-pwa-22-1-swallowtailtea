@@ -61,12 +61,12 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
 .then(response =>         
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
-
     //date that needs to be formatted to say the day
-
+        console.log('data', data)
     let datetime = document.createElement("div");
     datetime.innerHTML = reformatDate(data.datetime);
     arrowGrid.appendChild(datetime);
+    console.log('data.datetime', data.datetime)
 
 
     let speeddiv = document.createElement("div");
@@ -171,21 +171,23 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
         makeDay("div", tchange, "green")        
 
         //saturday div
+        console.log('uniquedays', uniquedays)
 
         
         makeDay("div", uniquedays[1])
 
         let smax = saturday.max();
         console.log(smax)
-        makeDay("div", 1 + "m")
+        makeDay("div", smax + "m")
 
         let smin = saturday.min()
-
+    
         makeDay("div", smin + "m")
 
-        let satchange = (smax - smin).toFixed(2) + "m"
-        makeDay("div", satchange, "green")
+        let satchange = (smax - smin).toFixed(2) 
 
+        makeDay("div", satchange, "green")
+        
 
         //sunday tide append
         makeDay("div", uniquedays[2])
@@ -199,6 +201,8 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
 
         let sundaychange = (sumax - sumin).toFixed(2) + "m"
         makeDay("div", sundaychange, "green")
+        console.log('smin, smax, satchange', smin, smax, satchange)
+        console.log('smin, smax, sdunday', sumin, sumax, sundaychange)
 
        talert(max, uniquedays[0])
        talert(smax, uniquedays[1])
@@ -228,7 +232,10 @@ function getToday() {
     today.setDate(today.getDate() ); 
     num = today.getDate();
     if (num < 10) num = "0" + num;
-    return `${today.getFullYear()}-0${today.getMonth() + 1}-${num}`;
+    num = `${today.getFullYear()}-${today.getMonth() + 1}-${num}`;
+    console.log('num', num)
+    //return "2022-10-31"
+    return `${today.getFullYear()}-${today.getMonth() + 1}-${num}`;
 }
 
 
