@@ -1,5 +1,8 @@
 var x = document.getElementById("lat and long");
 
+  
+
+
 document.getElementById('Try')
   .addEventListener('click', getLocation)
 
@@ -67,4 +70,6 @@ document.getElementById('Try')
 
         });
 })
+
+
       }
