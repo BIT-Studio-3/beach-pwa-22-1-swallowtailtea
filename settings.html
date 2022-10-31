@@ -65,8 +65,7 @@ title: Settings
 
     <form>
         <label for="startTime">Start time: </label>
-        <input type="time1" class="AM" step="3600">
-        
+        <input type="time" id="AM" min="01:00" max="12:00">
         <input type="time" id="PM" min="13:00" max="24:00">
         <button onclick="myFunction()">Try it</button>
       </form>
@@ -78,8 +77,37 @@ title: Settings
         
 function myFunction() {
     event.preventDefault();
-    var time3 = document.getElementById("PM")
-    console.log(time3.value);
+    var TempPM = document.getElementById("PM")
+    var TempAM = document.getElementById("AM")
+    console.log(PM.value);
+    console.log(AM.value);
+    
+    localStorage.setItem("AM", TempAM.value);
+    //make a check for am and pm then send data to the tides page for prossing
+    // split TempAM.value and TempPM.value into hours and minutes and delete miniutes
+    Temp1Am = TempAM.value.split(":");
+    //set temp2AM to the first value of temp1AM
+    Temp2Am = Temp1Am[0];
+    console.log(Temp2Am);
+    //set temp2PM to the first value of temp1PM
+    Temp1Pm = TempPM.value.split(":");
+    Temp2Pm = Temp1Pm[0];
+    console.log(Temp2Pm);
+
+
+    //if TempPM.value is greater 12 and less or equal to 24 then set TempPM.value to local storage 
+    if (TempPM.value > 12 && TempPM.value <= 24) {
+        localStorage.setItem("PM", TempPM.value);
+    }else if (TempPM.value > 24) {
+        alert("Please enter a valid time");}
+    //if TempAM.value is greater 1 and less or equal to 12 then set TempAM.value to local storage
+    if (TempAM.value > 1 && TempAM.value <= 12) {
+        localStorage.setItem("AM", TempAM.value);
+    }else if (TempAM.value > 12) {
+        alert("Please enter a valid time");}
+      
+
+
 }
 
         //We're going to use "check" to get the ckeckbox element
