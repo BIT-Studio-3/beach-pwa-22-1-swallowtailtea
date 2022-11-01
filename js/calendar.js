@@ -79,6 +79,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let lowtidedata = document.createElement("div");
     let hightidedata = document.createElement("div");
     lowtidedata.classList.add("lowtidedata");
+    hightidedata.classList.add("hightidedata");
 
     let wantedData = data.values;
     wantedData.splice(0, 2);

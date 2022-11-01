@@ -70,6 +70,7 @@ title: Settings
         <br>
         <label for="startTime">PM: </label>
         <input type="time" id="PM" min="13:00" max="24:00">
+
          <button onclick="myFunction()">Set Times</button>
       </form>
     
@@ -105,19 +106,21 @@ function myFunction() {
 
 
     //if TempPM2 is greater than 12 or less than or equal to 24 then put in local storage
-    if (Temp2Pm > 12 && Temp2Pm <= 24) {
+    if (Temp2Pm > 12 && Temp2Pm <= 24 && Temp2Am > 0 && Temp2Am <= 12) {
         localStorage.setItem("PM", Temp2Pm);
+        localStorage.setItem("AM", Temp2Am);
+        alert("Times have been set");
     } 
    
     // else if TempPm.value is less than 12 then alert the user to enter a valid time
-    else if (Temp2PM < 12) {
+    else if (Temp2Pm < 12) {
         alert("Please enter a valid time for PM");
         
     }
     //if TempAM2 is = or greater then 01 and less than or equal to 12 then put in local storage
-    if (Temp2Am >= 1 && Temp2Am <= 12) {
+    /* if (Temp2Am >= 1 && Temp2Am <= 12) {
         localStorage.setItem("AM", Temp2Am);
-    }
+    } */
     
     
     // else if tempAM is greater then 12 then alert the user to enter a valid time
