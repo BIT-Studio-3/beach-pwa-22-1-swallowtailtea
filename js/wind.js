@@ -5,7 +5,6 @@ tidegrid.appendChild(sundiv);
 let sunmdiv = document.createElement("div");
 let sunmax = sunday.max()
 sunmdiv.innerHTML = sunmax;
-console.log(div)
 tidegrid.appendChild(sunmdiv);
 
 let sunmin = document.createElement("div");

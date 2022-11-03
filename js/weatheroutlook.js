@@ -8,8 +8,6 @@ let highTemperatureObjects = [];
 let lowTemperatureObjects = [];
 let windSpeedObjects = [];
 let windGustObjects = [];
-// console.log(getToday())
-// console.log(formatDate(testSunday(new Date())))
 let titles = ["Date", "Conditions", "Chance of rain", "High", "Low", "Wind Speed", "Wind Gust", "Wind Direction"];
 
 for (let index = 0; index < titles.length; index++) {
@@ -92,8 +90,6 @@ function testSunday(date){
     return new Date(date.setDate(sunday));
 }
     dt = new Date(); 
-    //console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
-    //console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun Jun 19
 
 function getToday() {
     const today = new Date();

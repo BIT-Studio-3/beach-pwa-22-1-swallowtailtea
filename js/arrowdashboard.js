@@ -31,10 +31,6 @@ fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=-45.874&lon=170.503&key
     response["data"].filter(day => day.datetime == formatDate(testSaturday(new Date())) || day.datetime == formatDate(testSunday(new Date())) || day.datetime == getToday())
     .forEach((data, i) => {
 
-        console.log(data);
-        //saturday grid
-
-
     }));
 
 
@@ -49,8 +45,6 @@ function testSunday(date){
     return new Date(date.setDate(sunday));
 }
     dt = new Date(); 
-    //console.log(testSaturday(dt).toDateString().substring(0,11)); //outputs Sat Jun 18 
-    //console.log(testSunday(dt).toDateString().substring(0,11));  //outputs Sun Jun 19
 
 function getToday() {
     const today = new Date();

@@ -42,7 +42,6 @@ document.getElementById('Try')
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.current);
           Gust = "Wind gust is " + data.current.gust_kph + " kph";
           Current_Temp = "The current temp is " + data.current.temp_c + "C";
           Feels_Like = "It feels like " + data.current.feelslike_c + "C";
