@@ -29,8 +29,6 @@ function onChangeAM() {
 
   AM = temp1;
   
- console.log("AM: " + AM);
- //call();
 }
 e.onchangeAM = onChangeAM;
 //onChangeAM();
@@ -45,7 +43,6 @@ function onChangePM() {
 temp2 = a.value;
   PM = temp2;
   
-  console.log("PM: " + PM);
   call();
 }
 e.onchangePM = onChangePM;
@@ -60,30 +57,7 @@ e.onchangePM = onChangePM;
 
 
 
-//--------------------------------------------------------------
 
-/*  function getData(form) {
-    var formData = new FormData(form);
-  
-    for (var pair of formData.entries()) {
-
-    }
-
-    //put the data into two variables called AM and PM  
-    var AM = formData.get("AM");
-    var PM = formData.get("PM");
-    //console log the variables to see if they are working  
-
-
-  }
-  
-  document.getElementById("UserTime").addEventListener("submit", function (event) {
-    event.preventDefault();
-    getData(event.target);
-    call();
-  });  */
-
-//make a funtion called call that will call the function that will create the calendar
 
 function call() {
 
