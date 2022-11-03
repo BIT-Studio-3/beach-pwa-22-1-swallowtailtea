@@ -23,4 +23,8 @@ locations.forEach(location =>
   document.querySelector("#Dropdown").append(locationLink);
   });
 
+  trial = (loca) => {
+    localStorage.setItem("currentLocation", JSON.stringify(loca));
+
+  }
   
