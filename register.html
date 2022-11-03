@@ -80,27 +80,40 @@ a {
 </head>
 <body>
 
-<form action="/action_page.php">
+<div>
   <div class="container">
     <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+    <input type="text" placeholder="Enter Username" name="username" id="username" autocomplete="off" required>
     <hr>
 
-    <button onclick="checkString()" class="registerbtn">Register</button>
+    <button onclick="addUser()" class="registerbtn">Register</button>
   </div>
   
   <div class="container signin">
     <p>Already have an account? <a href="/login">Sign in</a>.</p>
   </div>
-</form>
+</div>
 
 <script>
-  function checkString() {
-    console.log(name)
-    if (data.includes())
-    document.getElementById("demo").innerHTML = "Hello World";
+  function addUser(){
+    fetch('https://nameless-earth-41565.herokuapp.com/api/users', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ 
+        username : document.getElementById("username").value,
+      }),
+    })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log('Success:', result);
+      window.alert("User Successfully Created: " + document.getElementById("username").value);
+      document.getElementById("username").value = null
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }
-  //data[0].username
+  
 </script>
 
 </body>
