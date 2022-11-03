@@ -60,7 +60,79 @@ title: Settings
         </ul>
     </div>
 
+    
+    
+
+    <form>
+        <label for="startTime">AM: </label>
+        <input type="time" id="AM" min="01:00" max="12:00">
+        <br>
+        <br>
+        <label for="startTime">PM: </label>
+        <input type="time" id="PM" min="13:00" max="24:00">
+
+         <button onclick="myFunction()">Set Times</button>
+      </form>
+    
+    
+    
+
     <script>
+        
+function myFunction() {
+    event.preventDefault();
+    var TempPM = document.getElementById("PM")
+    var TempAM = document.getElementById("AM")
+    console.log(PM.value);
+    console.log(AM.value);
+    
+    localStorage.setItem("AM", TempAM.value);
+    localStorage.setItem("PM", TempPM.value);
+    //make a check for am and pm then send data to the tides page for prossing
+    // split TempAM.value and TempPM.value into hours and minutes and delete miniutes
+    Temp1Am = TempAM.value.split(":");
+    //set temp2AM to the first value of temp1AM
+    Temp2Am = Temp1Am[0];
+    //if temp2am has a 0 at the start of it remove it
+    if (Temp2Am[0] == 0){
+        Temp2Am = Temp2Am[1];
+        console.log(Temp2Am);
+    }
+    console.log("Am " + Temp2Am);
+    //set temp2PM to the first value of temp1PM
+    Temp1Pm = TempPM.value.split(":");
+    Temp2Pm = Temp1Pm[0];
+    console.log("PM " + Temp2Pm);
+
+
+    //if TempPM2 is greater than 12 or less than or equal to 24 then put in local storage
+    if (Temp2Pm > 12 && Temp2Pm <= 24 && Temp2Am > 0 && Temp2Am <= 12) {
+        localStorage.setItem("PM", Temp2Pm);
+        localStorage.setItem("AM", Temp2Am);
+        alert("Times have been set");
+    } 
+   
+    // else if TempPm.value is less than 12 then alert the user to enter a valid time
+    else if (Temp2Pm < 12) {
+        alert("Please enter a valid time for PM");
+        
+    }
+    //if TempAM2 is = or greater then 01 and less than or equal to 12 then put in local storage
+    /* if (Temp2Am >= 1 && Temp2Am <= 12) {
+        localStorage.setItem("AM", Temp2Am);
+    } */
+    
+    
+    // else if tempAM is greater then 12 then alert the user to enter a valid time
+    else if (Temp2Am > 12) {
+        alert("Please enter a valid time For AM");
+    }
+
+      
+    
+
+}
+
         //We're going to use "check" to get the ckeckbox element
         //const check = document.getElementById("check");
         const checks = document.getElementsByClassName("theme");
@@ -171,3 +243,6 @@ title: Settings
         </ul>
     </div> -->
 </div>
+
+<!-- add calender.js --> 
+<script src="js\calendar.js"></script>

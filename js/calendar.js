@@ -19,39 +19,11 @@ calendar.append(month, inner_grid);
 
 //--------------------------------------------------------------
 
-var AM;
-var PM;
-var e = document.getElementById("UserTimeAM");
-function onChangeAM() {
-  var text = e.options[e.selectedIndex].text;
-
-  temp1 = e.value;
-
-  AM = temp1;
-  
-}
-e.onchangeAM = onChangeAM;
-//onChangeAM();
 
 
 
-//--------------------------------------------------------------
-
-var a = document.getElementById("UserTimePM");
-function onChangePM() {
-  var text = a.options[a.selectedIndex].text;
-temp2 = a.value;
-  PM = temp2;
-  
-  call();
-}
-e.onchangePM = onChangePM;
-//onChangePM();
 
 
-         function reload(){
-          location.reload();
-         }
   
   	
 
@@ -60,6 +32,16 @@ e.onchangePM = onChangePM;
 
 
 function call() {
+
+  console.log(localStorage.getItem("AM"));
+  console.log(localStorage.getItem("PM"));
+  // set localStorage AM to tempAM
+  var TempAM = localStorage.getItem("AM");
+  // set localStorage PM to tempPM
+  var TempPM = localStorage.getItem("PM");
+
+  
+
 
 
 
@@ -70,6 +52,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let lowtidedata = document.createElement("div");
     let hightidedata = document.createElement("div");
     lowtidedata.classList.add("lowtidedata");
+    hightidedata.classList.add("hightidedata");
 
     let wantedData = data.values;
     wantedData.splice(0, 2);
@@ -79,7 +62,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31))
     let wTime = new Date(x.time).getUTCHours();
     
 
-      return wTime >= AM && wTime < PM;
+      return wTime >= TempAM && wTime < TempPM;
       
     });
 
