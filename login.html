@@ -80,21 +80,40 @@ a {
 </head>
 <body>
 
-<form action="/action_page.php">
+<div>
   <div class="container">
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" id="username" autocomplete="off" required>
     <hr>
 
-    <button type="submit" class="registerbtn">Log In</button>
+    <button onclick="checkString()" class="registerbtn">Register</button>
   </div>
   
   <div class="container signin">
     <p>Don't have an account? <a href="/register">Sign in</a>.</p>
   </div>
-</form>
+</div>
+
+<script>
+
+  function checkString() {
+    fetch('https://nameless-earth-41565.herokuapp.com/api/users')
+    .then(console.log("hello"))
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.data);
+      
+      for (let i = 0; i < data.data.length; i++) {
+        if(data.data[i].username == document.getElementById("username").value){
+          window.alert("Successfully logged in as user: " + document.getElementById("username").value);
+          console.log("true")
+        }
+      }
+
+    });
+
+  }
+  
+</script>
 
 </body>
