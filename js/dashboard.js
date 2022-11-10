@@ -181,7 +181,7 @@ fetch(buildNIWA_URL(NIWA_PATHS.data, currentLocation, 31)).then(response => resp
     
         makeDay("div", smin + "m")
 
-        let satchange = (smax - smin).toFixed(2) 
+        let satchange = (smax - smin).toFixed(2) + "m" 
 
         makeDay("div", satchange, "green")
         
