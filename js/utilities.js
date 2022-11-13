@@ -95,7 +95,6 @@ function setColourTheme(storageKey, desiredUnit)
     localStorage.setItem(storageKey, desiredUnit);
     currentTheme = localStorage.currentTheme;
     changeColorTheme(currentTheme);
-    console.log(currentTheme);
 }
 
 

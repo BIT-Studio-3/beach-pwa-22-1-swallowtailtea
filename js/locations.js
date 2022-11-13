@@ -14,8 +14,6 @@ let tairoaHead = buildLocationObject("Tairoa Head", buildLatLong(-45.77281,170.7
 let locations = [marina, vauxhall, portChalmers, broadBay, tairoaHead];
 
 let currentLocation = (localStorage.currentLocation == null) ? locations[0] : JSON.parse(localStorage.currentLocation);
-//console.log(currentLocation);
-// return an object containing latitude and longitude
 function buildLatLong(lat, long)
 {
     return {latitude: lat, longitude: long};
@@ -32,6 +30,3 @@ function buildLocationObject(locationName, latLong_WGS84, latLong_NZGD1949)
     return locationObject;
 }
 
-// Example for Openweather request:
-// fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${portChalmers.WGS84.latitude}&lon=${portChalmers.WGS84.longitude}&appid=a0734a6c8412a878935845b45f197bd6`)
-// .then(response => response.json()).then(data => console.log(data));

@@ -577,11 +577,4 @@ input[type="radio"]:checked {
     .inner_grid{
         grid-template-columns: repeat(2,1fr);
     }    
-    .inner_grid .tidedata{
-        text-align:center;
-        font-size: 10pt;
-    }
-    .inner_grid .square.disabled{
-        font-style: opacity 0.5;
-    }
 }
